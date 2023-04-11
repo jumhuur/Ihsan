@@ -1,0 +1,1178 @@
+
+//variables
+$theme:"dark";
+$main-color: #1b2a4e;
+$main-color2: #335eea;
+$color-Gaar: #42ba96;
+$bg-main: #fff;
+$title-color: #506690;
+$qoraalo-color: #869ab8;
+$hoverbtn: #173aab;
+$btn_gaar: #335eea1a;
+$madaw: #515151;
+$prog_color: #335eea32;
+$color_over: #1b2a4ebd;
+$colose_color: #d02401;
+
+@font-face {
+  font-family: "font";
+  src: url(../Fonts/Roboto-Regular.ttf);
+}
+
+
+// all mixins
+
+@mixin reset_form($size,$color,$mrtb)  {
+  padding-left: 15px;
+  padding-right: 15px;
+  @include qoraal-p($size, $color);
+  margin: $mrtb 0px;
+  border: none;
+  outline: none;
+}
+
+@mixin Shadaw_buttom{
+  box-shadow: 0px 0px 12px 0px #d7d7d7a7;
+}
+
+@mixin dyshadow($kaw,$laba,$sadex,$afar){
+  box-shadow: $kaw $laba $sadex $afar #d7d7d7a7;
+}
+@mixin qoraal-p($size, $color){
+  font-size: $size;
+  color: $color;
+  font-family: "font";
+  letter-spacing: 1.5;
+  line-height: 1.6;
+}
+
+
+@mixin Totile-H($size, $color){
+  font-size: $size;
+  color: $color;
+  font-family: "font";
+  letter-spacing: 1.5;
+  line-height: 1.6;
+}
+
+@mixin btn-web($Dherer) {
+  width: $Dherer;
+  height: 55px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: $bg-main;
+  font-size: 16px;
+  font-family: "font";
+  background-color: $main-color2;
+  transition: all 0.4s ease-in-out;
+  text-transform: capitalize;
+  &:hover{
+    background-color:$hoverbtn;
+    transition: all 0.4s ease-in-out;
+    transform: translate(0px,5px);
+  }
+}
+
+@mixin flex-box($dir) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap $dir;
+  text-transform: capitalize;
+  
+}
+@mixin dynamic-flex($js,$at,$dir,$dhex){
+  display: flex;
+  justify-content: $js;
+  align-items: $at;
+  flex-flow: wrap $dir;
+  gap: $dhex;
+  text-transform: capitalize;
+}
+
+@mixin Break-Points($Point){
+  @if($Point == xsm){
+    @media (min-width: 200px) and (max-width: 576px) {
+      @content
+    };
+
+  } @else if($Point == sm){
+    @media (min-width: 576px) and (max-width: 768px) {
+      @content
+    };
+  } @else if($Point == md){
+    @media (min-width: 768px) and (max-width: 992px) {
+      @content
+    };
+  } @else if($Point == lg){
+    @media (min-width: 992px) and (max-width: 1200px) {
+      @content
+    };
+  } @else if($Point == xlg){
+    @media (min-width: 1200px) and (max-width: 1400px) {
+      @content
+    };
+  } @else if($Point == xxlg){
+    @media (min-width: 1400px) {
+      @content
+    };
+  }
+
+}
+
+
+// placeholders
+%reset-ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+   li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    text-transform: capitalize;
+    list-style: none;
+
+    a {
+      text-decoration: none;
+      width: 100%;
+      display: block;
+      text-transform: capitalize;
+    }
+   }
+}
+
+
+%reset-link {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+
+
+%over_velow_elm{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+%over_vallow_set {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: $color_over;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  -webkit-backdrop-filter: blur(12px);
+  -moz-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  visibility: hidden;
+  @include dynamic-flex(center,center ,column ,0px );
+}
+
+
+%colse_btn{
+  width: 25px;
+  height: 25px;
+  background-color: $colose_color;
+  border-radius: 50%;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 99999;
+  cursor: pointer;
+  color: $bg-main;
+  @include dynamic-flex(center,center ,column ,0px);
+}
+
+
+
+// controll if else 
+
+
+
+
+
+
+
+
+*{
+  scrollbar-color: #002d97 #ffffff;
+  scrollbar-width: thin;
+}
+
+
+  
+html{
+    scroll-behavior: smooth;
+}
+  
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select:$main-color;
+}
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background:linear-gradient(90deg,$main-color2,$bg-main) !important;
+// }
+
+::-webkit-scrollbar-thumb {
+  background:$main-color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+  
+.haye{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.xajiye{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+
+
+// nav
+div.nav{
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  background-color: $bg-main;
+  z-index: 999;
+  @include Shadaw_buttom();
+  div.links{
+    width: 100%;
+    height: 80px;
+    @include dynamic-flex(center,center ,row,0px);
+    div.logo{
+    flex: 2;
+    @include flex-box(column);
+    height: 100%;
+    border: none;
+    a {
+      @extend %reset-link;
+      @include dynamic-flex(center,center ,row,0px);
+    }
+    p{
+      @include qoraal-p(1.50rem,$main-color2);
+      font-weight: bolder;
+      i {
+        color: $main-color2;
+      }
+    }
+    }
+
+    div.link-items{
+      flex: 4;
+      @extend %reset-ul;
+      @include dynamic-flex(center,center ,column,0px );
+      height: 100%;
+      ul {
+        width: 100%;
+        height: 100%;
+        @include dynamic-flex(center,center ,row,20px);
+        @include qoraal-p(16px,$qoraalo-color);
+       
+         li {
+          @include qoraal-p(16px,$qoraalo-color);
+          height: 100%;
+          @include dynamic-flex(center,center ,column ,0px);
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.4s ease-in-out;
+          i {
+            font-size: 12px;
+            font-weight: bold;
+          }
+          &:hover{
+            color: $main-color2;
+          }
+          a {
+            @include dynamic-flex(center,center ,column,0px );
+            @include qoraal-p(16px,$qoraalo-color);
+            height: 100%;
+            padding:15px;
+            font-weight: 500;
+            transition: all 0.4s ease-in-out;
+            &:hover{
+              color: $main-color2;
+            }
+          }
+         }
+      }
+    }
+    div.action-btn{
+      flex: 2;
+      height: 100%;
+      @include dynamic-flex(center,center ,column,0px );
+      
+      button.nav-btn{
+        @include btn-web(50%)
+
+      }
+    }
+  }
+}
+
+
+// homepage welcome
+div.welcome{
+  width: 100%;
+  height: 100%;
+  //margin-bottom: 80px;
+  padding: 75px 10px;
+  @if($theme == "light"){
+    background-color: $bg-main;
+  } @else {
+    background-color: $main-color;
+  }
+  div.labaqaybood{
+    width: 100%;
+    height: 100%;
+    @include dynamic-flex(center,center ,row ,10px );
+    div.qayb{
+      width: calc(95% / 2);
+      &.qorall{
+        height: 100%;
+        padding: 10px;
+        font-weight: normal;
+        h2 {
+          letter-spacing: 0.2;
+          @if($theme == "light"){
+            @include Totile-H(3rem, $madaw);
+          } @else {
+            @include Totile-H(3rem, $bg-main);
+          }
+         
+          font-weight: normal;   
+          margin-top: 85px;
+          line-height: 1.5;
+          span {
+            color: $main-color2;
+          }   
+        }
+
+        p {
+          @include qoraal-p(20px,$qoraalo-color);
+          line-height: 1.6;
+          margin: 25px 0px;
+          font-weight: normal;
+        }
+
+        div.btn-welc{
+          width: 100%;
+          height: 100%;
+          padding: 40px 5px;
+          @include dynamic-flex(flex-start,center ,row ,10px);
+          button {
+            @include btn-web(40%)
+          }
+          button.Xaqiijin{
+            background-color: $btn_gaar;
+            color: $title-color;
+            font-weight: normal;
+            &:hover{
+              @include Shadaw_buttom();
+              transition: all 0.4s ease;
+
+            }
+          }
+        }
+      }
+    } 
+
+    div.qayb{
+      &.sawir{
+        height: 100%;
+        //background-color: $madaw;
+        img {
+          width:100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+
+
+// tirokoobyo 
+
+section.tirokoobyo{
+  width: 100%;
+  height: 100%;
+  margin: 10px 0px;
+  padding: 15px 0px;
+  div.cards_tirokoob{
+    width: 100%;
+    height: 100%;
+    @include dynamic-flex(center,center ,row, 35px);
+    div.card{
+      width: calc(90% / 3);
+      div.icon{
+        width: 100%;
+        padding: 10px 0px;
+        svg {
+          width: 14%;
+          height: 100%;
+        }
+      }
+      div.qoraal{
+        h2 {
+          @include Totile-H(22px,$madaw );
+          padding: 10px 0px;
+          font-weight: normal;
+        }
+
+        p {
+          @include qoraal-p(16px ,$qoraalo-color )
+        }
+      }
+
+    }
+  }
+}
+
+
+// slide companes
+div.slide{
+  margin: 20px 0px;
+  padding: 10px 0px;
+  div.haye{
+    div.comp{
+      height: 150px;
+      overflow: hidden;
+      padding: 10px 10px;
+      div.shay{
+        @include dynamic-flex(center,center ,column ,0px );
+        height: 100%;
+        border-radius: 7px;
+        img {
+          width: 120px;
+          object-fit: cover;
+        &.wayn{
+          width: 80px;
+        }
+        &.yar{
+          width: 150px;
+        }
+        }
+      }
+    }
+  }
+
+  .carousel-next {
+    &:before{
+      background-image: url("../Images/arrow-right-solid.svg");
+    }
+  }
+
+  .carousel-prev{
+    &:before{
+      background-image: url("../Images/arrow-left-solid.svg");
+    }
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    background-color: $btn_gaar;
+    border-radius: 50%;
+    color: $bg-main;
+  }
+}
+
+
+
+
+// ayad 
+div.ayad{
+  width: 100%;
+  height: 125px;
+  background-color: $main-color;
+  @include dynamic-flex(center,center ,column ,0px);
+  div.nas_ayad{
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    @include dynamic-flex(center,center ,column ,0px);
+  }
+}
+
+
+// Projects
+div.Projects{
+  width: 100%;
+  height: 100%;
+  margin: 25px 0px;
+  h2.pro_title{
+    @include Totile-H(22px, $main-color2);
+    padding: 20px 50px;
+  }
+  div.qaybha{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    @include dynamic-flex(center,center ,row ,10px);
+    div.qayb{
+      height: 50px;
+      width: calc(95% / 5);
+      @include dynamic-flex(center,center ,row ,0px);
+      //background-color: $main-color;
+      border-radius: 2px;
+      cursor: pointer;
+      //@include dyshadow(1px ,1px, 6px, 2px);
+      border-radius: 3px;
+      //border-bottom: solid 1px $main-color2;
+      transition: all 0.4s ease;
+      div.icon_Q{
+        width: 100%;
+        height: 100%;
+        padding: 0px 0px;
+        a {
+          @extend %reset-link;
+          @include dynamic-flex(center,center ,row ,0px);
+
+          &.active{
+            background-color: $main-color2;
+            transition: all 0.4s ease;
+            border-radius: 5px;
+            p {
+              color: $bg-main;
+              transition: all 0.4s ease;
+              i {
+                color: $main-color;
+                transition: all 0.4s ease;
+              }
+            }
+          }
+        }
+      }
+      
+
+      &:hover{
+        background-color: $main-color2;
+        transition: all 0.4s ease;
+        border-radius: 5px;
+        p {
+          color: $bg-main;
+          transition: all 0.4s ease;
+          i {
+            color: $main-color;
+            transition: all 0.4s ease;
+          }
+        }
+      }
+      p{
+        @include qoraal-p(17px, $madaw);
+        i {
+          color: $main-color2;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  div.prog_one{
+    width: 100%;
+    height: 100%;
+    //background-color: $color-Gaar;
+    @include dynamic-flex(center,center ,row , 15px);
+    margin: 20px 0px;
+    padding: 50px 0px;
+    div.card_mashruuc{
+      margin: 5px 0px;
+      padding: 7px 7px;
+      width: calc(95% / 3);
+      height: 500px;
+      background-color: $bg-main;
+      @include dyshadow(0px, 0px, 12px, 0px);
+      border-radius: 3px;
+      // border-bottom: solid 2.50px $main-color2;
+      // border-top: solid 2.50px $main-color2;
+      overflow: hidden;
+      transition: all 0.4s ease-in-out;
+      &:hover{
+        //transform: translate(0px,18px);
+        transition: all 0.4s ease-in-out;
+        div.img_or_vid{
+          div.over_verlow_video{
+            transform: translate(0px, 0px);
+         
+          }
+        }
+      }
+      div.img_or_vid{
+        width: 100%;
+        height: 200px;
+        background-color: $madaw;
+        overflow: hidden;
+        @include dyshadow(0px, 0px, 12px, 0px);
+        background-color: $bg-main;
+        border-radius: 5px;
+        position: relative;
+        z-index: 11;
+        div.over_verlow_video{
+          @extend %over_velow_elm;
+          background-color: $color_over;
+          z-index: 1;
+          border-radius: 5px;
+          transform: translate(0px, 0px);
+          transition: all 0.6s ease-in-out;
+          @include flex-box(column);
+          button.Daawo{
+            @include btn-web(50%);
+          }
+          div.lacagta{
+            width: 100%;
+            margin: 10px 0px;
+          }
+  
+          div.hadaf_and_asal{
+            @include dynamic-flex(space-evenly,center ,row , 20px);
+            height: 100%;
+            @include qoraal-p(20px, $bg-main);
+            p.lcg{
+              width: calc(60% / 2);
+            }
+            i{
+              color: $bg-main;
+            }
+          }
+          
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      div.desc{
+        width: 100%;
+        padding: 5px 0px;
+        h2 {
+          @include Totile-H(20px, $madaw);
+          font-weight: normal;
+          padding: 5px 5px;
+        }
+
+        p {
+          @include qoraal-p(17px, $qoraalo-color);
+          padding: 5px 5px;
+        }
+      }
+      div.progress{
+        width: 100%;
+        height: 15px;
+        background-color: $prog_color;
+        margin: 10px 0px;
+        border-radius: 7px;
+        overflow: hidden;
+        span{
+          width: 65%;
+          height: 100%;
+          display: block;
+          background-color: $main-color2;
+          @include dynamic-flex(center,flex-end ,column,0px);
+          color: $bg-main;
+          font-size: 13px;
+          font-weight: bold;
+          font-family: "font";
+          border-radius: 7px;
+          span{
+            width: 30px;
+            height: 30px;
+            background-color: $main-color2;
+            border-radius: 50%;
+            position: absolute;
+            border: solid 2px $bg-main;
+          }
+        }
+      }
+      div.info_fursad{
+        width: 100%;
+        position: relative;
+        div.from_bixin{
+          width: 100%;
+
+          form{
+            div.pyment_types{
+              @include dynamic-flex(center,center ,row , 0px);
+              // switch
+
+              div.raber_switcher{
+                width: 70%;
+                margin: 10px 0px;
+                @include dynamic-flex(center,center ,row , 0px);
+                div.input{
+                  position: relative;
+                  width: 100%;
+                  @include dynamic-flex(center,center ,row , 0px);
+                  overflow: hidden;
+                  input {
+                    width: 100%;
+                    height: 30px;
+                    border-radius: 15px;
+                    background-color: $btn_gaar;
+                    appearance: none;
+                    outline: none;
+                    position: relative;
+                  }
+                  label{
+                    width: 50%;
+                    height: 100%;
+                    border-radius: 15px;
+                    position: absolute;
+                    z-index: 12;
+                    overflow: hidden;
+                    @include dynamic-flex(center,center ,row , 0px);
+                    user-select: none;
+                    cursor: pointer;
+                    span{
+                      @include qoraal-p(15px, $qoraalo-color);
+                      user-select: none;
+                    }
+                    
+                    &.edahab{
+                      right: 0;
+                      background-color: transparent;
+                    }
+
+                    &.zaad{
+                      left: 0px;
+                      background-color: transparent;
+                    }
+                    &.active{
+                      background-color: $main-color2;
+                      color: $bg-main;
+                      transition: color all 0.6s ease-in-out;
+                      span{
+                        color: $bg-main;
+                        user-select: none;
+                      }
+                    }
+
+                  
+
+                  }
+                }
+
+                span {
+                  @include qoraal-p(18px, $madaw);
+                  margin: 0px 10px ;
+                }
+              }
+              div.Pay{
+                width: calc(90% / 2);
+                padding: 5px 0px;
+                label {
+                  @include qoraal-p(18px, $madaw);
+                  margin: 0px 10px ;
+                  i.telesom {
+                    color: #179f02;
+                  }
+
+                  i.somtel{
+                    color: #ffae00;
+                  }
+                }
+
+                input[type="radio"] {
+                  width: 18px;
+                  height: 18px;
+                }
+              }
+            }
+
+            div.donter_info{
+              width: 100%;
+              @include dynamic-flex(center,center ,column, 0px);
+              div.input_feilds{
+                width: 80%;
+                position: relative;
+                border-radius: 10px;
+                @include dynamic-flex(center,flex-start ,column, 0px);
+                margin: 5px 0px;
+                input[type="text"] {
+                  @include reset_form(18px, $madaw, 5px);
+                  width: 95%;
+                  height: 45px;
+                  border-radius: 10px;
+                  border: solid 1px #335eea29;
+                  //background-color: $prog_color;
+                  //border-left: solid 2px $main-color2;
+                  //border-right: solid 2px $main-color2;
+                  //border-bottom: solid 1px $main-color2;
+                  position: relative;
+                  padding-left: 75px;
+                  overflow: hidden;
+                  &::placeholder{
+                    color: #335eea83;
+                  }
+                }
+                > span.Ll {
+                  position: absolute;
+                  width: 65px;
+                  height: 80%;
+                  background-color: transparent;
+                  border-bottom-left-radius: 10px;
+                  border-top-left-radius: 10px;    
+                  @include dynamic-flex(center,center ,column, 0px);
+                  @include qoraal-p(18px,$main-color2) ;
+                  z-index: 55;
+                }
+              }
+              button{
+                @include btn-web(75%);
+                background-color: $color-Gaar;
+                margin: 12px 0px;
+                &:hover{
+                  background-color: #029f70;
+                }
+              }
+
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+
+
+// about
+
+
+div.about{
+  width: 100%;
+  height: 100%;
+  margin: 35px 0px;
+  div.war_laba_qaybood{
+    width: 100%;
+    height: 100%;
+    @include dynamic-flex(space-between,center ,row , 0px);
+    div.qayb{
+      width: calc(97% / 2);
+      &.bidix {
+        div.bidix_decr{
+          width: 100%;
+          height: 100%;
+          padding: 15px 0px;
+          h2 {
+            @include Totile-H(2.3rem, $madaw);
+            font-weight: normal;
+            span{
+              color: $main-color2;
+            }
+          }
+
+          p {
+            @include qoraal-p(20px, $qoraalo-color);
+            font-weight: normal;
+            margin: 5px 0px;
+            padding: 5px 0px;
+          }
+        }
+        div.warbixinta{
+          width: 100%;
+          height: 100%;
+          div.war{
+            width: 100%;
+            height: 100%;
+            margin: 15px 0px;
+            padding: 15px 0px;
+            @include dynamic-flex(center,center ,row ,0px);
+            div.icon_sawir{
+              height: 80px;
+              padding: 15px 0px;
+              @include dynamic-flex(flex-start,center ,column,0px);
+              flex: 1;
+              svg {
+                width: 100%;
+                height: 80%;
+              }
+            }
+
+            div.qoraal_war{
+              flex: 6;
+              h2{
+                @include Totile-H(1.2rem, $madaw);
+                font-weight: normal;
+              }
+
+              p {
+                @include qoraal-p(17px, $qoraalo-color);
+              }
+             
+            }
+          }
+      
+        }
+      }
+      &.midig{
+        height: 100%;
+        overflow: hidden;
+       img {
+        width: 100%;
+        height: 100%;
+        transform: rotateY(-35deg) rotateX(15deg);
+       } 
+      }
+    }
+  }
+}
+
+div.Counts{
+  width: 100%;
+  height: 100%;
+  margin: 35px 0px;
+  background-color: $btn_gaar;
+  position: relative;
+  overflow: hidden;
+  padding-top: 5%;
+  div.wave{
+    width: 100%;
+    height: 250px;
+    top: 0;
+    overflow: hidden;
+    //background-color: #002d97;
+    background-image: url("../Images/wave_02.svg");
+    background-size: cover;
+  }
+  div.war_laba_qaybood{
+    width: 100%;
+    height: 100%;
+    @include dynamic-flex(space-between,center ,row , 0px);
+    div.qayb{
+      width: calc(97% / 2);
+      &.bidix {
+        div.bidix_decr{
+          width: 100%;
+          height: 100%;
+          padding: 15px 0px;
+          h2 {
+            @include Totile-H(2.3rem, $madaw);
+            font-weight: normal;
+            span{
+              color: $main-color2;
+            }
+          }
+
+          p {
+            @include qoraal-p(20px, $qoraalo-color);
+            font-weight: normal;
+            margin: 5px 0px;
+            padding: 5px 0px;
+          }
+        }
+        div.warbixinta{
+          width: 100%;
+          height: 100%;
+          div.war{
+            width: 100%;
+            height: 100%;
+            margin: 15px 0px;
+            padding: 15px 0px;
+            @include dynamic-flex(center,center ,row ,0px);
+            div.icon_sawir{
+              height: 80px;
+              padding: 15px 0px;
+              @include dynamic-flex(flex-start,center ,column,0px);
+              flex: 1;
+              svg {
+                width: 100%;
+                height: 80%;
+              }
+            }
+
+            div.qoraal_war{
+              flex: 6;
+              h2{
+                @include Totile-H(1.2rem, $madaw);
+                font-weight: normal;
+              }
+
+              p {
+                @include qoraal-p(17px, $qoraalo-color);
+              }
+             
+            }
+          }
+      
+        }
+      }
+      &.midig{
+        height: 100%;
+        overflow: hidden;
+       img {
+        width: 100%;
+        height: 100%;
+        //transform: rotateY(-35deg) rotateX(15deg);
+       } 
+      }
+    }
+  }
+}
+
+
+
+// video
+
+div.video_overvallow{
+  @extend %over_vallow_set;
+  div.h_video{
+      @include dynamic-flex(center,center ,column ,0px);
+      width: 100%;
+      height: 100%;
+  }
+  &.active{
+    visibility: visible;
+    div.video{
+      width: 75%;
+      padding: 5px 5px;;
+      background-color: transparent;
+      border-radius: 7px;
+      @include dynamic-flex(center,center ,column ,0px);
+      div.video_content{
+        width: 95%;
+        height: 95%;
+        background-color: $main-color2;
+        padding-bottom: 20px;
+        overflow: hidden;
+        border-radius: 5px;
+        position: relative;
+        div.close_video{
+          @extend %colse_btn;
+        }
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// all media  responsive part
+
+@include Break-Points(xsm){
+  .haye{
+    max-width: 540px;
+  }
+
+  .xajiye{
+    max-width: 540px;
+  }
+}
+@include Break-Points(sm){
+  .xajiye{
+    max-width: 540px;
+  }
+
+}
+@include Break-Points(md){
+  .haye {
+    max-width: 720px;
+  }
+
+  .xajiye{
+    max-width: 700px;
+  }
+}
+@include Break-Points(lg){
+  .haye {
+    max-width: 960px;
+  }
+
+  .xajiye {
+    max-width: 1100px;
+  }
+
+}
+@include Break-Points(xlg){
+  .haye {
+    max-width: 1140px;
+  }
+
+  .xajiye {
+    max-width: 1300px;
+  }
+}
+@include Break-Points(xxlg){
+  .xajiye,
+  .haye {
+    max-width: 1320px;
+  }
+}
+
+
