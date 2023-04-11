@@ -15,7 +15,7 @@ function Video({video_active,func}){
                     <Player
                     playsInline
                     // poster="/Images/Web.png"
-                    src="/videos/Video.mp4"
+                    src="/videos/Video_02.mp4"
                     autoPlay
                     />
                     :
