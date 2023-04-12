@@ -43,7 +43,7 @@ function Card({func}){
             </div> */}
             <div className="progress">
                 <span style={{width:`${card.Tabaruc / card.Hadaf * 100}%`}}><span>{
-                (card.Tabaruc / card.Hadaf * 100).toFixed(0)
+                Math.floor((card.Tabaruc / card.Hadaf * 100)).toFixed(0)
                 }%</span></span>
             </div>
             <div className="info_fursad">
