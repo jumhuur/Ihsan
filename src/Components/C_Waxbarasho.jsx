@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import data from "../Data.json";
-function Card({func}){
-    const Projects = data
+function CWaxbarsho({func}){
+    const Heer  = 14;
+    const data = false;
     const [Pyment_type,setPyment_type] = useState('zaad');
     const toggale_zaad = (e) => {
         // true = telesom
@@ -20,17 +20,17 @@ function Card({func}){
     console.log(Pyment_type)
     return (
         <>
-        {Projects && Projects.map((card) => (
+        {!data && [1,2,3].map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
-                <img src="/Images/R25.jpg" alt="xaalad" />
+                <img src="/Images/Student.JPG" alt="xaalad" />
                 <div className="over_verlow_video">
                     <button className='Daawo' onClick={func}>
                     <i className="fa-solid fa-play"></i> Muuqaal
                     </button>
                     <div className="lacagta">
                     <div className="hadaf_and_asal">
-                        <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Tabaruc} $</p>
+                        <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> 22578 $</p>
                     </div>
                 </div>
     
@@ -42,9 +42,7 @@ function Card({func}){
                 </p>
             </div> */}
             <div className="progress">
-                <span style={{width:`${card.Tabaruc / card.Hadaf * 100}%`}}><span>{
-                (card.Tabaruc / card.Hadaf * 100).toFixed(0)
-                }%</span></span>
+                <span style={{width:`${Heer}%`}}><span>{Heer}%</span></span>
             </div>
             <div className="info_fursad">
     
@@ -101,4 +99,4 @@ function Card({func}){
 }
 
 
-export default Card
+export default CWaxbarsho
