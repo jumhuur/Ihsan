@@ -37,7 +37,7 @@ function About(){
                     </div>
                 </div>
                 <div className="qayb midig">
-                    <img src="/Images/dashkit.jpg" alt="dhash" />
+                    <img src="/Images/dashkit01.png" alt="dhash" />
                 </div>
                 </div>
 

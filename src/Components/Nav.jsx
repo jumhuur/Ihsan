@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 
-function Nav(){
+function Nav({Login}){
     return (
         <div className="nav">
             <div className="haye">
@@ -34,8 +34,10 @@ function Nav(){
 
                     </div>
                     <div className="action-btn">
-                        <button className="nav-btn">
-                            Login <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                        <button className="nav-btn" onClick={Login}>
+                            <Link to="Login" >
+                                <span>Login <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
+                            </Link>
                         </button>
 
                     </div>

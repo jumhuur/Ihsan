@@ -347,8 +347,14 @@ div.nav{
       @include dynamic-flex(center,center ,column,0px );
       
       button.nav-btn{
-        @include btn-web(50%)
-
+        @include btn-web(50%);
+        a {
+            @extend %reset-link;
+            @include dynamic-flex(center, center, column, 0px);
+            span {
+              color: $bg-main;
+            }
+          }
       }
     }
   }
@@ -405,7 +411,14 @@ div.welcome{
           padding: 40px 5px;
           @include dynamic-flex(flex-start,center ,row ,10px);
           button {
-            @include btn-web(40%)
+            @include btn-web(40%);
+            a {
+            @extend %reset-link;
+            @include dynamic-flex(center, center, column, 0px);
+              span {
+                color: $bg-main;
+              }
+              }
           }
           button.Xaqiijin{
             background-color: $btn_gaar;
@@ -415,6 +428,10 @@ div.welcome{
               @include Shadaw_buttom();
               transition: all 0.4s ease;
 
+            }
+
+            a {
+              @extend %reset-link;
             }
           }
         }
@@ -1113,7 +1130,7 @@ div.faq{
   margin: 50px 0px;
   padding: 20px 0px;
   padding-top: 0px;
-  background-color: $main-color;
+  background-color: $bg-main;
   div.wave_02{
     width: 100%;
     //position: absolute;
@@ -1145,14 +1162,14 @@ div.faq{
           height: 80px;
           flex: 1;
           //background-color: $main-color2;
-          color: $color-Gaar;
+          color: $main-color2;
           @include dynamic-flex(center, flex-start, row, 0px);
           font-size: 1.6rem;
         }
         div.qoraal{
           flex: 6;
           h2 {
-            @include Totile-H(1.1rem, $bg-main);
+            @include Totile-H(1.1rem, $madaw);
             font-weight: normal;
           }
 
@@ -1179,7 +1196,7 @@ div.faq{
       div.qoraalo_btn_start{
         @include dynamic-flex(center, center, column, 15px);
         h2 {
-          @include Totile-H(1.7rem,$bg-main);
+          @include Totile-H(1.7rem,$madaw);
           font-weight: normal;
         }
 
@@ -1201,6 +1218,158 @@ div.faq{
   }
 }
 
+
+
+// foote 
+
+
+div.footer{
+  width: 100%;
+  height: 100%;
+  margin: 25px 0px;
+  margin-bottom: 0px;
+  background-color: $main-color;
+  padding: 30px 0px;
+  div.footer_contenet{
+    width: 100%;
+    height: 100%;
+    padding: 25px 0px;
+    @include dynamic-flex(center,center ,column ,22px );
+        div.logo {
+            flex: 2;
+            @include flex-box(column);
+            height: 100%;
+            border: none;
+        
+            a {
+              @extend %reset-link;
+              @include dynamic-flex(center, center, row, 0px);
+            }
+        
+            p {
+              @include qoraal-p(1.50rem, $main-color2);
+              font-weight: bolder;
+        
+              i {
+                color: $main-color2;
+              }
+            }
+          }
+
+          div.q_footer{
+            p{
+              @include qoraal-p(17px, $bg-main);
+              a {
+                @extend %reset-link;
+                width: fit-content;
+                display: inline;
+                color: $color-Gaar;
+              }
+            }
+            
+
+          }
+  }
+}
+
+
+
+
+// login 
+div.over{
+  @extend %over_vallow_set;
+  @include dynamic-flex(center,center ,column ,0px);
+  div.inhaye{
+    @include dynamic-flex(center, center, column, 0px);
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  &.active{
+    visibility: visible;
+  }
+
+  div.login{
+    width: 70%;
+    height: 450px;
+    background-color: $bg-main;
+    border-radius: 10px;
+    @include dynamic-flex(center,center ,row , 10px);
+    padding: 15px 0px;
+    div.llc{
+      height: 100%;
+      width: calc(95% / 2);
+      //background-color: $madaw;
+      @include dynamic-flex(center, center, row, 0px);
+      &.bidix_login{
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &.midig_login {
+        //background-color: $colose_color;
+        @include dynamic-flex(center, center, column, 0px);
+        position: relative;
+        div.close {
+            @extend %colse_btn;
+            background-color: $main-color2;
+            i {
+            color: $bg-main;
+            }
+            
+        }
+        div.from{
+        width: 100%;
+        height: 100%;
+        //background-color: $main-color;
+        @include dynamic-flex(center, center, column, 0px);
+        div.dhinac_l{
+          width: 100%;
+          padding: 5px 0px;
+          //background-color: $color-Gaar;
+          @include dynamic-flex(center, center, column, 0px);
+
+          h2 {
+            @include Totile-H(2rem,$madaw);
+            font-weight: normal;
+          }
+          p {
+            @include qoraal-p(15px,$qoraalo-color );
+            font-weight: normal;
+          }
+
+          &.inputs_login{
+            //background-color: $color-Gaar;
+            input{
+              @include reset_form(17px, $main-color , 10px);
+              font-weight: normal;
+              height: 55px;
+              width: 85%;
+              border: solid 1px #335eea29;
+              border-radius: 7px;
+              &:focus{
+              border: solid 1px $main-color2;
+              }
+            }
+
+            button{
+              @include btn-web(65%)
+            }
+
+            p.Bilaa_akoon{
+              margin-top: 15px;
+              font-size: 17px;
+            }
+           
+          }
+        }
+      }
+      }
+
+    }
+  }
+}
 
 
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function Welcome(){
     return (
         <div className="welcome">
@@ -10,7 +12,9 @@ function Welcome(){
             </p>
             <div className="btn-welc">
                 <button className="samayso">
-                    Get Started <i className="fa-solid fa-arrow-right"></i>
+                    <Link to="Signin">
+                        <span>Get Started <i className="fa-solid fa-arrow-right"></i></span>
+                    </Link>
                 </button>
                 <button className="Xaqiijin">
                 <i className="fa-solid fa-circle-check"></i> Xaqiiji Tabaruc

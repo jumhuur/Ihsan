@@ -8,12 +8,13 @@ import SlideCompany from "../Components/slidecomp"
 import Video from "../Components/video"
 import Counts from "../Components/Counts"
 import Fqa from "../Components/fqa"
+import Footer from "../Components/Footer"
 
-function Home({video_active, func}){
+function Home({video_active, func , LoginFunc}){
     return (
         <>
             <Video  video_active={video_active} func={func}/>
-            <Nav />   
+            <Nav Login={LoginFunc}/>   
             <Welcome />
             <TiroKoobyo />
             <SlideCompany />
@@ -22,7 +23,7 @@ function Home({video_active, func}){
             <About />
             <Counts />
             <Fqa /> 
-            <footer />      
+            <Footer />      
         </>
     )
 }
