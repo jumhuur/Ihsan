@@ -23,7 +23,7 @@ function Card({func}){
         {Projects && Projects.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
-                <img src="/Images/R25.jpg" alt="xaalad" />
+                <img src={card.Muuqaal} alt="xaalad" />
                 <div className="over_verlow_video">
                     <button className='Daawo' onClick={func}>
                     <i className="fa-solid fa-play"></i> Muuqaal

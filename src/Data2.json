@@ -1,0 +1,27 @@
+[
+    {
+        "id": "IHSAN01",
+        "Name" : "Mashruuc",
+        "Hadaf": 7520,
+        "Tabaruc": 2763,
+        "Qayb": "Caafimaad",
+        "Muuqaal": "https://cdn.pixabay.com/photo/2015/01/18/13/31/children-602967_960_720.jpg"
+    },
+    {
+        "id": "IHSAN02",
+        "Name" : "Mashruuc",
+        "Hadaf": 2520,
+        "Tabaruc": 1763,
+        "Qayb": "Caafimaad",
+        "Muuqaal": "https://cdn.pixabay.com/photo/2015/01/18/13/31/children-602967_960_720.jpg"
+    },
+    {
+        "id": "IHSAN03",
+        "Name" : "Mashruuc",
+        "Hadaf": 8755,
+        "Tabaruc": 8100,
+        "Qayb": "Caafimaad",
+        "Muuqaal": "https://cdn.pixabay.com/photo/2015/01/18/13/31/children-602967_960_720.jpg"
+    }
+]
+

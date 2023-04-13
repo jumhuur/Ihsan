@@ -872,7 +872,7 @@ div.Projects{
               button{
                 @include btn-web(75%);
                 background-color: $color-Gaar;
-                margin: 12px 0px;
+                margin: 10px 0px;
                 &:hover{
                   background-color: #029f70;
                 }
@@ -1099,6 +1099,106 @@ div.video_overvallow{
   }
 
 
+}
+
+
+
+
+// faq
+
+
+div.faq{
+  width: 100%;
+  height: 100%;
+  margin: 50px 0px;
+  padding: 20px 0px;
+  padding-top: 0px;
+  background-color: $main-color;
+  div.wave_02{
+    width: 100%;
+    //position: absolute;
+    top: 0;
+    height: 200px;
+    //background-color: #029f70;
+    background-image: url("../Images/wave_03.svg");
+    background-size: cover;
+  }
+
+  div.suaalo{
+    width: 100%;
+    height: 100%;
+    padding: 20px 0px;
+    @include dynamic-flex(center,center ,row ,0px );
+    div.labaqayb{
+      width: calc(100% / 2);
+      height: 100%;
+      padding: 25px 0px;
+      //background-color: #029f70;
+      @include dynamic-flex(center, center, column, 20px);
+      div.hal_dhinac{
+        width: 100%;
+        height: 100%;
+        //background-color: #029f70;
+        padding: 10px 0px;
+        @include dynamic-flex(center, center, row, 0px);
+        div.icon_bes{
+          height: 80px;
+          flex: 1;
+          //background-color: $main-color2;
+          color: $color-Gaar;
+          @include dynamic-flex(center, flex-start, row, 0px);
+          font-size: 1.6rem;
+        }
+        div.qoraal{
+          flex: 6;
+          h2 {
+            @include Totile-H(1.1rem, $bg-main);
+            font-weight: normal;
+          }
+
+          p {
+            @include qoraal-p(16px, $qoraalo-color);
+            font-weight: normal;
+          }
+         
+        }
+      }
+        div.qayb_suaal{
+        width: 100%;
+        height: 100%;
+        padding: 5px 0px;
+          @include dynamic-flex(center, center, column, 20px);
+        }
+    }
+
+    div.btn_start{
+      width: 80%;
+      height: 100%;
+      padding: 25px 0px;
+      @include dynamic-flex(center, center, column, 15px);
+      div.qoraalo_btn_start{
+        @include dynamic-flex(center, center, column, 15px);
+        h2 {
+          @include Totile-H(1.7rem,$bg-main);
+          font-weight: normal;
+        }
+
+        p {
+          @include qoraal-p(16px, $qoraalo-color);
+          font-weight: normal;
+          text-align: center;
+          padding: 5px 45px;
+        }
+      }
+      button {
+        @include btn-web(35%);
+        background-color: $color-Gaar;
+        &:hover{
+          background-color: #029f70;
+        }
+      }
+    }
+  }
 }
 
 

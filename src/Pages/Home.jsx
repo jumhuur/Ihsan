@@ -7,6 +7,7 @@ import Welcome from "../Components/Welcom"
 import SlideCompany from "../Components/slidecomp"
 import Video from "../Components/video"
 import Counts from "../Components/Counts"
+import Fqa from "../Components/fqa"
 
 function Home({video_active, func}){
     return (
@@ -19,7 +20,9 @@ function Home({video_active, func}){
             <Ayad />
             <Projects />
             <About />
-            <Counts />       
+            <Counts />
+            <Fqa /> 
+            <footer />      
         </>
     )
 }
