@@ -696,9 +696,9 @@ div.Projects{
             @include dynamic-flex(space-evenly,center ,row , 20px);
             height: 100%;
             @include qoraal-p(20px, $bg-main);
-            p.lcg{
-              width: calc(60% / 2);
-            }
+            // p.lcg{
+            //   width: calc(60% / 1);
+            // }
             i{
               color: $bg-main;
             }
@@ -1403,11 +1403,153 @@ div.over{
   .xajiye{
     max-width: 540px;
   }
+
+            div.nav {
+              div.links1 {
+                div.link-items {
+                  display: none;
+                }
+              }
+            }
+      
+            div.nav div.links div.link-items {
+              display: none;
+            }
+      
+            div.welcome div.labaqaybood div.qayb {
+              width: calc(95% / 1);
+            }
+      
+            section.tirokoobyo div.cards_tirokoob div.card {
+              width: calc(80% / 1);
+            }
+      
+      
+            div.Projects div.qaybha div.qayb {
+              width: calc(95% / 1);
+            }
+      
+            div.Projects div.prog_one div.card_mashruuc {
+              width: calc(100% / 1);
+            }
+      
+            div.about div.war_laba_qaybood div.qayb {
+              width: calc(97% / 1);
+            }
+
+            div.faq div.suaalo div.labaqayb {
+              width: calc(100% / 1);
+            }
+      
+      
+            div.Counts div.war_laba_qaybood div.qayb {
+              width: calc(97% / 1);
+            }
+      
+            div.over div.login div.llc {
+              width: calc(95% / 1);
+            }
+      
+            div.over div.login div.llc {
+              display: none;
+            }
+
+                        div.over div.login {
+                          width: 100%;
+                        }
+
+    div.welcome div.labaqaybood div.qayb.qorall h2 {
+      font-size: 2rem;
+    }
+
+    div.welcome div.labaqaybood div.qayb.qorall div.btn-welc{
+    flex-flow: wrap column;
+    }
+
+div.welcome div.labaqaybood div.qayb.qorall div.btn-welc button{
+  width: 90%;
+  margin: 15px 0px;
+}
+
+
+div.faq div.suaalo div.btn_start button{
+  width: 80%;
+
+}
+
+div.about div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2{
+  font-size: 2rem;
+}
+
+     div.slide {
+       &.computer {
+        display: none;
+       }
+     }
+
+
+
+
+
 }
 @include Break-Points(sm){
+    .haye {
+        max-width: 540px;
+      }
   .xajiye{
     max-width: 540px;
   }
+    div.nav {
+      div.links1 {
+        div.link-items {
+          display: none;
+        }
+      }
+    }
+
+                 div.slide {
+                   &.computer {
+                     display: none;
+                   }
+                 }
+  
+    div.nav div.links div.link-items {
+      display: none;
+    }
+  
+    div.welcome div.labaqaybood div.qayb {
+      width: calc(85% / 1);
+    }
+  
+    section.tirokoobyo div.cards_tirokoob div.card {
+      width: calc(80% / 1);
+    }
+  
+  
+    div.Projects div.qaybha div.qayb {
+      width: calc(75% / 2);
+    }
+  
+    div.Projects div.prog_one div.card_mashruuc {
+      width: calc(75% / 1);
+    }
+  
+    div.about div.war_laba_qaybood div.qayb {
+      width: calc(97% / 1);
+    }
+  
+  
+    div.Counts div.war_laba_qaybood div.qayb {
+      width: calc(97% / 1);
+    }
+  
+    div.over div.login div.llc {
+      width: calc(95% / 1);
+    }
+  
+    div.over div.login div.llc {
+      display: none;
+    }
 
 }
 @include Break-Points(md){
@@ -1418,7 +1560,67 @@ div.over{
   .xajiye{
     max-width: 700px;
   }
+
+  div.nav {
+    div.links1 {
+      div.link-items {
+        display: none;
+      }
+    }
+  }
+
+    div.nav div.links div.link-items {
+      display: none;
+    }
+
+div.welcome div.labaqaybood div.qayb {
+  width: calc(85% / 1);
 }
+
+section.tirokoobyo div.cards_tirokoob div.card {
+  width: calc(90% / 2);
+}
+
+
+div.Projects div.qaybha div.qayb {
+  width: calc(90%  / 3);
+}
+
+div.Projects div.prog_one div.card_mashruuc{
+    width: calc(95% / 2);
+}
+
+div.about div.war_laba_qaybood div.qayb{
+      width: calc(97% / 1);
+}
+
+
+div.Counts div.war_laba_qaybood div.qayb {
+  width: calc(97% / 1);
+}
+
+div.over div.login div.llc{
+      width: calc(95% / 1);
+}
+
+div.over div.login div.llc{
+  display: none;
+}
+
+     div.slide {
+       &.Mobile {
+         display: none;
+       }
+     }
+
+
+
+
+
+}
+
+
+  //
 @include Break-Points(lg){
   .haye {
     max-width: 960px;
@@ -1427,6 +1629,12 @@ div.over{
   .xajiye {
     max-width: 1100px;
   }
+
+         div.slide {
+           &.Mobile {
+             display: none;
+           }
+         }
 
 }
 @include Break-Points(xlg){
@@ -1437,6 +1645,12 @@ div.over{
   .xajiye {
     max-width: 1300px;
   }
+
+   div.slide {
+    &.Mobile{
+      display: none;
+    }
+   } 
 }
 @include Break-Points(xxlg){
   .xajiye,

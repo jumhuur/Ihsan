@@ -22,7 +22,7 @@ function Login(){
                             <p>Simplify your workflow in minutes.</p>
                             </div>
                             <div className="dhinac_l inputs_login">
-                                <input type="text" placeholder="Lanbaraakaga" autoComplete="off" />
+                                <input type="tel" placeholder="Lanbaraakaga" autoComplete="off" />
                                 <input type="password" placeholder="Passwor-kaaga" autoComplete="off" />
                                 <button>
                                     Login <i className="fa-solid fa-arrow-right-to-bracket"></i>
