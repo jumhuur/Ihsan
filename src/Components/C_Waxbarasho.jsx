@@ -77,7 +77,7 @@ function CWaxbarsho({func}){
                         {/* <input type="text" placeholder="Magaca" /> */}
                         <div className="input_feilds">
                         <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input type="text" placeholder="Lacagta" />
+                        <input type="number" placeholder="Lacagta" />
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
@@ -87,7 +87,7 @@ function CWaxbarsho({func}){
                           :
                             <span className='Ll'>No</span>
                         }   
-                        <input type="text"  placeholder="Lanbarka"/>
+                        <input type="tel"  placeholder="Lanbarka"/>
                         </div>
                         <button className="bixi">
                         <i className="fa-solid fa-paper-plane"></i> Bixi Hada

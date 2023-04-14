@@ -6,14 +6,14 @@ function Welcome(){
             <div className="haye">
             <div className="labaqaybood">
             <div className="qayb qorall">
-                <h2>Welcome to <span>Ehsan</span> Develop anything.</h2>
-                <p>Build a beautiful, modern website with flexible Bootstrap components built from scratch.
+                <h2>Ku soo Dhawaaw <span>Ehsan</span> Shabakada Iskaashiga.</h2>
+                <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.
 
             </p>
             <div className="btn-welc">
                 <button className="samayso">
                     <Link to="Signin">
-                        <span>Get Started <i className="fa-solid fa-arrow-right"></i></span>
+                        <span>Samayso Akoon <i className="fa-solid fa-arrow-right"></i></span>
                     </Link>
                 </button>
                 <button className="Xaqiijin">

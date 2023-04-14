@@ -1,6 +1,6 @@
 
 //variables
-$theme:"dark";
+$theme:"Dark";
 $main-color: #1b2a4e;
 $main-color2: #335eea;
 $color-Gaar: #42ba96;
@@ -289,16 +289,22 @@ div.nav{
     @include flex-box(column);
     height: 100%;
     border: none;
+    overflow: hidden;
     a {
       @extend %reset-link;
       @include dynamic-flex(center,center ,row,0px);
     }
     p{
-      @include qoraal-p(1.50rem,$main-color2);
-      font-weight: bolder;
+      @include qoraal-p(1rem,$main-color2);
+      font-weight: normal;
       i {
         color: $main-color2;
       }
+    }
+
+    img{
+      width: 50px;
+      height: 50px;
     }
     }
 
@@ -553,11 +559,13 @@ div.ayad{
   height: 125px;
   background-color: $main-color;
   @include dynamic-flex(center,center ,column ,0px);
+  user-select: none;
   div.nas_ayad{
     width: 100%;
     height: 100%;
     padding: 10px 10px;
     @include dynamic-flex(center,center ,column ,0px);
+    user-select: none;
   }
 }
 
@@ -857,7 +865,8 @@ div.Projects{
                 border-radius: 10px;
                 @include dynamic-flex(center,flex-start ,column, 0px);
                 margin: 5px 0px;
-                input[type="text"] {
+                input[type="tel"] ,
+                input[type="number"] {
                   @include reset_form(18px, $madaw, 5px);
                   width: 95%;
                   height: 45px;
@@ -1240,15 +1249,18 @@ div.footer{
             @include flex-box(column);
             height: 100%;
             border: none;
-        
+            img {
+                width: 50px;
+                height: 50px;
+            }
             a {
               @extend %reset-link;
               @include dynamic-flex(center, center, row, 0px);
             }
         
             p {
-              @include qoraal-p(1.50rem, $main-color2);
-              font-weight: bolder;
+              @include qoraal-p(1rem, $main-color2);
+              font-weight: normal;
         
               i {
                 color: $main-color2;
@@ -1374,25 +1386,6 @@ div.over{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // all media  responsive part
 
 @include Break-Points(xsm){
@@ -1487,6 +1480,25 @@ div.about div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2{
        }
      }
 
+
+         div.Counts div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2 {
+          font-size: 2rem;
+         }
+div.faq div.suaalo div.btn_start div.qoraalo_btn_start p {
+  padding: 5px 5px;
+  font-size: 20px;
+}
+
+
+div.video_overvallow.active div.video {
+  width: 100%;
+
+}
+
+div.video_overvallow.active div.video div.video_content {
+  width: 100%;
+  height: 90%;
+}
 
 
 

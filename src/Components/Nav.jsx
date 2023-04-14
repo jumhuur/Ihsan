@@ -7,7 +7,8 @@ function Nav({Login}){
                 <div className="links">
                     <div className="logo">
                         <Link to="/">
-                        <p>Ehsan <span><i className="fa-solid fa-circle-dollar-to-slot"></i></span></p>
+                        <img src="/Images/Logo.png" alt="Logo" />
+                        <p>Ehsan</p>
                         </Link>
                     </div>
                     <div className="link-items">
@@ -19,16 +20,16 @@ function Nav({Login}){
                             </li>
                             <li>
                                 <Link to="" >
-                                    Projects
+                                    Mashruucyo
                                 </Link>                           
                             </li>
                             <li>
                                 <Link to="">
-                                    Dontors
+                                Tabarayaal
                                 </Link>
                             </li>
                             <li>
-                            <span>Langugae <i className="fa-solid fa-chevron-down"></i></span>
+                            <span>Luuqada <i className="fa-solid fa-chevron-down"></i></span>
                             </li>
                         </ul>
 
@@ -36,7 +37,7 @@ function Nav({Login}){
                     <div className="action-btn">
                         <button className="nav-btn" onClick={Login}>
                             <Link to="Login" >
-                                <span>Login <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
+                                <span>Gal <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
                             </Link>
                         </button>
 
