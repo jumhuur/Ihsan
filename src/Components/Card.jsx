@@ -16,7 +16,26 @@ function Card({func}){
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
-    console.log(valu_tabaruc)
+
+    const PymentAction = (e) => {
+
+        // telesom action
+        if(Pyment_type === "zaad"){
+            const telesom = () => {
+                console.log('telesom pyment')
+            }
+
+            telesom()
+        }
+
+        // somtel action
+         if(Pyment_type === "edahab"){
+            const Somtel = () => {
+                console.log('Somtel pyment')
+            }
+            Somtel()
+         }
+    }
     return (
         <>
 
@@ -90,7 +109,7 @@ function Card({func}){
                         <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
 
                         </div>
-                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <button onClick={PymentAction} className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                         <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
