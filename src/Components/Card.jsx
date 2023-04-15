@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import data from "../Data.json";
 import { Form, redirect, useActionData } from 'react-router-dom';
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
+import EVC from "evc-api";
 function Card({func}){
     const Projects = data;
     const Form_data = useActionData()
     const [Pyment_type,setPyment_type] = useState('zaad');
+    const Somtel = '65';
+    const telesom = "63";
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
     }
@@ -16,26 +19,41 @@ function Card({func}){
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
-
-    const PymentAction = (e) => {
-
-        // telesom action
-        if(Pyment_type === "zaad"){
-            const telesom = () => {
-                console.log('telesom pyment')
+        const PymentAction = () => {
+            // telesom action
+            if(Form_data && Form_data.Sax) {
+                if(Pyment_type === "zaad"){
+                    const telesom = () => {
+                        EVC({
+                        merchantUId: 'M*******',
+                        apiUserId: '1******',
+                        apiKey: 'API-*************',
+                        customerMobileNumber:  '252634645195',
+                        description: 'description.......',
+                        amount: String(valu_tabaruc),
+                        autoWithdraw: true, // `true` if auto withdraw else `false`
+                        merchantNo: '252402785', // withdraw to ...
+                        })
+                        .then((data) => {
+                            console.log(data)
+                        })
+                        .catch((err) => console.log(err.responseCode))
+                    }
+                    telesom()
+                }
+                // somtel action
+                if(Pyment_type === "edahab"){
+                    const Somtel = () => {
+                        console.log('Somtel pyment')
+                    }
+                    Somtel()
+                }
             }
-
-            telesom()
         }
 
-        // somtel action
-         if(Pyment_type === "edahab"){
-            const Somtel = () => {
-                console.log('Somtel pyment')
-            }
-            Somtel()
-         }
-    }
+        useEffect(() => {
+            PymentAction()
+        },[PymentAction])
     return (
         <>
 
@@ -98,9 +116,9 @@ function Card({func}){
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
-                            <span className='Ll'>63</span>
+                            <span className='Ll'>{telesom}</span>
                           : Pyment_type === "edahab" ?
-                                <span className='Ll'>65</span>
+                                <span className='Ll'>{Somtel}</span>
                           :
                             <span className='Ll'>No</span>
                         }   
@@ -109,7 +127,7 @@ function Card({func}){
                         <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
 
                         </div>
-                        <button onClick={PymentAction} className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                         <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
