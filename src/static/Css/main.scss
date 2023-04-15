@@ -664,6 +664,7 @@ div.Projects{
       // border-top: solid 2.50px $main-color2;
       overflow: hidden;
       transition: all 0.4s ease-in-out;
+      position: relative;
       &:hover{
         //transform: translate(0px,18px);
         transition: all 0.4s ease-in-out;
@@ -1385,6 +1386,179 @@ div.over{
 
 
 
+// alert_payments
+
+div.over_alert{
+  //@extend %over_vallow_set;
+  @include flex-box(column);
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: $bg-main;
+  backdrop-filter: blur(12px);
+  @include Shadaw_buttom();
+  &.active{
+    visibility: visible;
+  }
+  div.in_haye_alert{
+    width: 100%;
+    height: 100%;
+    z-index: 45;
+    @include dynamic-flex(center, center, column, 0px);
+  div.alert {
+      width: 100%;
+      height: 100%;
+      background-color: $bg-main;
+      border-radius: 5px;
+      padding: 15px 0px;
+      //background-color: $main-color2;
+    }
+
+    div.load_qoraal{
+      width: 100%;
+      height: 100%;
+      //background-color: $main-color2;
+      @include dynamic-flex(center, center, row, 0px);
+      div.load{
+        width: 100%;
+        @include dynamic-flex(center, center, row, 0px);
+        &.Qalad {
+        i {
+            color: $colose_color;
+            font-size: 22px;
+            margin: 12px 0px;
+          }
+        }
+        &.Sax {
+          i {
+            color: $color-Gaar;
+            font-size: 22px;
+            margin: 12px 0px;
+          }
+        }
+        .sk-chase {
+            width: 25px;
+            height: 25px;
+            position: relative;
+            animation: sk-chase 2.5s infinite linear both;
+          }
+
+          .sk-chase-dot {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: sk-chase-dot 2.0s infinite ease-in-out both;
+          }
+
+          .sk-chase-dot:before {
+            content: '';
+            display: block;
+            width: 25%;
+            height: 25%;
+            background-color: $main-color2;
+            border-radius: 100%;
+            animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+          }
+
+          .sk-chase-dot:nth-child(1) {
+            animation-delay: -1.1s;
+          }
+
+          .sk-chase-dot:nth-child(2) {
+            animation-delay: -1.0s;
+          }
+
+          .sk-chase-dot:nth-child(3) {
+            animation-delay: -0.9s;
+          }
+
+          .sk-chase-dot:nth-child(4) {
+            animation-delay: -0.8s;
+          }
+
+          .sk-chase-dot:nth-child(5) {
+            animation-delay: -0.7s;
+          }
+
+          .sk-chase-dot:nth-child(6) {
+            animation-delay: -0.6s;
+          }
+
+          .sk-chase-dot:nth-child(1):before {
+            animation-delay: -1.1s;
+          }
+
+          .sk-chase-dot:nth-child(2):before {
+            animation-delay: -1.0s;
+          }
+
+          .sk-chase-dot:nth-child(3):before {
+            animation-delay: -0.9s;
+          }
+
+          .sk-chase-dot:nth-child(4):before {
+            animation-delay: -0.8s;
+          }
+
+          .sk-chase-dot:nth-child(5):before {
+            animation-delay: -0.7s;
+          }
+
+          .sk-chase-dot:nth-child(6):before {
+            animation-delay: -0.6s;
+          }
+
+          @keyframes sk-chase {
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          @keyframes sk-chase-dot {
+
+            80%,
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+
+          @keyframes sk-chase-dot-before {
+            50% {
+              transform: scale(0.4);
+            }
+
+            100%,
+            0% {
+              transform: scale(1.0);
+            }
+          }
+    }
+
+      div.qoraal{
+          width: 100%;
+          @include flex-box(column);
+          h2 {
+            @include Totile-H(1.1rem, $madaw);
+            &.qalad{
+            @include Totile-H(1.1rem, $colose_color);
+            }
+          &.Sax {
+            @include Totile-H(1.1rem, $color-Gaar);
+          }
+          }
+      }
+    }
+  }
+
+
+}
+
+
+
 
 // all media  responsive part
 
@@ -1396,6 +1570,10 @@ div.over{
   .xajiye{
     max-width: 540px;
   }
+
+    // div.over_alert div.in_haye_alert div.alert{
+    //   width: 100%;
+    // }
 
     div.nav div.links div.action-btn button.nav-btn{
       width: 85%;
@@ -1523,6 +1701,10 @@ div.video_overvallow.active div.video div.video_content {
       }
     }
 
+                div.over_alert div.in_haye_alert div.alert {
+                  width: 100%;
+                }
+
                  div.slide {
                    &.computer {
                      display: none;
@@ -1576,6 +1758,10 @@ div.video_overvallow.active div.video div.video_content {
   .xajiye{
     max-width: 700px;
   }
+
+            // div.over_alert div.in_haye_alert div.alert {
+            //   width: 85%;
+            // }
 
   div.nav {
     div.links1 {
@@ -1646,6 +1832,10 @@ div.over div.login div.llc{
     max-width: 1100px;
   }
 
+            // div.over_alert div.in_haye_alert div.alert {
+            //   width: 60%;
+            // }
+
          div.slide {
            &.Mobile {
              display: none;
@@ -1661,6 +1851,10 @@ div.over div.login div.llc{
   .xajiye {
     max-width: 1300px;
   }
+
+    // div.over_alert div.in_haye_alert div.alert {
+    //   width: 50%;
+    // }
 
    div.slide {
     &.Mobile{
