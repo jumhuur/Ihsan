@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Card from "./Components/Card";
+import Card, { donote } from "./Components/Card";
 import Home from "./Pages/Home";
 import "./static/Css/main.scss"
 import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
 import CDaryeel from "./Components/Card_Daryeel";
-import CWaxbarsho from "./Components/C_Waxbarasho";
+import CWaxbarsho, { donote_wax } from "./Components/C_Waxbarasho";
 import CCunto from "./Components/C_Cunto";
 import Choy from "./Components/C_Hoy";
 import Login from "./Components/Login";
@@ -29,8 +29,8 @@ function App() {
   const Router = createBrowserRouter (
     createRoutesFromElements (
       <Route path="/" element={<Home video_active={v_active} func={active_v} LoginFunc={Loginfunc} />} >
-        <Route path="/" element={<Card func={active_v} />} />
-        <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} />
+        <Route path="/" element={<Card func={active_v} />} action={donote} />
+        <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} action={donote_wax} />
         <Route path="Cunto" element={<CCunto func={active_v} />} />
         <Route path="Hoy" element={<Choy func={active_v} />} />
         <Route path="Daryeel" element={<CDaryeel func={active_v} />} />

@@ -867,6 +867,7 @@ div.Projects{
                 @include dynamic-flex(center,flex-start ,column, 0px);
                 margin: 5px 0px;
                 input[type="tel"] ,
+                input[type="text"],
                 input[type="number"] {
                   @include reset_form(18px, $madaw, 5px);
                   width: 95%;
@@ -880,6 +881,12 @@ div.Projects{
                   position: relative;
                   padding-left: 75px;
                   overflow: hidden;
+                  &:focus{
+                    border: solid 1px $main-color2;
+                  }
+                  &.err{
+                    border: solid 1px #e85a02;
+                  }
                   &::placeholder{
                     color: #335eea83;
                   }
@@ -900,6 +907,10 @@ div.Projects{
                 @include btn-web(75%);
                 background-color: $color-Gaar;
                 margin: 10px 0px;
+                // &.loadbtn{
+                //   cursor: not-allowed;
+                //   background-color: $btn_gaar;
+                // }
                 &:hover{
                   background-color: #029f70;
                 }
@@ -1399,6 +1410,7 @@ div.over_alert{
   background-color: $bg-main;
   backdrop-filter: blur(12px);
   @include Shadaw_buttom();
+  visibility: hidden;
   &.active{
     visibility: visible;
   }
@@ -1543,6 +1555,7 @@ div.over_alert{
           @include flex-box(column);
           h2 {
             @include Totile-H(1.1rem, $madaw);
+            font-weight: normal;
             &.qalad{
             @include Totile-H(1.1rem, $colose_color);
             }

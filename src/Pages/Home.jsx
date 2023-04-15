@@ -9,11 +9,9 @@ import Video from "../Components/video"
 import Counts from "../Components/Counts"
 import Fqa from "../Components/fqa"
 import Footer from "../Components/Footer"
-import Alert from "../Components/Alert"
 function Home({video_active, func , LoginFunc}){
     return (
         <>
-           
             <Video  video_active={video_active} func={func}/>
             <Nav Login={LoginFunc}/>   
             <Welcome />
@@ -24,8 +22,7 @@ function Home({video_active, func , LoginFunc}){
             <About />
             <Counts />
             <Fqa /> 
-            <Footer />
-             <Alert />      
+            <Footer />     
         </>
     )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Data from "../Data2.json";
+import { Form, redirect } from 'react-router-dom';
 function CWaxbarsho({func}){
     // const Heer  = 14;
     //const data = false;
@@ -51,7 +52,7 @@ function CWaxbarsho({func}){
             <div className="info_fursad">
     
                 <div className="from_bixin">
-                    <form action="">
+                    <Form method='post' action="/Waxbarasho">
                         <div className="pyment_types">
                             {/* <div className="Pay Zaad">
                                 <input onClick={(e) => (
@@ -77,7 +78,7 @@ function CWaxbarsho({func}){
                         {/* <input type="text" placeholder="Magaca" /> */}
                         <div className="input_feilds">
                         <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input type="number" placeholder="Lacagta" />
+                        <input type="number" placeholder="Lacagta"  name='Lacagta'/>
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
@@ -87,19 +88,32 @@ function CWaxbarsho({func}){
                           :
                             <span className='Ll'>No</span>
                         }   
-                        <input type="tel"  placeholder="Lanbarka"/>
+                        <input type="tel"  placeholder="Lanbarka" name='Lanbarka'/>
                         </div>
                         <button className="bixi">
                         <i className="fa-solid fa-paper-plane"></i> Bixi Hada
                         </button>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
             </div>
             ))}
             </>
     )
+
+    
+}
+
+
+export const donote_wax = async ({request}) => {
+    const data = await request.formData();
+    const fildes = {
+        Lanbarka: data.get("Lanbarka"),
+        Lacagta: data.get('Lacagta'),
+    }
+    console.log(fildes)
+    return redirect("/")
 }
 
 
