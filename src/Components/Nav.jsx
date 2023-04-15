@@ -8,7 +8,7 @@ function Nav({Login}){
                     <div className="logo">
                         <Link to="/">
                         <img src="/Images/Logo.png" alt="Logo" />
-                        <p>Ehsan</p>
+                        <p>Ixsaan</p>
                         </Link>
                     </div>
                     <div className="link-items">

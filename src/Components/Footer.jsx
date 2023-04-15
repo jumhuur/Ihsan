@@ -8,7 +8,7 @@ function Footer() {
                     <div className="logo">
                         <Link to="/">
                         <img src="/Images/Logo_Cadaan.png" alt="Logo" />
-                        <p>Ehsan</p>
+                        <p>Ixsaan</p>
                         </Link>
                     </div>
                     <div className="q_footer">

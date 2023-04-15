@@ -6,7 +6,7 @@ function Welcome(){
             <div className="haye">
             <div className="labaqaybood">
             <div className="qayb qorall">
-                <h2>Ku soo Dhawaaw <span>Ehsan</span> Shabakada Iskaashiga.</h2>
+                <h2>Ku soo Dhawaaw <span>Ixsaan</span> Shabakada Iskaashiga.</h2>
                 <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.
 
             </p>
