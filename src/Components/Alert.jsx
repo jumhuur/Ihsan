@@ -1,7 +1,7 @@
-function Alert({Noc_err , Noc_err1}){
+function Alert({Noc_err , Noc_err1, Noc_err2}){
     return (
         <>
-        <div className={Noc_err || Noc_err1 ? "over_alert active" : "over_alert"}>
+        <div className={Noc_err || Noc_err1 || Noc_err2 ? "over_alert active" : "over_alert"}>
             <div className="haye">
                 <div className="in_haye_alert">
                 {/* <div className="alert">
@@ -33,6 +33,10 @@ function Alert({Noc_err , Noc_err1}){
                         :Noc_err1 ? 
                         <div className="qoraal">
                              <h2 className="qalad">{Noc_err1}! </h2>
+                        </div>
+                        :Noc_err2 ? 
+                        <div className="qoraal">
+                             <h2 className="qalad">{Noc_err2}! </h2>
                         </div>
                         :<></>
 

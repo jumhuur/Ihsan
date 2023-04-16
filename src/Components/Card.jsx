@@ -19,45 +19,15 @@ function Card({func}){
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
-        const PymentAction = () => {
-            // telesom action
-            if(Form_data && Form_data.Sax) {
-                if(Pyment_type === "zaad"){
-                    const telesom = () => {
-                        EVC({
-                        merchantUId: 'M*******',
-                        apiUserId: '1******',
-                        apiKey: 'API-*************',
-                        customerMobileNumber:  '252634645195',
-                        description: 'description.......',
-                        amount: String(valu_tabaruc),
-                        autoWithdraw: true, // `true` if auto withdraw else `false`
-                        merchantNo: '252402785', // withdraw to ...
-                        })
-                        .then((data) => {
-                            console.log(data)
-                        })
-                        .catch((err) => console.log(err.responseCode))
-                    }
-                    telesom()
-                }
-                // somtel action
-                if(Pyment_type === "edahab"){
-                    const Somtel = () => {
-                        console.log('Somtel pyment')
-                    }
-                    Somtel()
-                }
-            }
-        }
 
-        useEffect(() => {
-            PymentAction()
-        },[PymentAction])
+
+        // useEffect(() => {
+        //     PymentAction()
+        // },[PymentAction])
     return (
         <>
 
-        <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} /> 
+        <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
         {Projects && Projects.map((card) => (
             <div className="card_mashruuc" key={card}>
@@ -125,9 +95,10 @@ function Card({func}){
                         <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbarka" name='Lanbarka'/>
                         <input type='text' name='Id' hidden value={card.id} />
                         <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
+                        <input type='text' hidden value={Pyment_type} name='PymentType' />
 
                         </div>
-                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <button  className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                         <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
@@ -147,7 +118,41 @@ export const donote = async ({request}) => {
         Lanbarka: actions.get("Lanbarka"),
         Lacagta: actions.get('Lacagta'),
         Id: actions.get("Id"),
-        Tabaruc: actions.get('Tabaruc')
+        Tabaruc: actions.get('Tabaruc'),
+        PymentType: actions.get('PymentType')
+    }
+
+    const point = fildes.Lacagta.split(".")[1]
+
+    const PymentAction = () => {
+            if(fildes.PymentType === "zaad"){
+                  // telesom action
+                const telesom = () => {
+                    EVC({
+                    merchantUId: 'M0912269',
+                    apiUserId: '1000297',
+                    apiKey: 'API-1901083745AHX',
+                    customerMobileNumber:  '25263'+fildes.Lanbarka,
+                    description: 'description.......',
+                    amount: String(fildes.Lacagta),
+                    autoWithdraw: true, // `true` if auto withdraw else `false`
+                    merchantNo: '252402785', // withdraw to ...
+                    })
+                    .then((data) => {
+                        console.log(data.responseMsg)
+                    })
+                    .catch((err) => console.log(err.responseCode))
+                        
+                }
+                telesom()
+            }
+            // somtel action
+            if(fildes.PymentType === "edahab"){
+                const Somtel = () => {
+                    console.log('Somtel pyment')
+                }
+                Somtel()
+            }
     }
    
     if(fildes.Lanbarka.length !== 7){
@@ -158,8 +163,14 @@ export const donote = async ({request}) => {
         return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
     }
 
+    if(point.length > 2){
+        return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
+    }
+
     if(fildes.Lanbarka.length === 7 && fildes.Lacagta >= 0.25 ){
         console.log(fildes)
+        console.log(point)
+        PymentAction()
         return{
             Sax: "Faldan eeg Telefankaag ...",
             Lacag: fildes.Lacagta
