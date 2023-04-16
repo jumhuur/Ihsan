@@ -518,7 +518,7 @@ div.slide{
           width: 80px;
         }
         &.yar{
-          width: 150px;
+          width: 100%;
         }
         }
       }
@@ -1406,9 +1406,9 @@ div.over_alert{
   z-index: 99;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 160px;
   background-color: $bg-main;
-  backdrop-filter: blur(12px);
+  // backdrop-filter: blur(12px);
   @include Shadaw_buttom();
   visibility: hidden;
   &.active{
@@ -1426,6 +1426,23 @@ div.over_alert{
       border-radius: 5px;
       padding: 15px 0px;
       //background-color: $main-color2;
+      div.close{
+        @extend %colse_btn;
+        background-color: $main-color2;
+        i {
+        color: $bg-main;
+        }
+      }
+
+      button {
+        @include btn-web(15%);
+        height: 35px;
+        a {
+          @extend %reset-link;
+          @include flex-box(column);
+          color: $bg-main;
+        }
+      }
     }
 
     div.load_qoraal{
@@ -1439,8 +1456,12 @@ div.over_alert{
         &.Qalad {
         i {
             color: $colose_color;
-            font-size: 22px;
+            font-size: 28px;
             margin: 12px 0px;
+          }
+          img {
+            width: 50px;
+            height: 50px;
           }
         }
         &.Sax {
@@ -1554,13 +1575,13 @@ div.over_alert{
           width: 100%;
           @include flex-box(column);
           h2 {
-            @include Totile-H(1.1rem, $madaw);
+            @include Totile-H(1.2rem, $madaw);
             font-weight: normal;
             &.qalad{
-            @include Totile-H(1.1rem, $colose_color);
+            @include Totile-H(1.2rem, $colose_color);
             }
           &.Sax {
-            @include Totile-H(1.1rem, $color-Gaar);
+            @include Totile-H(1.2rem, $color-Gaar);
           }
           }
       }

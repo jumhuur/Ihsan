@@ -173,7 +173,7 @@ export const donote = async ({request}) => {
         console.log(fildes)
         PymentAction()
         return{
-            Sax: "Faldan eeg Telefankaag ...",
+            Sax: "Faldan eeg Telefankaaga ...",
         }
     }
     return redirect("/")

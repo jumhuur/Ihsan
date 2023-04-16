@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Alert({Noc_err , Noc_err1, Noc_err2}){
     const active = true;
 
@@ -35,9 +37,16 @@ function Alert({Noc_err , Noc_err1, Noc_err2}){
                     </div>
                 </div> */}
                 <div className="alert">
+                    {/* <div className="close">
+                        <Link to="/">
+                            <i className="fa-solid fa-xmark"></i>
+                        </Link>
+                    </div> */}
                     <div className="load_qoraal">
                         <div className="load Qalad">
-                           <i className="fa-solid fa-ban fa-beat"></i>
+                           {/* <i className="fa-solid fa-ban fa-beat"></i> */}
+                           <i className="fa-solid fa-triangle-exclamation fa-shake"></i>
+                           {/* <img src="/Images/warning.png" alt="qalad" /> */}
                         </div>
                         {Noc_err ? 
                         <div className="qoraal">
@@ -54,6 +63,8 @@ function Alert({Noc_err , Noc_err1, Noc_err2}){
                         :<></>
 
                     }
+
+                    <button><Link to="/">Ok</Link></button>
 
                     </div>
                 </div>
