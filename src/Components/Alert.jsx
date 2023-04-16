@@ -1,7 +1,20 @@
 function Alert({Noc_err , Noc_err1, Noc_err2}){
+    const active = true;
+
+    // setInterval(() => {
+    //     setactive(false)
+    //     console.log(active)
+    // }, 5000);
+    // if(Noc_err || Noc_err1 || Noc_err2){
+    //     setTimeout(() => {
+    //             setactive(false)
+    //             console.log(active)
+    //     }, 5000);
+    // }
+
     return (
         <>
-        <div className={Noc_err || Noc_err1 || Noc_err2 ? "over_alert active" : "over_alert"}>
+        <div className={active && (Noc_err || Noc_err1 || Noc_err2 )  ? "over_alert active" : "over_alert"}>
             <div className="haye">
                 <div className="in_haye_alert">
                 {/* <div className="alert">

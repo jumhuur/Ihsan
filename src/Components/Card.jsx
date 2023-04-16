@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import data from "../Data.json";
 import { Form, redirect, useActionData } from 'react-router-dom';
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
-import EVC from "evc-api";
+import EVC from "evc-api";;
 function Card({func}){
     const Projects = data;
     const Form_data = useActionData()
@@ -19,7 +19,6 @@ function Card({func}){
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
-
 
         // useEffect(() => {
         //     PymentAction()
@@ -82,7 +81,7 @@ function Card({func}){
                         <div className="donter_info">
                         <div className="input_feilds">
                         <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input className={Form_data && Form_data.err_lacag ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
+                        <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
@@ -98,7 +97,7 @@ function Card({func}){
                         <input type='text' hidden value={Pyment_type} name='PymentType' />
 
                         </div>
-                        <button  className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                         <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
@@ -163,17 +162,18 @@ export const donote = async ({request}) => {
         return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
     }
 
+    if(point){
     if(point.length > 2){
         return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
     }
+    }
+
 
     if(fildes.Lanbarka.length === 7 && fildes.Lacagta >= 0.25 ){
         console.log(fildes)
-        console.log(point)
         PymentAction()
         return{
             Sax: "Faldan eeg Telefankaag ...",
-            Lacag: fildes.Lacagta
         }
     }
     return redirect("/")
