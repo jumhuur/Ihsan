@@ -1,28 +1,33 @@
 import { useState } from 'react';
 import Data from "../Data2.json";
-import { Form, redirect } from 'react-router-dom';
+import { Form, redirect, useActionData } from 'react-router-dom';
+import Alert from './Alert';
+import AlertLoad from './LoadAlert';
+import EVC from "evc-api";;
 function CWaxbarsho({func}){
-    // const Heer  = 14;
-    //const data = false;
     const Projects = Data;
+    const Form_data = useActionData()
     const [Pyment_type,setPyment_type] = useState('zaad');
+    const Somtel = '65';
+    const telesom = "63";
     const toggale_zaad = (e) => {
-        // true = telesom
-        // false = somtel 
         setPyment_type("zaad")
-        console.log(Pyment_type)
-
     }
     const toggale_edahab = (e) => {
-        // true = telesom
-        // false = somtel 
         setPyment_type("edahab")
-        console.log(Pyment_type)
-
     }
-    console.log(Pyment_type)
+    // state
+    const [value,setvalue] = useState(0) 
+    const valu_tabaruc =   Number(value);
+
+        // useEffect(() => {
+        //     PymentAction()
+        // },[PymentAction])
     return (
         <>
+
+        <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
+        <AlertLoad Sax={Form_data && Form_data.Sax} />
         {Projects && Projects.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
@@ -50,9 +55,8 @@ function CWaxbarsho({func}){
                 }%</span></span>
             </div>
             <div className="info_fursad">
-    
                 <div className="from_bixin">
-                    <Form method='post' action="/Waxbarasho">
+                    <Form  method='post' action="/Waxbarasho">
                         <div className="pyment_types">
                             {/* <div className="Pay Zaad">
                                 <input onClick={(e) => (
@@ -69,29 +73,32 @@ function CWaxbarsho({func}){
                                 <div className="input" >
                                 <label onClick={toggale_zaad} className={Pyment_type === "zaad" ? 'zaad active' : "zaad"}><span><i className="fa-solid fa-circle-check"></i> Zaad</span></label>
                                 <label onClick={toggale_edahab} className={Pyment_type === "edahab" ? 'edahab active' : "edahab"}><span><i className="fa-solid fa-circle-check"></i> edahab</span></label>
-                                <input type="checkbox"  name='payment'/>
+                                <input type="checkbox"  name='payment' value={Pyment_type}/>
                                 </div>
                                 {/* <span>Edahab</span> */}
                             </div>
                         </div>
                         <div className="donter_info">
-                        {/* <input type="text" placeholder="Magaca" /> */}
                         <div className="input_feilds">
                         <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input type="number" placeholder="Lacagta"  name='Lacagta'/>
+                        <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
-                            <span className='Ll'>63</span>
+                            <span className='Ll'>{telesom}</span>
                           : Pyment_type === "edahab" ?
-                                <span className='Ll'>65</span>
+                                <span className='Ll'>{Somtel}</span>
                           :
                             <span className='Ll'>No</span>
                         }   
-                        <input type="tel"  placeholder="Lanbarka" name='Lanbarka'/>
+                        <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbarka" name='Lanbarka'/>
+                        <input type='text' name='Id' hidden value={card.id} />
+                        <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
+                        <input type='text' hidden value={Pyment_type} name='PymentType' />
+
                         </div>
-                        <button className="bixi">
-                        <i className="fa-solid fa-paper-plane"></i> Bixi Hada
+                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
                     </Form>
@@ -101,18 +108,74 @@ function CWaxbarsho({func}){
             ))}
             </>
     )
-
-    
 }
 
 
-export const donote_wax = async ({request}) => {
-    const data = await request.formData();
+export const donoteWax = async ({request}) => {
+    const actions = await request.formData();
     const fildes = {
-        Lanbarka: data.get("Lanbarka"),
-        Lacagta: data.get('Lacagta'),
+        Lanbarka: actions.get("Lanbarka"),
+        Lacagta: actions.get('Lacagta'),
+        Id: actions.get("Id"),
+        Tabaruc: actions.get('Tabaruc'),
+        PymentType: actions.get('PymentType')
     }
-    console.log(fildes)
+
+    const point = fildes.Lacagta.split(".")[1]
+
+    const PymentAction = () => {
+            if(fildes.PymentType === "zaad"){
+                  // telesom action
+                const telesom = () => {
+                    EVC({
+                    merchantUId: 'M0912269',
+                    apiUserId: '1000297',
+                    apiKey: 'API-1901083745AHX',
+                    customerMobileNumber:  '25263'+fildes.Lanbarka,
+                    description: 'description.......',
+                    amount: String(fildes.Lacagta),
+                    autoWithdraw: true, // `true` if auto withdraw else `false`
+                    merchantNo: '252402785', // withdraw to ...
+                    })
+                    .then((data) => {
+                        console.log(data.responseMsg)
+                    })
+                    .catch((err) => console.log(err.responseCode))
+                        
+                }
+                telesom()
+            }
+            // somtel action
+            if(fildes.PymentType === "edahab"){
+                const Somtel = () => {
+                    console.log('Somtel pyment')
+                }
+                Somtel()
+            }
+    }
+   
+    if(fildes.Lanbarka.length !== 7){
+        return {err_no: "Waa Qalad Lanbarku"}
+    } 
+
+    if(fildes.Lacagta < 0.25){
+        return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
+    }
+
+    if(point){
+    if(point.length > 2){
+        return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
+    }
+    }
+
+
+    if(fildes.Lanbarka.length === 7 && fildes.Lacagta >= 0.25 ){
+        console.log(fildes)
+        PymentAction()
+        return{
+            Sax: "Faldan eeg Telefankaaga ...",
+        }
+    }
     return redirect("/")
 }
 

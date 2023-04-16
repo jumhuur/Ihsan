@@ -14,9 +14,9 @@ function Fqa(){
                               <i className="fa-solid fa-circle-question"></i>
                             </div>
                             <div className="qoraal">
-                                <h2>Can I use Landkit for my clients?</h2>
+                                <h2>Maxaa loo aasaasay shabakada ixsaan ?</h2>
                                 <p>
-                                    Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                                ixsaan waa shabakada samo fal waxaana loo aasasay caawinta dadka baahan si loogu ururiyo mucaawno hab casriya.
                                 </p>
                             </div>
                             </div>
@@ -25,9 +25,9 @@ function Fqa(){
                                   <i className="fa-solid fa-circle-question"></i>
                             </div>
                             <div className="qoraal">
-                                <h2>Can I use Landkit for my clients?</h2>
+                                <h2>Yaa iska leh Ixsaan?</h2>
                                 <p>
-                                    Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                                    ixsaan waa shabakada ka dhaxaysa bulshada cid gaarna ma laha eg sameeyayna waxa ugu tabarucay in wax loogu qabto dadka bahan.
                                 </p>
                             </div>
                             </div>
@@ -35,14 +35,14 @@ function Fqa(){
                     </div>
                     <div className="labaqayb">
                         <div className="qayb_suaal">
-                                                        <div className="hal_dhinac">
+                            <div className="hal_dhinac">
                             <div className="icon_bes">
                                   <i className="fa-solid fa-circle-question"></i>
                             </div>
                             <div className="qoraal">
-                                <h2>Can I use Landkit for my clients?</h2>
+                                <h2>Sidee lagu doortaa dadka bahan?</h2>
                                 <p>
-                                    Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                                   dadka kala duwan ee mashaariicada looga furayo shabakada ixsaan waxaa lagu doortaa xaaladooda baahiyeed inta ay leegtahay.
                                 </p>
                             </div>
                             </div>
@@ -51,9 +51,9 @@ function Fqa(){
                                   <i className="fa-solid fa-circle-question"></i>
                             </div>
                             <div className="qoraal">
-                                <h2>Can I use Landkit for my clients?</h2>
+                                <h2>Qaybha aan ku bixin karrto tabaruca maxay yihiiin?</h2>
                                 <p>
-                                    Absolutely. The Bootstrap Themes license allows you to build a website for personal use or for a client.
+                                    tabarucaaga waxaad ku bixin kartaa qaybha kala duwan ee shabakada ixsaan sida caafimaadka , waxabarashada , cuntada, Hoyga, iyo daryeelka.
                                 </p>
                             </div>
                             </div>
@@ -61,11 +61,11 @@ function Fqa(){
                     </div>
                     <div className="btn_start">
                     <div className="qoraalo_btn_start">
-                    <h2>Get Landkit and save your time.</h2>
-                    <p>Stop wasting time trying to do it the "right way" and build a site from scratch. Landkit is faster, easier, and you still have complete control.
+                    <h2>Si aad u fudaydiso hawsha tabarucaaga.</h2>
+                    <p>Ka samayso Akoon shabakada ixsaan adoo isku diwan galinaya wakhti kooban .
                     </p>
                     </div>
-                    <button className="start_btn_faq">Get Start <i className="fa-solid fa-arrow-right"></i></button>
+                    <button className="start_btn_faq">Akoon Cusub <i className="fa-solid fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>

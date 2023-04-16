@@ -1,19 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Alert({Noc_err , Noc_err1, Noc_err2}){
     const active = true;
-
-    // setInterval(() => {
-    //     setactive(false)
-    //     console.log(active)
-    // }, 5000);
-    // if(Noc_err || Noc_err1 || Noc_err2){
-    //     setTimeout(() => {
-    //             setactive(false)
-    //             console.log(active)
-    //     }, 5000);
-    // }
-
+    const location = useLocation()
     return (
         <>
         <div className={active && (Noc_err || Noc_err1 || Noc_err2 )  ? "over_alert active" : "over_alert"}>
@@ -64,7 +53,7 @@ function Alert({Noc_err , Noc_err1, Noc_err2}){
 
                     }
 
-                    <button><Link to="/">Ok</Link></button>
+                    <button><Link to={location.pathname}>Ok</Link></button>
 
                     </div>
                 </div>

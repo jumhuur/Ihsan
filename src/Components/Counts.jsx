@@ -21,7 +21,7 @@ function Counts(){
                             <div className="qoraal_war">
                                 <h2>Tirakoobyada wax bixineed ee Ugu danbeeyay</h2>
                                 <p>
-                                We've been developing with Bootstrap since it was publicly released in 2011.
+                                shabkada ixsaan waxaa si rasmiya daaha looga furayaa wakhti dhaw .
                                 </p>
                             </div>
                         </div>
