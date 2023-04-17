@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom"
+import { Auth } from "../context/Auth"
+import { UseLogout } from "../Hooks/Logout"
 
 function Welcome(){
+    const {CrentUser} = Auth()
+    const {Logout} = UseLogout()
+
+    const Xidho = async(e) => {
+        await Logout()
+    }
+
     return (
         <div className="welcome">
             <div className="haye">
@@ -11,11 +20,19 @@ function Welcome(){
 
             </p>
             <div className="btn-welc">
+                {CrentUser ?
+                <button className="samayso" onClick={Xidho}>
+                     <i className="fa-solid fa-right-from-bracket"></i> Xidho Akoonka
+                </button>
+                :
                 <button className="samayso">
                     <Link to="Signin">
                         <span>Samayso Akoon <i className="fa-solid fa-arrow-right"></i></span>
                     </Link>
                 </button>
+
+                }
+
                 <button className="Xaqiijin">
                 <i className="fa-solid fa-circle-check"></i> Xaqiiji Tabaruc
                 </button>

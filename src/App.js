@@ -2,17 +2,19 @@ import { useState } from "react";
 import Card, { donote } from "./Components/Card";
 import Home from "./Pages/Home";
 import "./static/Css/main.scss"
-import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
+import {Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
 import CDaryeel from "./Components/Card_Daryeel";
 import CWaxbarsho, { donoteWax } from "./Components/C_Waxbarasho";
 import CCunto from "./Components/C_Cunto";
 import Choy from "./Components/C_Hoy";
 import Login from "./Components/Login";
 import Sinup from "./Components/Sinup";
+import { Auth } from "./context/Auth";
 
 function App() {
   const [v_active,setv_active] = useState(false)
    const [login,setLogin] = useState(false)
+   const {CrentUser} = Auth()
 
   // video activite
   const active_v = function(){
@@ -34,8 +36,8 @@ function App() {
         <Route path="Cunto" element={<CCunto func={active_v} />} />
         <Route path="Hoy" element={<Choy func={active_v} />} />
         <Route path="Daryeel" element={<CDaryeel func={active_v} />} />
-        <Route path="Login" element={<Login activate={login} loginfunc={Loginfunc} />} />
-        <Route path="Signin" element={<Sinup />} />
+        <Route path="Login" element={!CrentUser ? <Login activate={login} loginfunc={Loginfunc} /> : <Navigate to={"/"} />} />
+        <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
       </Route>
     )
   )

@@ -5,12 +5,15 @@ import reportWebVitals from './reportWebVitals';
 import "./static/Css/all.min.css";
 import "./static/Css/main.scss";
 import "./static/Css/Normalize.css";
+import { ContextProvider } from './context/Auth';
 // import "./static/Css/Js/main.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </React.StrictMode>
 );
 

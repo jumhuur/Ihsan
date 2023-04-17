@@ -3,9 +3,12 @@ import data from "../Data.json";
 import { Form, redirect, useActionData } from 'react-router-dom';
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
-import EVC from "evc-api";;
+import EVC from "evc-api";import { Auth } from '../context/Auth';
+import { useEffect } from 'react';
 function Card({func}){
-    const Projects = data;
+    const {state} = Auth()
+    //console.log(state.Caafimaad)
+    const [Caafimaad,setCaafimaad] = useState(null)
     const Form_data = useActionData()
     const [Pyment_type,setPyment_type] = useState('zaad');
     const Somtel = '65';
@@ -20,15 +23,15 @@ function Card({func}){
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
 
-        // useEffect(() => {
-        //     PymentAction()
-        // },[PymentAction])
+    useEffect(() => {
+        setCaafimaad(state.Caafimaad)
+    },[state.Caafimaad])
     return (
         <>
 
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
-        {Projects && Projects.map((card) => (
+        {Caafimaad && Caafimaad.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
                 <img src={card.Muuqaal} alt="xaalad" />
@@ -92,7 +95,7 @@ function Card({func}){
                             <span className='Ll'>No</span>
                         }   
                         <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbarka" name='Lanbarka'/>
-                        <input type='text' name='Id' hidden value={card.id} />
+                        <input type='text' name='Id' hidden value={card._id} />
                         <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
                         <input type='text' hidden value={Pyment_type} name='PymentType' />
 

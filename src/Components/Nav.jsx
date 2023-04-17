@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
-
+import { Auth } from "../context/Auth"
 function Nav({Login}){
+    const {CrentUser} = Auth()
     return (
         <div className="nav">
             <div className="haye">
@@ -35,11 +36,18 @@ function Nav({Login}){
 
                     </div>
                     <div className="action-btn">
+                        {CrentUser ?
+                        <button className="nav-btn" onClick={Login}>
+                                <span>{CrentUser.Magac}</span>
+                        </button>
+                        :
                         <button className="nav-btn" onClick={Login}>
                             <Link to="Login" >
                                 <span>Gal <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
                             </Link>
                         </button>
+                        }
+
 
                     </div>
                 </div>
