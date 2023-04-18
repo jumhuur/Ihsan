@@ -3,7 +3,7 @@ export const INITIAL_SATATE = {
     Error: false,
     Data: null,
     Caafimaad: [],
-    Waxbarsho: [],
+    Waxbarasho: [],
     Cunto: [],
     Hoy: [],
     Daryeel: [],
@@ -46,7 +46,7 @@ export const AuthRadiuse = (state,action) => {
             return {
                 loading: true,
                 Caafimaad: action.Caafimaad,
-                Waxbarsho: action.Waxbarsho,
+                Waxbarasho: action.Waxbarasho,
                 Cunto: action.Cunto,
                 Hoy: action.Hoy,
                 Daryeel: action.Daryeel,

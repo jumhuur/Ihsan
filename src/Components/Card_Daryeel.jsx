@@ -1,36 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Form, redirect, useActionData } from 'react-router-dom';
+import Alert from './Alert';
+import AlertLoad from './LoadAlert';
+import EVC from "evc-api";
+import { Auth } from '../context/Auth';
 function CDaryeel({func}){
-    const Heer  = 25;
-    const data = false;
+    const {state} = Auth()
+    const Form_data = useActionData()
+    const [Daryeel,setDaryeel] = useState(null)
+    console.log(Daryeel && Daryeel.length)
     const [Pyment_type,setPyment_type] = useState('zaad');
+    const Somtel = '65';
+    const telesom = "63";
     const toggale_zaad = (e) => {
-        // true = telesom
-        // false = somtel 
         setPyment_type("zaad")
-        console.log(Pyment_type)
-
     }
     const toggale_edahab = (e) => {
-        // true = telesom
-        // false = somtel 
         setPyment_type("edahab")
-        console.log(Pyment_type)
-
     }
-    console.log(Pyment_type)
+    // state
+    const [value,setvalue] = useState(0) 
+    const valu_tabaruc =   Number(value);
+
+        useEffect(() => {
+            setDaryeel(state.Daryeel)
+        },[state.Daryeel])
     return (
         <>
-        {!data && [1,2,3].map((card) => (
+        <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
+        <AlertLoad Sax={Form_data && Form_data.Sax} />
+            {Daryeel && Daryeel.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
-                <img src="/Images/daryeel.JPG" alt="xaalad" />
+                <img src={card.Muuqaal} alt="xaalad" />
                 <div className="over_verlow_video">
                     <button className='Daawo' onClick={func}>
                     <i className="fa-solid fa-play"></i> Muuqaal
                     </button>
                     <div className="lacagta">
                     <div className="hadaf_and_asal">
-                        <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> 22578 $</p>
+                        <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Tabaruc} $</p>
                     </div>
                 </div>
     
@@ -42,12 +51,13 @@ function CDaryeel({func}){
                 </p>
             </div> */}
             <div className="progress">
-                <span style={{width:`${Heer}%`}}><span>{Heer}%</span></span>
+                <span style={{width:`${card.Tabaruc / card.Hadaf * 100}%`}}><span>{
+                Math.floor((card.Tabaruc / card.Hadaf * 100)).toFixed(0)
+                }%</span></span>
             </div>
             <div className="info_fursad">
-    
                 <div className="from_bixin">
-                    <form action="">
+                    <Form  method='post' action="/Daryeel">
                         <div className="pyment_types">
                             {/* <div className="Pay Zaad">
                                 <input onClick={(e) => (
@@ -64,32 +74,35 @@ function CDaryeel({func}){
                                 <div className="input" >
                                 <label onClick={toggale_zaad} className={Pyment_type === "zaad" ? 'zaad active' : "zaad"}><span><i className="fa-solid fa-circle-check"></i> Zaad</span></label>
                                 <label onClick={toggale_edahab} className={Pyment_type === "edahab" ? 'edahab active' : "edahab"}><span><i className="fa-solid fa-circle-check"></i> edahab</span></label>
-                                <input type="checkbox"  name='payment'/>
+                                <input type="checkbox"  name='payment' value={Pyment_type}/>
                                 </div>
                                 {/* <span>Edahab</span> */}
                             </div>
                         </div>
                         <div className="donter_info">
-                        {/* <input type="text" placeholder="Magaca" /> */}
                         <div className="input_feilds">
                         <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input type="number" placeholder="Lacagta" />
+                        <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
                         </div>
                         <div className="input_feilds">
                          {Pyment_type === "zaad" ?
-                            <span className='Ll'>63</span>
+                            <span className='Ll'>{telesom}</span>
                           : Pyment_type === "edahab" ?
-                                <span className='Ll'>65</span>
+                                <span className='Ll'>{Somtel}</span>
                           :
                             <span className='Ll'>No</span>
                         }   
-                        <input type="tel"  placeholder="Lanbarka"/>
+                        <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar'/>
+                        <input type='text' name='Id' hidden value={card._id} />
+                        <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
+                        <input type='text' hidden value={Pyment_type} name='PymentType' />
+
                         </div>
-                        <button className="bixi">
-                        <i className="fa-solid fa-paper-plane"></i> Bixi Hada
+                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                        <i className="fa-solid fa-paper-plane"></i> Bixi 
                         </button>
                         </div>
-                    </form>
+                    </Form>
                 </div>
             </div>
             </div>
@@ -98,5 +111,90 @@ function CDaryeel({func}){
     )
 }
 
+
+export const donoteDaryeel = async ({request}) => {
+    const actions = await request.formData();
+        const  pattern = /[^0-9]/g;
+    const fildes = {
+        Lanbar: actions.get("Lanbar"),
+        Lacagta: actions.get('Lacagta'),
+        Id: actions.get("Id"),
+        Tabaruc: actions.get('Tabaruc'),
+        PymentType: actions.get('PymentType')
+    }
+
+
+    //update Tabaruc 
+    const Tabaruc = fildes.Tabaruc
+    const UpdateProject = async() => {
+    const updatenow = await fetch(`http://localhost:8880/Api/Update/${fildes.Id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({Tabaruc}),
+        headers: {
+        'Content-Type':'application/json',
+        }
+    })
+    const res =  await updatenow.json()
+    }
+
+    const point = fildes.Lacagta.split(".")[1]
+
+    const PymentAction = () => {
+            if(fildes.PymentType === "zaad"){
+                  // telesom action
+                const telesom = () => {
+                    EVC({
+                    merchantUId: 'M0912269',
+                    apiUserId: '1000297',
+                    apiKey: 'API-1901083745AHX',
+                    customerMobileNumber:  '25263'+fildes.Lanbar,
+                    description: 'description.......',
+                    amount: String(fildes.Lacagta),
+                    autoWithdraw: true, // `true` if auto withdraw else `false`
+                    merchantNo: '252402785', // withdraw to ...
+                    })
+                    .then((data) => {
+                        console.log(data.responseMsg)
+                        UpdateProject()
+                    })
+                    .catch((err) => console.log(err.responseCode))
+                        
+                }
+                telesom()
+            }
+            // somtel action
+            if(fildes.PymentType === "edahab"){
+                const Somtel = () => {
+                    console.log('Somtel pyment')
+                    UpdateProject()
+                }
+                Somtel()
+            }
+    }
+   
+    if(fildes.Lanbar.length !== 7  || fildes.Lanbar.match(pattern)){
+        return {err_no: "Waa Qalad Lanbarku"}
+    } 
+
+    if(fildes.Lacagta < 0.25){
+        return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
+    }
+
+    if(point){
+    if(point.length > 2){
+        return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
+    }
+    }
+
+
+    if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25 ){
+        console.log(fildes)
+        PymentAction()
+        return{
+            Sax: "Faldan eeg Telefankaaga ...",
+        }
+    }
+    return redirect("/")
+}
 
 export default CDaryeel

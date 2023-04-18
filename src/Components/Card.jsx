@@ -1,18 +1,22 @@
 import {useState } from 'react';
-import data from "../Data.json";
-import { Form, redirect, useActionData } from 'react-router-dom';
+import { Form, redirect, useActionData,  } from 'react-router-dom';
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
 import EVC from "evc-api";import { Auth } from '../context/Auth';
 import { useEffect } from 'react';
+import {UpdateProj} from "../Hooks/UpdaateProj"
+import { useRef } from 'react';
+import { type } from '@testing-library/user-event/dist/type';
 function Card({func}){
-    const {state} = Auth()
-    //console.log(state.Caafimaad)
+    const {state , GetAllProjects} = Auth();
+    const {UpdateProject} = UpdateProj()
     const [Caafimaad,setCaafimaad] = useState(null)
+    const [loading,setloading]= useState(false)
     const Form_data = useActionData()
     const [Pyment_type,setPyment_type] = useState('zaad');
     const Somtel = '65';
     const telesom = "63";
+    console.log(Form_data)
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
     }
@@ -23,12 +27,17 @@ function Card({func}){
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
 
+
+    // update functions 
+    // const submit = () => {
+    //     GetAllProjects()
+    // }
     useEffect(() => {
         setCaafimaad(state.Caafimaad)
+        setloading(true)
     },[state.Caafimaad])
     return (
         <>
-
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
         {Caafimaad && Caafimaad.map((card) => (
@@ -94,9 +103,9 @@ function Card({func}){
                           :
                             <span className='Ll'>No</span>
                         }   
-                        <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbarka" name='Lanbarka'/>
+                        <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar'/>
                         <input type='text' name='Id' hidden value={card._id} />
-                        <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
+                        <input type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
                         <input type='text' hidden value={Pyment_type} name='PymentType' />
 
                         </div>
@@ -109,7 +118,7 @@ function Card({func}){
             </div>
             </div>
             ))}
-            </>
+        </>
     )
 }
 
@@ -117,13 +126,26 @@ function Card({func}){
 export const donote = async ({request}) => {
     const actions = await request.formData();
     const fildes = {
-        Lanbarka: actions.get("Lanbarka"),
+        Lanbar: actions.get("Lanbar"),
         Lacagta: actions.get('Lacagta'),
         Id: actions.get("Id"),
         Tabaruc: actions.get('Tabaruc'),
         PymentType: actions.get('PymentType')
     }
+    const  pattern = /[^0-9]/g;
 
+    //update Tabaruc 
+    const Tabaruc = fildes.Tabaruc
+    const UpdateProject = async() => {
+    const updatenow = await fetch(`http://localhost:8880/Api/Update/${fildes.Id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({Tabaruc}),
+        headers: {
+        'Content-Type':'application/json',
+        }
+    })
+    const res =  await updatenow.json()
+    }
     const point = fildes.Lacagta.split(".")[1]
 
     const PymentAction = () => {
@@ -134,7 +156,7 @@ export const donote = async ({request}) => {
                     merchantUId: 'M0912269',
                     apiUserId: '1000297',
                     apiKey: 'API-1901083745AHX',
-                    customerMobileNumber:  '25263'+fildes.Lanbarka,
+                    customerMobileNumber:  '25263'+fildes.Lanbar,
                     description: 'description.......',
                     amount: String(fildes.Lacagta),
                     autoWithdraw: true, // `true` if auto withdraw else `false`
@@ -142,6 +164,7 @@ export const donote = async ({request}) => {
                     })
                     .then((data) => {
                         console.log(data.responseMsg)
+                        UpdateProject()
                     })
                     .catch((err) => console.log(err.responseCode))
                         
@@ -152,12 +175,13 @@ export const donote = async ({request}) => {
             if(fildes.PymentType === "edahab"){
                 const Somtel = () => {
                     console.log('Somtel pyment')
+                    UpdateProject()
                 }
                 Somtel()
             }
     }
    
-    if(fildes.Lanbarka.length !== 7){
+    if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
         return {err_no: "Waa Qalad Lanbarku"}
     } 
 
@@ -172,11 +196,12 @@ export const donote = async ({request}) => {
     }
 
 
-    if(fildes.Lanbarka.length === 7 && fildes.Lacagta >= 0.25 ){
+    if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
         console.log(fildes)
         PymentAction()
         return{
             Sax: "Faldan eeg Telefankaaga ...",
+            
         }
     }
     return redirect("/")

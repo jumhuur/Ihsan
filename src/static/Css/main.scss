@@ -656,7 +656,7 @@ div.Projects{
       margin: 5px 0px;
       padding: 7px 7px;
       width: calc(95% / 3);
-      height: 500px;
+      height: 100%;
       background-color: $bg-main;
       @include dyshadow(0px, 0px, 12px, 0px);
       border-radius: 3px;

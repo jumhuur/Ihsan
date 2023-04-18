@@ -56,7 +56,8 @@ export const ContextProvider = ({children}) => {
         CrentUser,
         dispatch,
         setDatA,
-        state
+        state,
+        GetAllProjects
     }
 
     return (

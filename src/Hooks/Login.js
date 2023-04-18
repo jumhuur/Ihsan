@@ -4,7 +4,7 @@ import { Auth } from "../context/Auth";
 export const UseLogin = () => {
     const [Error, setError] = useState(null);
     const [Looding, setLooding] = useState(false);
-    const {dispatch, ACTIONS, setDatA}  = Auth()
+    const {dispatch, ACTIONS, setDatA,GetAllProjects}  = Auth()
 
     const Login = async(Lanbar,Password) => {
         setLooding(true)
@@ -29,6 +29,7 @@ export const UseLogin = () => {
             dispatch({type:ACTIONS.LOGIN, payload:json})
             setLooding(false)
             setDatA()
+            GetAllProjects()
         }
     }
     return {Login, Looding,Error}
