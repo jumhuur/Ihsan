@@ -3,10 +3,10 @@ const ProjectsModule = require("../Models/Projects")
 
 
 const addProjects = async(req,res) => {
-    const {Name, Hadaf , Tabaruc,  Qayb , Muuqaal} = req.body
+    const {Name, Hadaf , Tabaruc,  Qayb , Sawir, Muuqaal} = req.body
     try {
 
-        const Projects = await ProjectsModule.Addpro(Name, Hadaf,Tabaruc,Qayb,Muuqaal)
+        const Projects = await ProjectsModule.Addpro(Name, Hadaf,Tabaruc,Qayb,Sawir,Muuqaal)
 
         // soo celinta 
         res.status(200).json(Projects)
@@ -98,17 +98,26 @@ const UpdateOneProject = async(req,res) => {
     try{
         if(mongoose.isValidObjectId(Id)){
             const Update  = await ProjectsModule.findOneAndUpdate({_id:Id}, {Tabaruc})
-            res.status(200).json({Msg: "Project is Updated"})
-            console.log("Updated")
-
+            res.status(200).json({Msg: "Waxaaad Ku Tabarucday"})
         } else {
             res.status(400).json({Msg: "Update is Not Complited"})
-            console.log("Update is Not Complited")
         }
     } catch(Err) {
         res.status(400).json({Err})
-        console.log(Err)
     }
+}
+
+const GetOneProject = async(req,res) => {
+    const Id = req.params.Id
+    try {
+        const Pro = await ProjectsModule.findById(Id)
+        res.status(200).json(Pro)
+    } catch(Err) {
+        res.status(400).json({Err: Err.message})
+    }
+
+    //res.status(200).json({Msg:`Good Id is ${Id}`})
+
 }
 
 
@@ -119,5 +128,6 @@ module.exports = {
     GetCunto,
     GetHoy,
     GetDaryeel,
-    UpdateOneProject
+    UpdateOneProject,
+    GetOneProject
 }

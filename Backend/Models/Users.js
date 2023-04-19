@@ -26,11 +26,12 @@ const UserSchema = new Schema({
 // register
 
 UserSchema.statics.Register = async function(Magac, Lanbar, Password){
+    const  pattern = /[^0-9]/g;
     if(!Magac || !Lanbar || !Password){
         throw Error("Buuxi Meelaha banaan Oo dhan!")
     }
 
-    if(Lanbar.length > 7 || Lanbar.length < 7){
+    if(Lanbar.length > 7 || Lanbar.length < 7 || Lanbar.match(pattern)){
         throw Error("Waa Qalad Lanbarku")
     }
     if(Magac.length > 15){
@@ -39,7 +40,7 @@ UserSchema.statics.Register = async function(Magac, Lanbar, Password){
 
     const Jira = await this.findOne({Lanbar})
     if(Jira){
-        throw Error ("Horaa Loo Diwaan Galiyay Lanbarkan!")
+        throw Error ("Wuu Diwaan Gashan yahay Lanbarkan!")
     }
 
 
@@ -54,8 +55,13 @@ UserSchema.statics.Register = async function(Magac, Lanbar, Password){
 // Login 
 
 UserSchema.statics.Login = async function(Lanbar,Password){
+    const  pattern = /[^0-9]/g;
     if(!Lanbar || !Password){
         throw Error("Buuxi Meelaha Banaan!")
+    }
+
+    if(Lanbar.match(pattern)){
+        throw Error("Fadlan Isticmaal Lanbar")
     }
 
     const User = await this.findOne({Lanbar})

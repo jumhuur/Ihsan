@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
 import { Auth } from "../context/Auth"
-import { UseLogout } from "../Hooks/Logout"
 
 function Welcome(){
-    const {CrentUser} = Auth()
-    const {Logout} = UseLogout()
+    const {CrentUser,dispatch,ACTIONS,setDatA,GetAllProjects} = Auth()
+    //const {Logout} = UseLogout()
 
-    const Xidho = async(e) => {
-        await Logout()
+    const Logout = () => {
+    localStorage.removeItem("user");
+    dispatch({type:ACTIONS.lOGOUT})
+    setDatA()
+    GetAllProjects()
     }
 
     return (
@@ -15,13 +17,20 @@ function Welcome(){
             <div className="haye">
             <div className="labaqaybood">
             <div className="qayb qorall">
-                <h2>Ku soo Dhawaaw <span>Ixsaan</span> Shabakada Iskaashiga.</h2>
-                <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.
-
-            </p>
+            {CrentUser ?
+            <>
+            <h2>Ku soo Dhawaaw <span>{CrentUser.Magac}</span> Shabakada Ixsaan.</h2>
+            <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.</p>
+            </>
+            :
+            <>
+            <h2>Ku soo Dhawaaw <span>Ixsaan</span> Shabakada Iskaashiga.</h2>
+            <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.</p>
+            </>
+            }
             <div className="btn-welc">
                 {CrentUser ?
-                <button className="samayso" onClick={Xidho}>
+                <button className="samayso" onClick={Logout}>
                      <i className="fa-solid fa-right-from-bracket"></i> Xidho Akoonka
                 </button>
                 :

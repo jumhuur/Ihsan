@@ -154,6 +154,13 @@ $colose_color: #d02401;
 }
 
 
+%reset-link_in {
+  text-decoration: none;
+  width: fit-content;
+  height: fit-content;
+}
+
+
 %over_velow_elm{
   width: 100%;
   height: 100%;
@@ -326,7 +333,7 @@ div.nav{
           cursor: pointer;
           font-weight: 500;
           transition: all 0.4s ease-in-out;
-          i {
+          i.fa-chevron-down {
             font-size: 12px;
             font-weight: bold;
           }
@@ -693,9 +700,20 @@ div.Projects{
           transform: translate(0px, 0px);
           transition: all 0.6s ease-in-out;
           @include flex-box(column);
-          button.Daawo{
-            @include btn-web(50%);
-          }
+          button.Daawo {
+              @include btn-web(50%);
+              a {
+                  @extend %reset-link;
+                  @include flex-box(column);
+
+                  span{
+                    color: $bg-main;
+                  }
+                  
+                }
+            }
+
+
           div.lacagta{
             width: 100%;
             margin: 10px 0px;
@@ -928,6 +946,30 @@ div.Projects{
 
 
 
+  div.empaty {
+    width: 100%;
+    height: 100%;
+    //background-color: $main-color2;
+    @include flex-box(column);
+
+    div.sawir{
+      width: 100%;
+      height: 400px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    p {
+      @include qoraal-p(1.50rem,$main-color2);
+      font-weight: normal;
+    }
+
+  }
+
+
+
 // about
 
 
@@ -1112,6 +1154,7 @@ div.video_overvallow{
       @include dynamic-flex(center,center ,column ,0px);
       width: 100%;
       height: 100%;
+      visibility: visible;
   }
   &.active{
     visibility: visible;

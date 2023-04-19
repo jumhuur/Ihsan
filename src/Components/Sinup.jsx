@@ -36,8 +36,8 @@ function Sinup() {
                                 </div>
                                 <form className="from">
                                     <div className="dhinac_l Maclumo_login">
-                                        <h2>Sign up</h2>
-                                        <p>Simplify your workflow in minutes.</p>
+                                        <h2>Samayso Akoon</h2>
+                                        <p>Ku samayso akoon daqiiqad Gudaheed.</p>
                                     </div>
                                     <div className="dhinac_l inputs_login">
                                         <input onChange={onchange_inputes} type={"text"} placeholder="Magacaaga" autoComplete="off" name="Magac" />
@@ -45,7 +45,7 @@ function Sinup() {
                                         <input onChange={onchange_inputes} type={"password"} placeholder="Passwor-kaaga" autoComplete="off" name="Password" />
                                         {!Looding ?
                                         <button onClick={RegisterAction}>
-                                            Login <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                                            <i className="fa-solid fa-user-plus"></i> Samayso 
                                         </button>
                                         :
                                         <button>
@@ -67,9 +67,9 @@ function Sinup() {
 
                                         }
 
-                                        <p className="Bilaa_akoon">Akoon Ma leedahay? <Link to="/Login">Sign in</Link></p>
+                                        <p className="Bilaa_akoon">Akoon Ma leedahay? <Link to="/Login">Gal Akoon</Link></p>
                                         {Error ?
-                                        <p className="Error"><i className="fa-solid fa-triangle-exclamation fa-shake"></i> {Error}</p>
+                                        <p className="Error"><i className="fa-solid fa-circle-exclamation"></i> {Error}</p>
                                         :<></>
                                         }
 

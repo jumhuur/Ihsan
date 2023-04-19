@@ -37,8 +37,8 @@ function Login(){
                     </div>
                     <div className="from">
                             <div className="dhinac_l Maclumo_login">
-                            <h2>Sign In</h2>
-                            <p>Simplify your workflow in minutes.</p>
+                            <h2>Gal Akoon</h2>
+                            <p>Soo dhawaaw mar kale .</p>
                             </div>
                             <div className="dhinac_l inputs_login">
                                 <input onChange={onchange_inputes} type={"tel"} placeholder="Lanbaraakaga" autoComplete="off" name="Lanbar" />
@@ -62,13 +62,13 @@ function Login(){
                                 </button>
                                 :
                                 <button onClick={LoginAction}>
-                                    Login <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                                    Gal Akoon <i className="fa-solid fa-arrow-right-to-bracket"></i>
                                 </button>
                                 }
 
                                 <p className="Bilaa_akoon">Akoon Ma lihid? <Link to="/Signin">Sinup</Link></p>
                                 {Error ? 
-                                <p className="Error">{Error}</p>
+                                <p className="Error"><i className="fa-solid fa-circle-exclamation"></i> {Error}</p>
                                 :<></>
                                 }
                             </div>

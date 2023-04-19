@@ -7,6 +7,7 @@ export const INITIAL_SATATE = {
     Cunto: [],
     Hoy: [],
     Daryeel: [],
+    OneProject: []
 }
 
 
@@ -16,7 +17,8 @@ export const ACTIONS = {
     "REGISTER": "REGISTER",
     "lOGOUT": "LOGOUT",
     "SETDATA": "SETDATA",
-    GET_DATA: "GET"
+    GET_DATA: "GET",
+    GET_ONE: "GET_ONE"
 }
 
 
@@ -52,7 +54,13 @@ export const AuthRadiuse = (state,action) => {
                 Daryeel: action.Daryeel,
                 Error: true
             }
-    
+
+        case ACTIONS.GET_ONE :
+            return {
+                loading: true,
+                OneProject: action.OneProject,
+                Error: true
+            }
         default:
             return state;
     }

@@ -10,6 +10,8 @@ import Choy, { donoteHoy } from "./Components/C_Hoy";
 import Login from "./Components/Login";
 import Sinup from "./Components/Sinup";
 import { Auth } from "./context/Auth";
+import Video from "./Components/video";
+import Mashruuc from "./Pages/Project";
 
 function App() {
   const [v_active,setv_active] = useState(false)
@@ -30,6 +32,7 @@ function App() {
   }
   const Router = createBrowserRouter (
     createRoutesFromElements (
+      <>
       <Route path="/" element={<Home video_active={v_active} func={active_v} LoginFunc={Loginfunc} />} >
         <Route path="/" element={<Card func={active_v} />} action={donote} />
         <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} action={donoteWax} />
@@ -38,7 +41,13 @@ function App() {
         <Route path="Daryeel" element={<CDaryeel func={active_v} />} action={donoteDaryeel}/>
         <Route path="Login" element={!CrentUser ? <Login activate={login} loginfunc={Loginfunc} /> : <Navigate to={"/"} />} />
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
+        <Route path="/:Id" element={<Video />} />
       </Route>
+      <Route path="/Mashruuc" element={<Mashruuc />}>
+
+      </Route>
+      <Route path="*" element={<p>Not foud the page</p>} />
+      </>
     )
   )
   return (

@@ -115,7 +115,6 @@ function Choy({func}){
 
 export const donoteHoy = async ({request}) => {
     const actions = await request.formData();
-        const  pattern = /[^0-9]/g;
     const fildes = {
         Lanbar: actions.get("Lanbar"),
         Lacagta: actions.get('Lacagta'),
@@ -123,6 +122,8 @@ export const donoteHoy = async ({request}) => {
         Tabaruc: actions.get('Tabaruc'),
         PymentType: actions.get('PymentType')
     }
+    const  pattern = /[^0-9]/g;
+    const  LacagReg = /[^0-9.]/g;
 
     //update Tabaruc 
     const Tabaruc = fildes.Tabaruc
@@ -136,7 +137,6 @@ export const donoteHoy = async ({request}) => {
     })
     const res =  await updatenow.json()
     }
-
     const point = fildes.Lacagta.split(".")[1]
 
     const PymentAction = () => {
@@ -154,8 +154,11 @@ export const donoteHoy = async ({request}) => {
                     merchantNo: '252402785', // withdraw to ...
                     })
                     .then((data) => {
-                        console.log(data.responseMsg)
-                        UpdateProject()
+                        if(data.responseCode !== "200"){
+                            console.log(data.responseMsg)
+                        } else {
+                            UpdateProject()
+                        }
                     })
                     .catch((err) => console.log(err.responseCode))
                         
@@ -172,12 +175,16 @@ export const donoteHoy = async ({request}) => {
             }
     }
    
-    if(fildes.Lanbar.length !== 7  || fildes.Lanbar.match(pattern)){
+    if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
         return {err_no: "Waa Qalad Lanbarku"}
     } 
 
     if(fildes.Lacagta < 0.25){
         return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
+    }
+
+    if(fildes.Lacagta.match(LacagReg)){
+        return {err_lacag1: "Fadlan si sax lacagta U Qor"}
     }
 
     if(point){
@@ -187,14 +194,16 @@ export const donoteHoy = async ({request}) => {
     }
 
 
-    if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25 ){
-        console.log(fildes)
-        PymentAction()
-        return{
-            Sax: "Faldan eeg Telefankaaga ...",
-        }
+    // if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
+
+    // }
+
+    console.log(fildes)
+    PymentAction()
+    return{
+        Sax: "Faldan eeg Telefankaaga ...",
     }
-    return redirect("/")
+    //return redirect("/")
 }
 
 

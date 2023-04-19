@@ -5,6 +5,7 @@ import Alert from './Alert';
 import AlertLoad from './LoadAlert';
 import EVC from "evc-api";
 import { Auth } from '../context/Auth';
+import Empaty from './Empaty';
 function CWaxbarsho({func}){
     const {state} = Auth()
     const Form_data = useActionData()
@@ -18,6 +19,8 @@ function CWaxbarsho({func}){
     const toggale_edahab = (e) => {
         setPyment_type("edahab")
     }
+
+    console.log(Waxbarasho)
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
@@ -30,6 +33,8 @@ function CWaxbarsho({func}){
 
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
+        {(Waxbarasho && !Waxbarasho) || (Waxbarasho && Waxbarasho.length > 0) ?
+        <>
         {Waxbarasho && Waxbarasho.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
@@ -108,6 +113,11 @@ function CWaxbarsho({func}){
             </div>
             </div>
             ))}
+        </>
+        :
+        <Empaty />
+        }
+
             </>
     )
 }
@@ -115,7 +125,6 @@ function CWaxbarsho({func}){
 
 export const donoteWax = async ({request}) => {
     const actions = await request.formData();
-    const  pattern = /[^0-9]/g;
     const fildes = {
         Lanbar: actions.get("Lanbar"),
         Lacagta: actions.get('Lacagta'),
@@ -123,6 +132,8 @@ export const donoteWax = async ({request}) => {
         Tabaruc: actions.get('Tabaruc'),
         PymentType: actions.get('PymentType')
     }
+    const  pattern = /[^0-9]/g;
+    const  LacagReg = /[^0-9.]/g;
 
     //update Tabaruc 
     const Tabaruc = fildes.Tabaruc
@@ -136,7 +147,6 @@ export const donoteWax = async ({request}) => {
     })
     const res =  await updatenow.json()
     }
-
     const point = fildes.Lacagta.split(".")[1]
 
     const PymentAction = () => {
@@ -154,8 +164,11 @@ export const donoteWax = async ({request}) => {
                     merchantNo: '252402785', // withdraw to ...
                     })
                     .then((data) => {
-                        console.log(data.responseMsg)
-                        UpdateProject()
+                        if(data.responseCode !== "200"){
+                            console.log(data.responseMsg)
+                        } else {
+                            UpdateProject()
+                        }
                     })
                     .catch((err) => console.log(err.responseCode))
                         
@@ -172,12 +185,16 @@ export const donoteWax = async ({request}) => {
             }
     }
    
-    if(fildes.Lanbar.length !== 7  || fildes.Lanbar.match(pattern)){
+    if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
         return {err_no: "Waa Qalad Lanbarku"}
     } 
 
     if(fildes.Lacagta < 0.25){
         return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
+    }
+
+    if(fildes.Lacagta.match(LacagReg)){
+        return {err_lacag1: "Fadlan si sax lacagta U Qor"}
     }
 
     if(point){
@@ -187,14 +204,16 @@ export const donoteWax = async ({request}) => {
     }
 
 
-    if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25 ){
-        console.log(fildes)
-        PymentAction()
-        return{
-            Sax: "Faldan eeg Telefankaaga ...",
-        }
+    // if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
+
+    // }
+
+    console.log(fildes)
+    PymentAction()
+    return{
+        Sax: "Faldan eeg Telefankaaga ...",
     }
-    return redirect("/")
+    //return redirect("/")
 }
 
 

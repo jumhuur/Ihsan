@@ -1,6 +1,15 @@
 const express = require("express")
 const ProjectRouter = express.Router()
-const {addProjects, GetCaafimaad, GetWaxbarasho, GetCunto, GetHoy, GetDaryeel , UpdateOneProject} = require("../controllers/Projects")
+const {
+    addProjects,
+    GetCaafimaad,
+    GetWaxbarasho,
+    GetCunto, 
+    GetHoy, 
+    GetDaryeel , 
+    UpdateOneProject, 
+    GetOneProject
+    } = require("../controllers/Projects")
 
 
 
@@ -21,6 +30,9 @@ ProjectRouter.post("/add",addProjects)
 // update Project
 
 ProjectRouter.patch("/Update/:Id", UpdateOneProject)
+
+// get one Project 
+ProjectRouter.get("/Mashruuc/:Id", GetOneProject)
 
 
 

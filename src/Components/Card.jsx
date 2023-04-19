@@ -1,15 +1,12 @@
 import {useState } from 'react';
-import { Form, redirect, useActionData,  } from 'react-router-dom';
+import { Form, Link,useActionData,  } from 'react-router-dom';
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
 import EVC from "evc-api";import { Auth } from '../context/Auth';
 import { useEffect } from 'react';
-import {UpdateProj} from "../Hooks/UpdaateProj"
-import { useRef } from 'react';
-import { type } from '@testing-library/user-event/dist/type';
+import Empaty from './Empaty';
 function Card({func}){
-    const {state , GetAllProjects} = Auth();
-    const {UpdateProject} = UpdateProj()
+    const {state,} = Auth();
     const [Caafimaad,setCaafimaad] = useState(null)
     const [loading,setloading]= useState(false)
     const Form_data = useActionData()
@@ -27,11 +24,6 @@ function Card({func}){
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
 
-
-    // update functions 
-    // const submit = () => {
-    //     GetAllProjects()
-    // }
     useEffect(() => {
         setCaafimaad(state.Caafimaad)
         setloading(true)
@@ -40,14 +32,20 @@ function Card({func}){
         <>
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
-        {Caafimaad && Caafimaad.map((card) => (
+        {(Caafimaad && Caafimaad.length > 0) ?
+        <>
+            {Caafimaad && Caafimaad.map((card) => (
             <div className="card_mashruuc" key={card}>
             <div className="img_or_vid">
-                <img src={card.Muuqaal} alt="xaalad" />
+                <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">
+                  
                     <button className='Daawo' onClick={func}>
-                    <i className="fa-solid fa-play"></i> Muuqaal
+                    <Link to={`/${card._id}`}>
+                    <span><i className="fa-solid fa-play"></i> Muuqaal</span>
+                      </Link>
                     </button>
+                  
                     <div className="lacagta">
                     <div className="hadaf_and_asal">
                         <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Tabaruc} $</p>
@@ -119,6 +117,12 @@ function Card({func}){
             </div>
             ))}
         </>
+        :(Caafimaad && !Caafimaad) || (Caafimaad && Caafimaad === null) ?
+        <p>loading ...</p>
+        :
+        <Empaty />
+        }
+        </>
     )
 }
 
@@ -133,6 +137,7 @@ export const donote = async ({request}) => {
         PymentType: actions.get('PymentType')
     }
     const  pattern = /[^0-9]/g;
+    const  LacagReg = /[^0-9.]/g;
 
     //update Tabaruc 
     const Tabaruc = fildes.Tabaruc
@@ -163,8 +168,11 @@ export const donote = async ({request}) => {
                     merchantNo: '252402785', // withdraw to ...
                     })
                     .then((data) => {
-                        console.log(data.responseMsg)
-                        UpdateProject()
+                        if(data.responseCode !== "200"){
+                            console.log(data.responseMsg)
+                        } else {
+                            UpdateProject()
+                        }
                     })
                     .catch((err) => console.log(err.responseCode))
                         
@@ -189,6 +197,10 @@ export const donote = async ({request}) => {
         return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
     }
 
+    if(fildes.Lacagta.match(LacagReg)){
+        return {err_lacag1: "Fadlan si sax lacagta U Qor"}
+    }
+
     if(point){
     if(point.length > 2){
         return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
@@ -196,15 +208,16 @@ export const donote = async ({request}) => {
     }
 
 
-    if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
-        console.log(fildes)
-        PymentAction()
-        return{
-            Sax: "Faldan eeg Telefankaaga ...",
-            
-        }
+    // if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
+
+    // }
+
+    console.log(fildes)
+    PymentAction()
+    return{
+        Sax: "Faldan eeg Telefankaaga ...",
     }
-    return redirect("/")
+    //return redirect("/")
 }
 
 export default Card

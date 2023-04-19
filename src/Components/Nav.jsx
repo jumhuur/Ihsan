@@ -30,7 +30,7 @@ function Nav({Login}){
                                 </Link>
                             </li>
                             <li>
-                            <span>Luuqada <i className="fa-solid fa-chevron-down"></i></span>
+                            <span><i className="fa-solid fa-earth-africa"></i> So <i className="fa-solid fa-chevron-down"></i></span>
                             </li>
                         </ul>
 
