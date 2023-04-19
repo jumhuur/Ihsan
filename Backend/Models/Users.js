@@ -34,7 +34,7 @@ UserSchema.statics.Register = async function(Magac, Lanbar, Password){
     if(Lanbar.length > 7 || Lanbar.length < 7 || Lanbar.match(pattern)){
         throw Error("Waa Qalad Lanbarku")
     }
-    if(Magac.length > 15){
+    if(Magac.length > 20){
         throw Error("Fadlan Soo Koob Magaca")
     }
 
