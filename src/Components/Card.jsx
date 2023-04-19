@@ -5,6 +5,8 @@ import AlertLoad from './LoadAlert';
 import EVC from "evc-api";import { Auth } from '../context/Auth';
 import { useEffect } from 'react';
 import Empaty from './Empaty';
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { format} from 'timeago.js';
 function Card({func}){
     const {state,GetAllProjects} = Auth();
     const [Caafimaad,setCaafimaad] = useState(null)
@@ -47,18 +49,11 @@ function Card({func}){
             <div className="img_or_vid">
                 <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">
-                  
-                    <button className='Daawo' onClick={func}>
-                    <Link to={`Mashruuc/${card._id}`}>
-                    <span><i className="fa-solid fa-circle-dollar-to-slot"></i> Tabaruc Hada</span>
-                      </Link>
-                    </button>
-                    {/*                   
-                    <div className="lacagta">
+                <div className="lacagta">
                     <div className="hadaf_and_asal">
-                        <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Tabaruc} $</p>
+                        <p className="lcg asal"><i className="fa-solid fa-calendar-days"></i> {format(card.createdAt)} </p>
                     </div>
-                    </div> */}
+                </div>
 
                 </div>
             </div>
@@ -85,6 +80,14 @@ function Card({func}){
                 
                 
             </div>
+            <div className="btn_tabaruc">
+                    <button className='Daawo' onClick={func}>
+                    <Link to={`Mashruuc/${card._id}`}>
+                    <span><i className="fa-solid fa-circle-dollar-to-slot"></i> Tabaruc Hada</span>
+                      </Link>
+            </button>
+            </div>
+
             </div>
             {/* // halkan  */}
             </div>

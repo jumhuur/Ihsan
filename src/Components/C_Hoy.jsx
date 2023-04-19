@@ -97,7 +97,6 @@ function Choy({func}){
                         <input type='text' name='Id' hidden value={card._id} />
                         <input  type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
                         <input type='text' hidden value={Pyment_type} name='PymentType' />
-
                         </div>
                         <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                         <i className="fa-solid fa-paper-plane"></i> Bixi 
