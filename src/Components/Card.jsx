@@ -6,14 +6,13 @@ import EVC from "evc-api";import { Auth } from '../context/Auth';
 import { useEffect } from 'react';
 import Empaty from './Empaty';
 function Card({func}){
-    const {state,} = Auth();
+    const {state,GetAllProjects} = Auth();
     const [Caafimaad,setCaafimaad] = useState(null)
     const [loading,setloading]= useState(false)
     const Form_data = useActionData()
     const [Pyment_type,setPyment_type] = useState('zaad');
     const Somtel = '65';
     const telesom = "63";
-    console.log(Form_data)
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
     }
@@ -23,6 +22,15 @@ function Card({func}){
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
+
+    // const GetAllData = () => {
+    //   setCaafimaad(state.Caafimaad)
+    // }
+
+    // useEffect(() => {
+    //     GetAllProjects()
+    //     console.log(state)
+    // },[])
 
     useEffect(() => {
         setCaafimaad(state.Caafimaad)
@@ -41,79 +49,44 @@ function Card({func}){
                 <div className="over_verlow_video">
                   
                     <button className='Daawo' onClick={func}>
-                    <Link to={`/${card._id}`}>
-                    <span><i className="fa-solid fa-play"></i> Muuqaal</span>
+                    <Link to={`Mashruuc/${card._id}`}>
+                    <span><i className="fa-solid fa-circle-dollar-to-slot"></i> Tabaruc Hada</span>
                       </Link>
                     </button>
-                  
+                    {/*                   
                     <div className="lacagta">
                     <div className="hadaf_and_asal">
                         <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Tabaruc} $</p>
                     </div>
-                </div>
-    
+                    </div> */}
+
                 </div>
             </div>
-            {/* <div className="desc">
+            <div className="desc">
+                {/* <h2>Hooyo somaliyeed</h2> */}
                 <p>
                     Waa qof waayeela oo Baahan
+                    waxana haya xanuun aad u daran oo maalin ...
                 </p>
-            </div> */}
+            </div>
             <div className="progress">
                 <span style={{width:`${card.Tabaruc / card.Hadaf * 100}%`}}><span>{
                 Math.floor((card.Tabaruc / card.Hadaf * 100)).toFixed(0)
                 }%</span></span>
             </div>
-            <div className="info_fursad">
-                <div className="from_bixin">
-                    <Form  method='post' action="/">
-                        <div className="pyment_types">
-                            {/* <div className="Pay Zaad">
-                                <input onClick={(e) => (
-                                    setPyment_type(e.target.value)
-                                )} id="Zaad" type="radio" value="zaad" name="Payment" checked/>
-                                <label htmlFor="Zaad"><i className="telesom fa-solid fa-sim-card"></i> Zaad</label>
-                            </div>
-                            <div className="Pay E-dahab">
-                                <input onClick={(e) =>  setPyment_type(e.target.value)} id="e-dahab" type="radio" value="e-dahab" name="Payment"/>
-                                <label htmlFor="e-dahab"><i className="somtel fa-solid fa-sim-card"></i> e-dahab</label>
-                            </div> */}
-                            <div className="raber_switcher">
-                                {/* <span>Zaad</span> */}
-                                <div className="input" >
-                                <label onClick={toggale_zaad} className={Pyment_type === "zaad" ? 'zaad active' : "zaad"}><span><i className="fa-solid fa-circle-check"></i> Zaad</span></label>
-                                <label onClick={toggale_edahab} className={Pyment_type === "edahab" ? 'edahab active' : "edahab"}><span><i className="fa-solid fa-circle-check"></i> edahab</span></label>
-                                <input type="checkbox"  name='payment' value={Pyment_type}/>
-                                </div>
-                                {/* <span>Edahab</span> */}
-                            </div>
-                        </div>
-                        <div className="donter_info">
-                        <div className="input_feilds">
-                        <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                        <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
-                        </div>
-                        <div className="input_feilds">
-                         {Pyment_type === "zaad" ?
-                            <span className='Ll'>{telesom}</span>
-                          : Pyment_type === "edahab" ?
-                                <span className='Ll'>{Somtel}</span>
-                          :
-                            <span className='Ll'>No</span>
-                        }   
-                        <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar'/>
-                        <input type='text' name='Id' hidden value={card._id} />
-                        <input type="number" name='Tabaruc' hidden value={Number(card.Tabaruc) + valu_tabaruc} />
-                        <input type='text' hidden value={Pyment_type} name='PymentType' />
-
-                        </div>
-                        <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
-                        <i className="fa-solid fa-paper-plane"></i> Bixi 
-                        </button>
-                        </div>
-                    </Form>
+            <div className="lacagta">
+            <div className="hadaf_and_asal">
+                <div className='Hadaf'>
+                    <p className="lcg asal"><i className="fa-solid fa-sack-dollar"></i> {card.Tabaruc} $</p>
                 </div>
+                <div className='Asal'>
+                <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> {card.Hadaf} $</p>
+                </div>
+                
+                
             </div>
+            </div>
+            {/* // halkan  */}
             </div>
             ))}
         </>
@@ -126,8 +99,8 @@ function Card({func}){
     )
 }
 
-
 export const donote = async ({request}) => {
+    //const {GetAllProjects} = Auth()
     const actions = await request.formData();
     const fildes = {
         Lanbar: actions.get("Lanbar"),
@@ -150,6 +123,7 @@ export const donote = async ({request}) => {
         }
     })
     const res =  await updatenow.json()
+    //GetAllProjects()
     }
     const point = fildes.Lacagta.split(".")[1]
 
@@ -170,6 +144,8 @@ export const donote = async ({request}) => {
                     .then((data) => {
                         if(data.responseCode !== "200"){
                             console.log(data.responseMsg)
+                            // tani sax maaha
+                             UpdateProject()
                         } else {
                             UpdateProject()
                         }

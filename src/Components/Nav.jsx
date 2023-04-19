@@ -42,7 +42,7 @@ function Nav({Login}){
                         </button>
                         :
                         <button className="nav-btn" onClick={Login}>
-                            <Link to="Login" >
+                            <Link to={"/Login"} >
                                 <span>Gal <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
                             </Link>
                         </button>

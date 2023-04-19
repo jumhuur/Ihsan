@@ -43,7 +43,7 @@ function App() {
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
         <Route path="/:Id" element={<Video />} />
       </Route>
-      <Route path="/Mashruuc" element={<Mashruuc />}>
+      <Route path="/Mashruuc/:Id" element={<Mashruuc />}>
 
       </Route>
       <Route path="*" element={<p>Not foud the page</p>} />

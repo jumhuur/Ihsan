@@ -4,7 +4,7 @@ import { Auth } from "../context/Auth";
 export const UseRegister = () => {
     const [Error, setError] = useState(null);
     const [Looding, setLooding] = useState(false);
-    const {dispatch, ACTIONS, setDatA}  = Auth()
+    const {dispatch, ACTIONS, setDatA,GetAllProjects}  = Auth()
 
     const register = async(Magac,Lanbar,Password) => {
         setLooding(true)
@@ -29,6 +29,7 @@ export const UseRegister = () => {
             dispatch({type:ACTIONS.REGISTER, payload:json})
             setLooding(false)
             setDatA()
+            GetAllProjects()
         }
     }
     return {register, Looding,Error}

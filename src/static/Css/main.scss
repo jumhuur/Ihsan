@@ -661,7 +661,7 @@ div.Projects{
     padding: 50px 0px;
     div.card_mashruuc{
       margin: 5px 0px;
-      padding: 7px 7px;
+      padding: 10px 10px;
       width: calc(95% / 3);
       height: 100%;
       background-color: $bg-main;
@@ -712,25 +712,6 @@ div.Projects{
                   
                 }
             }
-
-
-          div.lacagta{
-            width: 100%;
-            margin: 10px 0px;
-          }
-  
-          div.hadaf_and_asal{
-            @include dynamic-flex(space-evenly,center ,row , 20px);
-            height: 100%;
-            @include qoraal-p(20px, $bg-main);
-            // p.lcg{
-            //   width: calc(60% / 1);
-            // }
-            i{
-              color: $bg-main;
-            }
-          }
-          
         }
         img {
           width: 100%;
@@ -746,6 +727,12 @@ div.Projects{
           @include Totile-H(20px, $madaw);
           font-weight: normal;
           padding: 5px 5px;
+          &:hover{
+            color: $main-color2;
+          text-decoration: underline;
+          cursor: pointer;
+          }
+          
         }
 
         p {
@@ -778,6 +765,23 @@ div.Projects{
             position: absolute;
             border: solid 2px $bg-main;
           }
+        }
+      }
+      div.lacagta {
+        width: 100%;
+        margin: 10px 0px;
+      }
+
+      div.hadaf_and_asal {
+        @include dynamic-flex(space-evenly, center, row, 20px);
+        height: 100%;
+        @include qoraal-p(20px, $main-color2);
+
+        // p.lcg{
+        //   width: calc(60% / 1);
+        // }
+        i {
+          color: $color-Gaar;
         }
       }
       div.info_fursad{
