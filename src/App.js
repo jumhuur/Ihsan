@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Card, { donote } from "./Components/Card";
+import Card from "./Components/Card";
 import Home from "./Pages/Home";
 import "./static/Css/main.scss"
 import {Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
@@ -12,6 +12,7 @@ import Sinup from "./Components/Sinup";
 import { Auth } from "./context/Auth";
 import Video from "./Components/video";
 import Mashruuc from "./Pages/Project";
+import InfoProject, { donote } from "./Components/InfoProject";
 
 function App() {
   const [v_active,setv_active] = useState(false)
@@ -34,7 +35,7 @@ function App() {
     createRoutesFromElements (
       <>
       <Route path="/" element={<Home video_active={v_active} func={active_v} LoginFunc={Loginfunc} />} >
-        <Route path="/" element={<Card func={active_v} />} action={donote} />
+        <Route path="/" element={<Card func={active_v} />} />
         <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} action={donoteWax} />
         <Route path="Cunto" element={<CCunto func={active_v}  /> } action={donoteCunto} />
         <Route path="Hoy" element={<Choy func={active_v} />} action={donoteHoy}/>
@@ -44,7 +45,7 @@ function App() {
         <Route path="/:Id" element={<Video />} />
       </Route>
       <Route path="/Mashruuc/:Id" element={<Mashruuc />}>
-
+        <Route path="/Mashruuc/:Id" element={<InfoProject />} action={donote} />
       </Route>
       <Route path="*" element={<p>Not foud the page</p>} />
       </>

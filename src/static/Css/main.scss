@@ -788,8 +788,8 @@ div.Projects{
         @include flex-box(column);
         padding: 10px 0px;
       button.Daawo {
-          @include btn-web(70%);
-          border-radius: 30px;
+          @include btn-web(95%);
+          border-radius: 7px;
           height: 50px;
       
           a {
@@ -825,164 +825,6 @@ div.Projects{
         // }
         i {
           color: $color-Gaar;
-        }
-      }
-      div.info_fursad{
-        width: 100%;
-        position: relative;
-        div.from_bixin{
-          width: 100%;
-
-          form{
-            div.pyment_types{
-              @include dynamic-flex(center,center ,row , 0px);
-              // switch
-
-              div.raber_switcher{
-                width: 70%;
-                margin: 10px 0px;
-                @include dynamic-flex(center,center ,row , 0px);
-                div.input{
-                  position: relative;
-                  width: 100%;
-                  @include dynamic-flex(center,center ,row , 0px);
-                  overflow: hidden;
-                  input {
-                    width: 100%;
-                    height: 30px;
-                    border-radius: 15px;
-                    background-color: $btn_gaar;
-                    appearance: none;
-                    outline: none;
-                    position: relative;
-                  }
-                  label{
-                    width: 50%;
-                    height: 100%;
-                    border-radius: 15px;
-                    position: absolute;
-                    z-index: 12;
-                    overflow: hidden;
-                    @include dynamic-flex(center,center ,row , 0px);
-                    user-select: none;
-                    cursor: pointer;
-                    span{
-                      @include qoraal-p(15px, $qoraalo-color);
-                      user-select: none;
-                    }
-                    
-                    &.edahab{
-                      right: 0;
-                      background-color: transparent;
-                    }
-
-                    &.zaad{
-                      left: 0px;
-                      background-color: transparent;
-                    }
-                    &.active{
-                      background-color: $main-color2;
-                      color: $bg-main;
-                      transition: color all 0.6s ease-in-out;
-                      span{
-                        color: $bg-main;
-                        user-select: none;
-                      }
-                    }
-
-                  
-
-                  }
-                }
-
-                span {
-                  @include qoraal-p(18px, $madaw);
-                  margin: 0px 10px ;
-                }
-              }
-              div.Pay{
-                width: calc(90% / 2);
-                padding: 5px 0px;
-                label {
-                  @include qoraal-p(18px, $madaw);
-                  margin: 0px 10px ;
-                  i.telesom {
-                    color: #179f02;
-                  }
-
-                  i.somtel{
-                    color: #ffae00;
-                  }
-                }
-
-                input[type="radio"] {
-                  width: 18px;
-                  height: 18px;
-                }
-              }
-            }
-
-            div.donter_info{
-              width: 100%;
-              @include dynamic-flex(center,center ,column, 0px);
-              div.input_feilds{
-                width: 80%;
-                position: relative;
-                border-radius: 10px;
-                @include dynamic-flex(center,flex-start ,column, 0px);
-                margin: 5px 0px;
-                input[type="tel"] ,
-                input[type="text"],
-                input[type="number"] {
-                  @include reset_form(18px, $madaw, 5px);
-                  width: 95%;
-                  height: 45px;
-                  border-radius: 10px;
-                  border: solid 1px #335eea29;
-                  //background-color: $prog_color;
-                  //border-left: solid 2px $main-color2;
-                  //border-right: solid 2px $main-color2;
-                  //border-bottom: solid 1px $main-color2;
-                  position: relative;
-                  padding-left: 75px;
-                  overflow: hidden;
-                  &:focus{
-                    border: solid 1px $main-color2;
-                  }
-                  &.err{
-                    border: solid 1px #e85a02;
-                  }
-                  &::placeholder{
-                    color: #335eea83;
-                  }
-                }
-                > span.Ll {
-                  position: absolute;
-                  width: 65px;
-                  height: 80%;
-                  background-color: transparent;
-                  border-bottom-left-radius: 10px;
-                  border-top-left-radius: 10px;    
-                  @include dynamic-flex(center,center ,column, 0px);
-                  @include qoraal-p(18px,$main-color2) ;
-                  z-index: 55;
-                }
-              }
-              button{
-                @include btn-web(75%);
-                background-color: $color-Gaar;
-                margin: 10px 0px;
-                // &.loadbtn{
-                //   cursor: not-allowed;
-                //   background-color: $btn_gaar;
-                // }
-                &:hover{
-                  background-color: #029f70;
-                }
-              }
-
-            }
-          }
         }
       }
 
@@ -1194,28 +1036,24 @@ div.Counts{
 
 
 // video
-
-div.video_overvallow{
-  @extend %over_vallow_set;
   div.h_video{
       @include dynamic-flex(center,center ,column ,0px);
       width: 100%;
       height: 100%;
       visibility: visible;
   }
-  &.active{
-    visibility: visible;
     div.video{
-      width: 75%;
+      width: 100%;
       padding: 5px 5px;;
-      background-color: transparent;
+      background-color: $bg-main;
       border-radius: 7px;
       @include dynamic-flex(center,center ,column ,0px);
+      @include dyshadow(0px, 0px, 12px, 0px);
       div.video_content{
-        width: 95%;
-        height: 95%;
+        width: 98%;
+        height: 98%;
         background-color: $main-color2;
-        padding-bottom: 20px;
+        padding-bottom: 0px;
         overflow: hidden;
         border-radius: 5px;
         position: relative;
@@ -1224,10 +1062,6 @@ div.video_overvallow{
         }
       }
     }
-  }
-
-
-}
 
 
 
@@ -1686,6 +1520,393 @@ div.over_alert{
 }
 
 
+
+// page Projects style  all parts 
+
+div.well {
+  width: 100%;
+  height: 100%;
+  padding-top: 120px;
+  padding-bottom: 15px;
+  background-color: $main-color;
+
+  div.macluumaad {
+    width: 100%;
+    height: 100%;
+    padding: 25px 85px;
+    @include dynamic-flex(center, flex-start, column, 15px);
+
+    h2 {
+      @include Totile-H(1.4rem, $bg-main);
+      font-weight: normal;
+    }
+
+    p {
+      @include qoraal-p(19px, $qoraalo-color);
+      font-weight: normal;
+    }
+
+    div.ashyaa {
+      width: 100%;
+      height: 100%;
+      @include dynamic-flex(flex-start, flex-start, row, 30px);
+    }
+  }
+}
+
+// qaybo donte and froms
+div.laba_qaybood {
+  width: 100%;
+  height: 100%;
+  margin: 15px 0px;
+  @include dynamic-flex(flex-start, flex-start, row, 20px);
+
+  div.qayb {
+    height: 100%;
+    padding: 15px 0px;
+    i {
+      color: $main-color2;
+    }
+
+    &.Pyments {
+      flex: 3.50;
+
+      div.trakoobyo{
+        width: 100%;
+        height: 100%;
+        padding: 5px 0px;
+        //background-color: $main-color;
+        div.tiro{
+          width: 100%;
+          height: 100%;
+          @include dynamic-flex(flex-start,center ,row,15px);
+          div.lahayo{
+            // width: calc(60% / 2);
+            //background-color: $main-color2;
+            @include dynamic-flex(center,center ,row,5px );
+            div.icon{
+              flex: 2;
+              height: 50px;
+              //background-color: $main-color2;
+              @include dynamic-flex(center, center, column, 0px);
+              img {
+                width: 75;
+                height: 75%;
+              }
+               i {
+                color: $main-color2;
+                font-size: 25px;
+               }
+            }
+            div.qoraal{
+              flex: 4;
+              h2 {
+                @include Totile-H(1.1rem, $title-color);
+                font-weight: normal;
+                padding: 7px 0px;
+              }
+              p {
+                @include qoraal-p(22px,$qoraalo-color);
+                padding: 3px 3px;
+              }
+            }
+
+          }
+        }
+      }
+      div.macluumaad_bidix {
+        width: 100%;
+        height: 100%;
+        padding: 15px 5px;
+
+        //background-color: $main-color2;
+        h2 {
+          @include Totile-H(1.3rem, $title-color);
+          font-weight: normal;
+        }
+
+        p {
+          @include qoraal-p(18px, $qoraalo-color);
+          font-weight: normal;
+        }
+      }
+      div.progress {
+        width: 90%;
+        height: 15px;
+        background-color: $prog_color;
+        margin: 10px 0px;
+        border-radius: 7px;
+        overflow: hidden;
+
+        span {
+          height: 100%;
+          display: block;
+          background-color: $main-color2;
+          @include dynamic-flex(center, flex-end, column, 0px);
+          color: $bg-main;
+          font-size: 13px;
+          font-weight: bold;
+          font-family: "font";
+          border-radius: 7px;
+
+          span {
+            width: 30px;
+            height: 30px;
+            background-color: $main-color2;
+            border-radius: 50%;
+            position: absolute;
+            border: solid 2px $bg-main;
+          }
+        }
+      }
+      div.info_fursad {
+        width: 100%;
+        position: relative;
+
+        div.from_bixin {
+          width: 100%;
+
+          form {
+            div.pyment_types {
+              @include dynamic-flex(flex-start, center, row, 0px);
+              // switch
+
+              div.raber_switcher {
+                width: 70%;
+                margin: 10px 0px;
+                @include dynamic-flex(flex-start, center, row, 0px);
+
+                div.input {
+                  position: relative;
+                  width: 100%;
+                  @include dynamic-flex(center, center, row, 0px);
+                  overflow: hidden;
+
+                  input {
+                    width: 100%;
+                    height: 40px;
+                    border-radius: 25px;
+                    background-color: $btn_gaar;
+                    appearance: none;
+                    outline: none;
+                    position: relative;
+                  }
+
+                  label {
+                    width: 50%;
+                    height: 100%;
+                    border-radius: 25px;
+                    position: absolute;
+                    z-index: 12;
+                    overflow: hidden;
+                    @include dynamic-flex(center, center, row, 0px);
+                    user-select: none;
+                    cursor: pointer;
+
+                    span {
+                      @include qoraal-p(15px, $qoraalo-color);
+                      user-select: none;
+                      i {
+                        color: $qoraalo-color;
+                      }
+                    }
+
+                    &.edahab {
+                      right: 0;
+                      background-color: transparent;
+                    }
+
+                    &.zaad {
+                      left: 0px;
+                      background-color: transparent;
+                    }
+
+                    &.active {
+                      background-color: $main-color2;
+                      color: $bg-main;
+                      transition: color all 0.6s ease-in-out;
+
+                      span {
+                        color: $bg-main;
+                        user-select: none;
+                        i {
+                          color: $bg-main;
+                        }
+                      }
+                    }
+
+
+
+                  }
+                }
+
+                span {
+                  @include qoraal-p(18px, $madaw);
+                  margin: 0px 10px;
+                }
+              }
+
+              div.Pay {
+                width: calc(90% / 2);
+                padding: 5px 0px;
+
+                label {
+                  @include qoraal-p(18px, $madaw);
+                  margin: 0px 10px;
+
+                  i.telesom {
+                    color: #179f02;
+                  }
+
+                  i.somtel {
+                    color: #ffae00;
+                  }
+                }
+
+                input[type="radio"] {
+                  width: 18px;
+                  height: 18px;
+                }
+              }
+            }
+
+            div.donter_info {
+              width: 100%;
+              @include dynamic-flex(center, flex-start, column, 0px);
+
+              div.input_feilds {
+                width: 100%;
+                position: relative;
+                border-radius: 10px;
+                @include dynamic-flex(center, flex-start, column, 0px);
+                margin: 5px 0px;
+
+                input[type="tel"],
+                input[type="text"],
+                input[type="number"] {
+                  @include reset_form(18px, $madaw, 5px);
+                  width: 100%;
+                  height: 60px;
+                  border-radius: 10px;
+                  border: solid 1px #335eea29;
+                  //background-color: $prog_color;
+                  //border-left: solid 2px $main-color2;
+                  //border-right: solid 2px $main-color2;
+                  //border-bottom: solid 1px $main-color2;
+                  position: relative;
+                  padding-left: 75px;
+                  overflow: hidden;
+
+                  &:focus {
+                    border: solid 1px $main-color2;
+                  }
+
+                  &.err {
+                    border: solid 1px #e85a02;
+                  }
+
+                  &::placeholder {
+                    color: #335eea83;
+                  }
+                }
+
+                >span.Ll {
+                  position: absolute;
+                  width: 65px;
+                  height: 80%;
+                  background-color: transparent;
+                  border-bottom-left-radius: 10px;
+                  border-top-left-radius: 10px;
+                  @include dynamic-flex(center, center, column, 0px);
+                  @include qoraal-p(18px, $main-color2);
+                  z-index: 55;
+                }
+              }
+
+              button {
+                @include btn-web(75%);
+                //background-color: $color-Gaar;
+                margin: 10px 0px;
+                i {
+                  color: $bg-main;
+                }
+
+                // &.loadbtn{
+                //   cursor: not-allowed;
+                //   background-color: $btn_gaar;
+               // }
+              }
+
+            }
+          }
+        }
+      }
+    }
+    &.muuqaal{
+      flex: 5;
+      //height: 400px;
+      //background-color: $main-color2;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      div.last_donote  {
+        width: 100%;
+        height: 100%;
+        margin: 15px 0px;
+        h2 {
+          @include Totile-H(1.2rem, $madaw);
+          padding: 5px 15px;
+          font-weight: normal;
+        }
+        div.tabaruc{
+          width: 100%;
+          height: 100%;
+          padding: 3px 0px;
+          border-radius: 2px;
+          margin: 18px 0px;
+          @include dyshadow(0px, 0px, 12px, 3px);
+          @include dynamic-flex(center,center ,row ,10px);
+          border-left: 3px solid $main-color2;
+          border-right: 3px solid $main-color2;
+          div.user_img{
+            flex: 1;
+            height: 80px;
+            //background-color: $main-color2;
+              @include dynamic-flex(center, center, row, 0px);
+              i {
+                color: $qoraalo-color;
+                font-size: 2rem;
+              }
+          }
+          div.name_amout{
+            flex: 10;
+            h2 {
+                @include Totile-H(17px, $madaw);
+                font-weight: normal;
+                padding: 2px 0px;
+            }
+
+            div.info_wind{
+            @include dynamic-flex(flex-start, center, row, 15px);
+            padding: 2px 0px;
+            p {
+              @include qoraal-p(15px, $qoraalo-color)
+            }
+            }
+
+          }
+
+
+        }
+      }
+
+    }
+  }
+}
+
 .sk-circle {
   margin: 10px auto;
   width: 30px;
@@ -1863,6 +2084,15 @@ div.over_alert{
     transform: scale(1);
   }
 }
+
+
+
+
+
+
+
+
+
 
 // all media  responsive part
 
