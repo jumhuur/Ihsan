@@ -48,6 +48,30 @@ function InfoProject({info}) {
                                     </div>
                                 </div>
                             </div>
+                            <div className="tabaruc">
+                                <div className="user_img">
+                                   <i className="fa-solid fa-circle-user"></i>
+                                </div>
+                                <div className="name_amout">
+                                    <h2>Maxamad Dayib</h2>
+                                    <div className="info_wind">
+                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Waxa Uu Ku deeqay $15</p>
+                                    <p><i className="fa-solid fa-clock"></i> 3 minit ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="tabaruc">
+                                <div className="user_img">
+                                   <i className="fa-solid fa-circle-user"></i>
+                                </div>
+                                <div className="name_amout">
+                                    <h2>Maxamad Dayib</h2>
+                                    <div className="info_wind">
+                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Waxa Uu Ku deeqay $15</p>
+                                    <p><i className="fa-solid fa-clock"></i> 3 minit ago</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="qayb Pyments">
@@ -57,6 +81,10 @@ function InfoProject({info}) {
                                 <p>
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae pariatur reprehenderit neque 
                                     qui laborum, similique eius. Saepe, nulla ullam! Ex, saepe! 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores odit beatae labore ex quia rerum, cumque ut doloremque autem facere obcaecati. Illo magni pariatur neque quidem ad maiores nemo sequi.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+
                                 </p>
                             </div>
                         </div>
@@ -162,7 +190,6 @@ export const donote = async ({request}) => {
         }
     })
     const res =  await updatenow.json()
-    //GetAllProjects()
     }
     const point = fildes.Lacagta.split(".")[1]
 

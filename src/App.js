@@ -3,10 +3,10 @@ import Card from "./Components/Card";
 import Home from "./Pages/Home";
 import "./static/Css/main.scss"
 import {Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom"
-import CDaryeel, { donoteDaryeel } from "./Components/Card_Daryeel";
-import CWaxbarsho, { donoteWax } from "./Components/C_Waxbarasho";
-import CCunto, { donoteCunto } from "./Components/C_Cunto";
-import Choy, { donoteHoy } from "./Components/C_Hoy";
+import CDaryeel from "./Components/Card_Daryeel";
+import CWaxbarsho from "./Components/C_Waxbarasho";
+import CCunto from "./Components/C_Cunto";
+import Choy  from "./Components/C_Hoy";
 import Login from "./Components/Login";
 import Sinup from "./Components/Sinup";
 import { Auth } from "./context/Auth";
@@ -36,10 +36,10 @@ function App() {
       <>
       <Route path="/" element={<Home video_active={v_active} func={active_v} LoginFunc={Loginfunc} />} >
         <Route path="/" element={<Card func={active_v} />} />
-        <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} action={donoteWax} />
-        <Route path="Cunto" element={<CCunto func={active_v}  /> } action={donoteCunto} />
-        <Route path="Hoy" element={<Choy func={active_v} />} action={donoteHoy}/>
-        <Route path="Daryeel" element={<CDaryeel func={active_v} />} action={donoteDaryeel}/>
+        <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} />
+        <Route path="Cunto" element={<CCunto func={active_v}  /> } />
+        <Route path="Hoy" element={<Choy func={active_v} />}/>
+        <Route path="Daryeel" element={<CDaryeel func={active_v} />}/>
         <Route path="Login" element={!CrentUser ? <Login activate={login} loginfunc={Loginfunc} /> : <Navigate to={"/"} />} />
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
         <Route path="/:Id" element={<Video />} />

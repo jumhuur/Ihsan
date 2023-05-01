@@ -1,25 +1,13 @@
 import {useState } from 'react';
-import { Form, Link,useActionData,  } from 'react-router-dom';
-import Alert from './Alert';
-import AlertLoad from './LoadAlert';
-import EVC from "evc-api";import { Auth } from '../context/Auth';
+import {Link} from 'react-router-dom';
 import { useEffect } from 'react';
 import Empaty from './Empaty';
-import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { format} from 'timeago.js';
+import { Auth } from '../context/Auth';
 function Card({func}){
-    const {state,GetAllProjects} = Auth();
+    const {state} = Auth();
         const [Caafimaad,setCaafimaad] = useState(null)
         const [loading,setloading]= useState(false)
-
-    // const GetAllData = () => {
-    //   setCaafimaad(state.Caafimaad)
-    // }
-
-    // useEffect(() => {
-    //     GetAllProjects()
-    //     console.log(state)
-    // },[])
 
     useEffect(() => {
         setCaafimaad(state.Caafimaad)
@@ -78,7 +66,7 @@ function Card({func}){
             </div>
             ))}
         </>
-        :(Caafimaad && !Caafimaad) || (Caafimaad && Caafimaad === null) ?
+        :(loading && !loading) || (loading && loading === null) ?
         <p>loading ...</p>
         :
         <Empaty />

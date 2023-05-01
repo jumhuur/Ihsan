@@ -8,7 +8,7 @@ import SlideCompany from "../Components/slidecomp"
 import Counts from "../Components/Counts"
 import Fqa from "../Components/fqa"
 import Footer from "../Components/Footer"
-function Home({video_active, func , LoginFunc}){
+function Home({LoginFunc}){
     return (
         <>
             {/* <Video  video_active={video_active} func={func}/> */}

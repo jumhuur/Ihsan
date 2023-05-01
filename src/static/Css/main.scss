@@ -1,6 +1,5 @@
-
 //variables
-$theme:"Dark";
+$theme: "Dark";
 $main-color: #1b2a4e;
 $main-color2: #335eea;
 $color-Gaar: #42ba96;
@@ -19,10 +18,9 @@ $colose_color: #d02401;
   src: url(../Fonts/Roboto-Regular.ttf);
 }
 
-
 // all mixins
 
-@mixin reset_form($size,$color,$mrtb)  {
+@mixin reset_form($size, $color, $mrtb) {
   padding-left: 15px;
   padding-right: 15px;
   @include qoraal-p($size, $color);
@@ -31,14 +29,14 @@ $colose_color: #d02401;
   outline: none;
 }
 
-@mixin Shadaw_buttom{
+@mixin Shadaw_buttom {
   box-shadow: 0px 0px 12px 0px #d7d7d7a7;
 }
 
-@mixin dyshadow($kaw,$laba,$sadex,$afar){
+@mixin dyshadow($kaw, $laba, $sadex, $afar) {
   box-shadow: $kaw $laba $sadex $afar #d7d7d7a7;
 }
-@mixin qoraal-p($size, $color){
+@mixin qoraal-p($size, $color) {
   font-size: $size;
   color: $color;
   font-family: "font";
@@ -46,8 +44,7 @@ $colose_color: #d02401;
   line-height: 1.6;
 }
 
-
-@mixin Totile-H($size, $color){
+@mixin Totile-H($size, $color) {
   font-size: $size;
   color: $color;
   font-family: "font";
@@ -68,10 +65,10 @@ $colose_color: #d02401;
   background-color: $main-color2;
   transition: all 0.4s ease-in-out;
   text-transform: capitalize;
-  &:hover{
-    background-color:$hoverbtn;
+  &:hover {
+    background-color: $hoverbtn;
     transition: all 0.4s ease-in-out;
-    transform: translate(0px,5px);
+    transform: translate(0px, 5px);
   }
 }
 
@@ -81,9 +78,8 @@ $colose_color: #d02401;
   align-items: center;
   flex-flow: wrap $dir;
   text-transform: capitalize;
-  
 }
-@mixin dynamic-flex($js,$at,$dir,$dhex){
+@mixin dynamic-flex($js, $at, $dir, $dhex) {
   display: flex;
   justify-content: $js;
   align-items: $at;
@@ -92,43 +88,40 @@ $colose_color: #d02401;
   text-transform: capitalize;
 }
 
-@mixin Break-Points($Point){
-  @if($Point == xsm){
+@mixin Break-Points($Point) {
+  @if ($Point == xsm) {
     @media (min-width: 200px) and (max-width: 576px) {
-      @content
-    };
-
-  } @else if($Point == sm){
+      @content;
+    }
+  } @else if($Point == sm) {
     @media (min-width: 576px) and (max-width: 768px) {
-      @content
-    };
-  } @else if($Point == md){
+      @content;
+    }
+  } @else if($Point == md) {
     @media (min-width: 768px) and (max-width: 992px) {
-      @content
-    };
-  } @else if($Point == lg){
+      @content;
+    }
+  } @else if($Point == lg) {
     @media (min-width: 992px) and (max-width: 1200px) {
-      @content
-    };
-  } @else if($Point == xlg){
+      @content;
+    }
+  } @else if($Point == xlg) {
     @media (min-width: 1200px) and (max-width: 1400px) {
-      @content
-    };
-  } @else if($Point == xxlg){
+      @content;
+    }
+  } @else if($Point == xxlg) {
     @media (min-width: 1400px) {
-      @content
-    };
+      @content;
+    }
   }
-
 }
-
 
 // placeholders
 %reset-ul {
   position: relative;
   margin: 0;
   padding: 0;
-   li {
+  li {
     position: relative;
     margin: 0;
     padding: 0;
@@ -142,9 +135,8 @@ $colose_color: #d02401;
       display: block;
       text-transform: capitalize;
     }
-   }
+  }
 }
-
 
 %reset-link {
   text-decoration: none;
@@ -153,15 +145,13 @@ $colose_color: #d02401;
   height: 100%;
 }
 
-
 %reset-link_in {
   text-decoration: none;
   width: fit-content;
   height: fit-content;
 }
 
-
-%over_velow_elm{
+%over_velow_elm {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -170,7 +160,6 @@ $colose_color: #d02401;
   left: 0;
   right: 0;
 }
-
 
 %over_vallow_set {
   width: 100%;
@@ -185,11 +174,10 @@ $colose_color: #d02401;
   backdrop-filter: blur(12px);
   overflow: hidden;
   visibility: hidden;
-  @include dynamic-flex(center,center ,column ,0px );
+  @include dynamic-flex(center, center, column, 0px);
 }
 
-
-%colse_btn{
+%colse_btn {
   width: 25px;
   height: 25px;
   background-color: $colose_color;
@@ -200,40 +188,26 @@ $colose_color: #d02401;
   z-index: 99999;
   cursor: pointer;
   color: $bg-main;
-  @include dynamic-flex(center,center ,column ,0px);
+  @include dynamic-flex(center, center, column, 0px);
 }
 
+// controll if else
 
-
-// controll if else 
-
-
-
-
-
-
-
-
-*{
+* {
   scrollbar-color: #002d97 #ffffff;
   scrollbar-width: thin;
 }
 
+// html {
+//   scroll-behavior: smooth;
+// }
 
-  
-html{
-    scroll-behavior: smooth;
-}
-  
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    user-select:$main-color;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: $main-color;
 }
-
-
-
 
 /* width */
 ::-webkit-scrollbar {
@@ -251,85 +225,83 @@ html{
 // }
 
 ::-webkit-scrollbar-thumb {
-  background:$main-color;
+  background: $main-color;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-  
-.haye{
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+
+.haye {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
-.xajiye{
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+.xajiye {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
-
-
 
 // nav
-div.nav{
+div.nav {
   width: 100%;
   height: 80px;
   position: fixed;
   background-color: $bg-main;
   z-index: 999;
   @include Shadaw_buttom();
-  div.links{
+  div.links {
     width: 100%;
     height: 80px;
-    @include dynamic-flex(center,center ,row,0px);
-    div.logo{
-    flex: 2;
-    @include flex-box(column);
-    height: 100%;
-    border: none;
-    overflow: hidden;
-    a {
-      @extend %reset-link;
-      @include dynamic-flex(center,center ,row,0px);
-    }
-    p{
-      @include qoraal-p(1rem,$main-color2);
-      font-weight: normal;
-      i {
-        color: $main-color2;
+    @include dynamic-flex(center, center, row, 0px);
+    div.logo {
+      flex: 2;
+      @include flex-box(column);
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      a {
+        @extend %reset-link;
+        @include dynamic-flex(center, center, row, 0px);
+      }
+      p {
+        @include qoraal-p(1rem, $main-color2);
+        font-weight: normal;
+        i {
+          color: $main-color2;
+        }
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
       }
     }
 
-    img{
-      width: 50px;
-      height: 50px;
-    }
-    }
-
-    div.link-items{
+    div.link-items {
       flex: 4;
       @extend %reset-ul;
-      @include dynamic-flex(center,center ,column,0px );
+      @include dynamic-flex(center, center, column, 0px);
       height: 100%;
       ul {
         width: 100%;
         height: 100%;
-        @include dynamic-flex(center,center ,row,20px);
-        @include qoraal-p(16px,$qoraalo-color);
-       
-         li {
-          @include qoraal-p(16px,$qoraalo-color);
+        @include dynamic-flex(center, center, row, 20px);
+        @include qoraal-p(16px, $qoraalo-color);
+
+        li {
+          @include qoraal-p(16px, $qoraalo-color);
           height: 100%;
-          @include dynamic-flex(center,center ,column ,0px);
+          @include dynamic-flex(center, center, column, 0px);
           cursor: pointer;
           font-weight: 500;
           transition: all 0.4s ease-in-out;
@@ -337,110 +309,108 @@ div.nav{
             font-size: 12px;
             font-weight: bold;
           }
-          &:hover{
+          &:hover {
             color: $main-color2;
           }
           a {
-            @include dynamic-flex(center,center ,column,0px );
-            @include qoraal-p(16px,$qoraalo-color);
+            @include dynamic-flex(center, center, column, 0px);
+            @include qoraal-p(16px, $qoraalo-color);
             height: 100%;
-            padding:15px;
+            padding: 15px;
             font-weight: 500;
             transition: all 0.4s ease-in-out;
-            &:hover{
+            &:hover {
               color: $main-color2;
             }
           }
-         }
+        }
       }
     }
-    div.action-btn{
+    div.action-btn {
       flex: 2;
       height: 100%;
-      @include dynamic-flex(center,center ,column,0px );
-      
-      button.nav-btn{
+      @include dynamic-flex(center, center, column, 0px);
+
+      button.nav-btn {
         @include btn-web(50%);
         a {
-            @extend %reset-link;
-            @include dynamic-flex(center, center, column, 0px);
-            span {
-              color: $bg-main;
-            }
+          @extend %reset-link;
+          @include dynamic-flex(center, center, column, 0px);
+          span {
+            color: $bg-main;
           }
+        }
       }
     }
   }
 }
 
-
 // homepage welcome
-div.welcome{
+div.welcome {
   width: 100%;
   height: 100%;
   //margin-bottom: 80px;
   padding: 75px 10px;
-  @if($theme == "light"){
+  @if ($theme == "light") {
     background-color: $bg-main;
   } @else {
     background-color: $main-color;
   }
-  div.labaqaybood{
+  div.labaqaybood {
     width: 100%;
     height: 100%;
-    @include dynamic-flex(center,center ,row ,10px );
-    div.qayb{
+    @include dynamic-flex(center, center, row, 10px);
+    div.qayb {
       width: calc(95% / 2);
-      &.qorall{
+      &.qorall {
         height: 100%;
         padding: 10px;
         font-weight: normal;
         h2 {
           letter-spacing: 0.2;
-          @if($theme == "light"){
+          @if ($theme == "light") {
             @include Totile-H(3rem, $madaw);
           } @else {
             @include Totile-H(3rem, $bg-main);
           }
-         
-          font-weight: normal;   
+
+          font-weight: normal;
           margin-top: 85px;
           line-height: 1.5;
           span {
             color: $main-color2;
-          }   
+          }
         }
 
         p {
-          @include qoraal-p(20px,$qoraalo-color);
+          @include qoraal-p(20px, $qoraalo-color);
           line-height: 1.6;
           margin: 25px 0px;
           font-weight: normal;
         }
 
-        div.btn-welc{
+        div.btn-welc {
           width: 100%;
           height: 100%;
           padding: 40px 5px;
-          @include dynamic-flex(flex-start,center ,row ,10px);
+          @include dynamic-flex(flex-start, center, row, 10px);
           button {
             @include btn-web(40%);
             a {
-            @extend %reset-link;
-            @include dynamic-flex(center, center, column, 0px);
+              @extend %reset-link;
+              @include dynamic-flex(center, center, column, 0px);
               span {
                 color: $bg-main;
               }
-              }
+            }
           }
-          button.Xaqiijin{
+          button.Xaqiijin {
             background-color: $btn_gaar;
             color: $title-color;
             font-weight: normal;
-            &:hover{
+            &:hover {
               @include Shadaw_buttom();
               transition: all 0.4s ease;
-
             }
 
             a {
@@ -449,14 +419,14 @@ div.welcome{
           }
         }
       }
-    } 
+    }
 
-    div.qayb{
-      &.sawir{
+    div.qayb {
+      &.sawir {
         height: 100%;
         //background-color: $madaw;
         img {
-          width:100%;
+          width: 100%;
           height: 100%;
           object-fit: contain;
         }
@@ -465,22 +435,20 @@ div.welcome{
   }
 }
 
+// tirokoobyo
 
-
-// tirokoobyo 
-
-section.tirokoobyo{
+section.tirokoobyo {
   width: 100%;
   height: 100%;
   margin: 10px 0px;
   padding: 15px 0px;
-  div.cards_tirokoob{
+  div.cards_tirokoob {
     width: 100%;
     height: 100%;
-    @include dynamic-flex(center,center ,row, 35px);
-    div.card{
+    @include dynamic-flex(center, center, row, 35px);
+    div.card {
       width: calc(90% / 3);
-      div.icon{
+      div.icon {
         width: 100%;
         padding: 10px 0px;
         svg {
@@ -488,58 +456,56 @@ section.tirokoobyo{
           height: 100%;
         }
       }
-      div.qoraal{
+      div.qoraal {
         h2 {
-          @include Totile-H(22px,$madaw );
+          @include Totile-H(22px, $madaw);
           padding: 10px 0px;
           font-weight: normal;
         }
 
         p {
-          @include qoraal-p(16px ,$qoraalo-color )
+          @include qoraal-p(16px, $qoraalo-color);
         }
       }
-
     }
   }
 }
 
-
 // slide companes
-div.slide{
+div.slide {
   margin: 20px 0px;
   padding: 10px 0px;
-  div.haye{
-    div.comp{
+  div.haye {
+    div.comp {
       height: 150px;
       overflow: hidden;
       padding: 10px 10px;
-      div.shay{
-        @include dynamic-flex(center,center ,column ,0px );
+      div.shay {
+        @include dynamic-flex(center, center, column, 0px);
         height: 100%;
         border-radius: 7px;
         img {
           width: 120px;
           object-fit: cover;
-        &.wayn{
-          width: 80px;
-        }
-        &.yar{
-          width: 100%;
-        }
+          &.wayn {
+            width: 80px;
+          }
+          &.yar {
+            width: 100%;
+          }
         }
       }
     }
   }
 
   .carousel-next {
-    &:before{
+    &:before {
       background-image: url("../Images/arrow-right-solid.svg");
     }
   }
 
-  .carousel-prev{
-    &:before{
+  .carousel-prev {
+    &:before {
       background-image: url("../Images/arrow-left-solid.svg");
     }
   }
@@ -557,44 +523,40 @@ div.slide{
   }
 }
 
-
-
-
-// ayad 
-div.ayad{
+// ayad
+div.ayad {
   width: 100%;
   height: 125px;
   background-color: $main-color;
-  @include dynamic-flex(center,center ,column ,0px);
+  @include dynamic-flex(center, center, column, 0px);
   user-select: none;
-  div.nas_ayad{
+  div.nas_ayad {
     width: 100%;
     height: 100%;
     padding: 10px 10px;
-    @include dynamic-flex(center,center ,column ,0px);
+    @include dynamic-flex(center, center, column, 0px);
     user-select: none;
   }
 }
 
-
 // Projects
-div.Projects{
+div.Projects {
   width: 100%;
   height: 100%;
   margin: 25px 0px;
-  h2.pro_title{
+  h2.pro_title {
     @include Totile-H(22px, $main-color2);
     padding: 20px 50px;
   }
-  div.qaybha{
+  div.qaybha {
     width: 100%;
     height: 100%;
     position: relative;
-    @include dynamic-flex(center,center ,row ,10px);
-    div.qayb{
+    @include dynamic-flex(center, center, row, 10px);
+    div.qayb {
       height: 50px;
       width: calc(95% / 5);
-      @include dynamic-flex(center,center ,row ,0px);
+      @include dynamic-flex(center, center, row, 0px);
       //background-color: $main-color;
       border-radius: 2px;
       cursor: pointer;
@@ -603,15 +565,15 @@ div.Projects{
       //border-bottom: solid 1px $main-color2;
       transition: all 0.4s ease;
       border: solid 1.5px $bg-main;
-      div.icon_Q{
+      div.icon_Q {
         width: 100%;
         height: 100%;
         padding: 0px 0px;
         a {
           @extend %reset-link;
-          @include dynamic-flex(center,center ,row ,0px);
+          @include dynamic-flex(center, center, row, 0px);
 
-          &.active{
+          &.active {
             background-color: $main-color2;
             //border-bottom: solid 1.5px $main-color2;
             transition: all 0.4s ease;
@@ -627,9 +589,8 @@ div.Projects{
           }
         }
       }
-      
 
-      &:hover{
+      &:hover {
         background-color: $main-color2;
         transition: all 0.4s ease;
         border-radius: 5px;
@@ -642,7 +603,7 @@ div.Projects{
           }
         }
       }
-      p{
+      p {
         @include qoraal-p(17px, $madaw);
         i {
           color: $main-color2;
@@ -652,14 +613,14 @@ div.Projects{
     }
   }
 
-  div.prog_one{
+  div.prog_one {
     width: 100%;
     height: 100%;
     //background-color: $color-Gaar;
-    @include dynamic-flex(center,center ,row , 15px);
+    @include dynamic-flex(center, center, row, 15px);
     margin: 20px 0px;
     padding: 50px 0px;
-    div.card_mashruuc{
+    div.card_mashruuc {
       margin: 5px 0px;
       padding: 10px 10px;
       width: calc(95% / 3);
@@ -672,17 +633,16 @@ div.Projects{
       overflow: hidden;
       transition: all 0.4s ease-in-out;
       position: relative;
-      &:hover{
+      &:hover {
         //transform: translate(0px,18px);
         transition: all 0.4s ease-in-out;
-        div.img_or_vid{
-          div.over_verlow_video{
+        div.img_or_vid {
+          div.over_verlow_video {
             transform: translate(0px, 0px);
-         
           }
         }
       }
-      div.img_or_vid{
+      div.img_or_vid {
         width: 100%;
         height: 200px;
         background-color: $madaw;
@@ -692,7 +652,7 @@ div.Projects{
         border-radius: 5px;
         position: relative;
         z-index: 11;
-        div.over_verlow_video{
+        div.over_verlow_video {
           @extend %over_velow_elm;
           background-color: $color_over;
           z-index: 1;
@@ -701,28 +661,28 @@ div.Projects{
           transition: all 0.6s ease-in-out;
           @include flex-box(column);
           div.hadaf_and_asal {
-              @include dynamic-flex(space-evenly, center, row, 20px);
-              height: 100%;
-              @include qoraal-p(20px, $bg-main);
-          
-              // div.Asal {
-              // background-color: $main-color2;
-              // border-radius: 15px;
-              // padding: 0px 3px;
-              // }
-          
-              // div.Hadaf{
-              // background-color: $main-color2;
-              //   border-radius: 15px;
-              //   padding: 0px 3px;
-              // }
-              // p.lcg{
-              //   width: calc(60% / 1);
-              // }
-              i {
-                color: $bg-main;
-              }
+            @include dynamic-flex(space-evenly, center, row, 20px);
+            height: 100%;
+            @include qoraal-p(20px, $bg-main);
+
+            // div.Asal {
+            // background-color: $main-color2;
+            // border-radius: 15px;
+            // padding: 0px 3px;
+            // }
+
+            // div.Hadaf{
+            // background-color: $main-color2;
+            //   border-radius: 15px;
+            //   padding: 0px 3px;
+            // }
+            // p.lcg{
+            //   width: calc(60% / 1);
+            // }
+            i {
+              color: $bg-main;
             }
+          }
         }
         img {
           width: 100%;
@@ -731,19 +691,18 @@ div.Projects{
         }
       }
 
-      div.desc{
+      div.desc {
         width: 100%;
         padding: 5px 0px;
         h2 {
           @include Totile-H(20px, $madaw);
           font-weight: normal;
           padding: 5px 5px;
-          &:hover{
+          &:hover {
             color: $main-color2;
-          text-decoration: underline;
-          cursor: pointer;
+            text-decoration: underline;
+            cursor: pointer;
           }
-          
         }
 
         p {
@@ -751,24 +710,24 @@ div.Projects{
           padding: 5px 5px;
         }
       }
-      div.progress{
+      div.progress {
         width: 95%;
         height: 15px;
         background-color: $prog_color;
         margin: 10px 15px;
         border-radius: 7px;
         overflow: hidden;
-        span{
+        span {
           height: 100%;
           display: block;
           background-color: $main-color2;
-          @include dynamic-flex(center,flex-end ,column,0px);
+          @include dynamic-flex(center, flex-end, column, 0px);
           color: $bg-main;
           font-size: 13px;
           font-weight: bold;
           font-family: "font";
           border-radius: 7px;
-          span{
+          span {
             width: 30px;
             height: 30px;
             background-color: $main-color2;
@@ -782,24 +741,23 @@ div.Projects{
         width: 100%;
         margin: 10px 0px;
       }
-      div.btn_tabaruc{
+      div.btn_tabaruc {
         width: 100%;
         height: 100%;
         @include flex-box(column);
         padding: 10px 0px;
-      button.Daawo {
+        button.Daawo {
           @include btn-web(95%);
           border-radius: 7px;
           height: 50px;
-      
+
           a {
             @extend %reset-link;
             @include flex-box(column);
-      
+
             span {
               color: $bg-main;
             }
-      
           }
         }
       }
@@ -827,60 +785,52 @@ div.Projects{
           color: $color-Gaar;
         }
       }
-
-
     }
   }
 }
 
+div.empaty {
+  width: 100%;
+  height: 100%;
+  //background-color: $main-color2;
+  @include flex-box(column);
 
-
-  div.empaty {
+  div.sawir {
     width: 100%;
-    height: 100%;
-    //background-color: $main-color2;
-    @include flex-box(column);
-
-    div.sawir{
+    height: 400px;
+    img {
       width: 100%;
-      height: 400px;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      height: 100%;
     }
-
-    p {
-      @include qoraal-p(1.50rem,$main-color2);
-      font-weight: normal;
-    }
-
   }
 
-
+  p {
+    @include qoraal-p(1.5rem, $main-color2);
+    font-weight: normal;
+  }
+}
 
 // about
 
-
-div.about{
+div.about {
   width: 100%;
   height: 100%;
   margin: 35px 0px;
-  div.war_laba_qaybood{
+  div.war_laba_qaybood {
     width: 100%;
     height: 100%;
-    @include dynamic-flex(space-between,center ,row , 0px);
-    div.qayb{
+    @include dynamic-flex(space-between, center, row, 0px);
+    div.qayb {
       width: calc(97% / 2);
       &.bidix {
-        div.bidix_decr{
+        div.bidix_decr {
           width: 100%;
           height: 100%;
           padding: 15px 0px;
           h2 {
             @include Totile-H(2.3rem, $madaw);
             font-weight: normal;
-            span{
+            span {
               color: $main-color2;
             }
           }
@@ -892,19 +842,19 @@ div.about{
             padding: 5px 0px;
           }
         }
-        div.warbixinta{
+        div.warbixinta {
           width: 100%;
           height: 100%;
-          div.war{
+          div.war {
             width: 100%;
             height: 100%;
             margin: 15px 0px;
             padding: 15px 0px;
-            @include dynamic-flex(center,center ,row ,0px);
-            div.icon_sawir{
+            @include dynamic-flex(center, center, row, 0px);
+            div.icon_sawir {
               height: 80px;
               padding: 15px 0px;
-              @include dynamic-flex(flex-start,center ,column,0px);
+              @include dynamic-flex(flex-start, center, column, 0px);
               flex: 1;
               svg {
                 width: 100%;
@@ -912,9 +862,9 @@ div.about{
               }
             }
 
-            div.qoraal_war{
+            div.qoraal_war {
               flex: 6;
-              h2{
+              h2 {
                 @include Totile-H(1.2rem, $madaw);
                 font-weight: normal;
               }
@@ -922,26 +872,24 @@ div.about{
               p {
                 @include qoraal-p(17px, $qoraalo-color);
               }
-             
             }
           }
-      
         }
       }
-      &.midig{
+      &.midig {
         height: 100%;
         overflow: hidden;
-       img {
-        width: 100%;
-        height: 100%;
-        transform: rotateY(-35deg) rotateX(15deg);
-       } 
+        img {
+          width: 100%;
+          height: 100%;
+          transform: rotateY(-35deg) rotateX(15deg);
+        }
       }
     }
   }
 }
 
-div.Counts{
+div.Counts {
   width: 100%;
   height: 100%;
   margin: 35px 0px;
@@ -949,7 +897,7 @@ div.Counts{
   position: relative;
   overflow: hidden;
   padding-top: 5%;
-  div.wave{
+  div.wave {
     width: 100%;
     height: 250px;
     top: 0;
@@ -958,21 +906,21 @@ div.Counts{
     background-image: url("../Images/wave_02.svg");
     background-size: cover;
   }
-  div.war_laba_qaybood{
+  div.war_laba_qaybood {
     width: 100%;
     height: 100%;
-    @include dynamic-flex(space-between,center ,row , 0px);
-    div.qayb{
+    @include dynamic-flex(space-between, center, row, 0px);
+    div.qayb {
       width: calc(97% / 2);
       &.bidix {
-        div.bidix_decr{
+        div.bidix_decr {
           width: 100%;
           height: 100%;
           padding: 15px 0px;
           h2 {
             @include Totile-H(2.3rem, $madaw);
             font-weight: normal;
-            span{
+            span {
               color: $main-color2;
             }
           }
@@ -984,19 +932,19 @@ div.Counts{
             padding: 5px 0px;
           }
         }
-        div.warbixinta{
+        div.warbixinta {
           width: 100%;
           height: 100%;
-          div.war{
+          div.war {
             width: 100%;
             height: 100%;
             margin: 15px 0px;
             padding: 15px 0px;
-            @include dynamic-flex(center,center ,row ,0px);
-            div.icon_sawir{
+            @include dynamic-flex(center, center, row, 0px);
+            div.icon_sawir {
               height: 80px;
               padding: 15px 0px;
-              @include dynamic-flex(flex-start,center ,column,0px);
+              @include dynamic-flex(flex-start, center, column, 0px);
               flex: 1;
               svg {
                 width: 100%;
@@ -1004,9 +952,9 @@ div.Counts{
               }
             }
 
-            div.qoraal_war{
+            div.qoraal_war {
               flex: 6;
-              h2{
+              h2 {
                 @include Totile-H(1.2rem, $madaw);
                 font-weight: normal;
               }
@@ -1014,69 +962,61 @@ div.Counts{
               p {
                 @include qoraal-p(17px, $qoraalo-color);
               }
-             
             }
           }
-      
         }
       }
-      &.midig{
+      &.midig {
         height: 100%;
         overflow: hidden;
-       img {
-        width: 100%;
-        height: 100%;
-        //transform: rotateY(-35deg) rotateX(15deg);
-       } 
+        img {
+          width: 100%;
+          height: 100%;
+          //transform: rotateY(-35deg) rotateX(15deg);
+        }
       }
     }
   }
 }
 
-
-
 // video
-  div.h_video{
-      @include dynamic-flex(center,center ,column ,0px);
-      width: 100%;
-      height: 100%;
-      visibility: visible;
-  }
-    div.video{
-      width: 100%;
-      padding: 5px 5px;;
-      background-color: $bg-main;
-      border-radius: 7px;
-      @include dynamic-flex(center,center ,column ,0px);
-      @include dyshadow(0px, 0px, 12px, 0px);
-      div.video_content{
-        width: 98%;
-        height: 98%;
-        background-color: $main-color2;
-        padding-bottom: 0px;
-        overflow: hidden;
-        border-radius: 5px;
-        position: relative;
-        div.close_video{
-          @extend %colse_btn;
-        }
-      }
+div.h_video {
+  @include dynamic-flex(center, center, column, 0px);
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+}
+div.video {
+  width: 100%;
+  padding: 5px 5px;
+  background-color: $bg-main;
+  border-radius: 7px;
+  @include dynamic-flex(center, center, column, 0px);
+  @include dyshadow(0px, 0px, 12px, 0px);
+  div.video_content {
+    width: 98%;
+    height: 98%;
+    background-color: $main-color2;
+    padding-bottom: 0px;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    div.close_video {
+      @extend %colse_btn;
     }
-
-
-
+  }
+}
 
 // faq
 
-
-div.faq{
+div.faq {
   width: 100%;
   height: 100%;
   margin: 50px 0px;
   padding: 20px 0px;
   padding-top: 0px;
   background-color: $bg-main;
-  div.wave_02{
+  div.wave_02 {
     width: 100%;
     //position: absolute;
     top: 0;
@@ -1086,24 +1026,24 @@ div.faq{
     background-size: cover;
   }
 
-  div.suaalo{
+  div.suaalo {
     width: 100%;
     height: 100%;
     padding: 20px 0px;
-    @include dynamic-flex(center,center ,row ,0px );
-    div.labaqayb{
+    @include dynamic-flex(center, center, row, 0px);
+    div.labaqayb {
       width: calc(100% / 2);
       height: 100%;
       padding: 25px 0px;
       //background-color: #029f70;
       @include dynamic-flex(center, center, column, 20px);
-      div.hal_dhinac{
+      div.hal_dhinac {
         width: 100%;
         height: 100%;
         //background-color: #029f70;
         padding: 10px 0px;
         @include dynamic-flex(center, center, row, 0px);
-        div.icon_bes{
+        div.icon_bes {
           height: 80px;
           flex: 1;
           //background-color: $main-color2;
@@ -1111,7 +1051,7 @@ div.faq{
           @include dynamic-flex(center, flex-start, row, 0px);
           font-size: 1.6rem;
         }
-        div.qoraal{
+        div.qoraal {
           flex: 6;
           h2 {
             @include Totile-H(1.1rem, $madaw);
@@ -1122,26 +1062,25 @@ div.faq{
             @include qoraal-p(16px, $qoraalo-color);
             font-weight: normal;
           }
-         
         }
       }
-        div.qayb_suaal{
+      div.qayb_suaal {
         width: 100%;
         height: 100%;
         padding: 5px 0px;
-          @include dynamic-flex(center, center, column, 20px);
-        }
+        @include dynamic-flex(center, center, column, 20px);
+      }
     }
 
-    div.btn_start{
+    div.btn_start {
       width: 80%;
       height: 100%;
       padding: 25px 0px;
       @include dynamic-flex(center, center, column, 15px);
-      div.qoraalo_btn_start{
+      div.qoraalo_btn_start {
         @include dynamic-flex(center, center, column, 15px);
         h2 {
-          @include Totile-H(1.7rem,$madaw);
+          @include Totile-H(1.7rem, $madaw);
           font-weight: normal;
         }
 
@@ -1155,7 +1094,7 @@ div.faq{
       button {
         @include btn-web(35%);
         background-color: $color-Gaar;
-        &:hover{
+        &:hover {
           background-color: #029f70;
         }
       }
@@ -1163,92 +1102,84 @@ div.faq{
   }
 }
 
+// foote
 
-
-// foote 
-
-
-div.footer{
+div.footer {
   width: 100%;
   height: 100%;
   margin: 25px 0px;
   margin-bottom: 0px;
   background-color: $main-color;
   padding: 30px 0px;
-  div.footer_contenet{
+  div.footer_contenet {
     width: 100%;
     height: 100%;
     padding: 25px 0px;
-    @include dynamic-flex(center,center ,column ,22px );
-        div.logo {
-            flex: 2;
-            @include flex-box(column);
-            height: 100%;
-            border: none;
-            img {
-                width: 50px;
-                height: 50px;
-            }
-            a {
-              @extend %reset-link;
-              @include dynamic-flex(center, center, row, 0px);
-            }
-        
-            p {
-              @include qoraal-p(1rem, $main-color2);
-              font-weight: normal;
-        
-              i {
-                color: $main-color2;
-              }
-            }
-          }
+    @include dynamic-flex(center, center, column, 22px);
+    div.logo {
+      flex: 2;
+      @include flex-box(column);
+      height: 100%;
+      border: none;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      a {
+        @extend %reset-link;
+        @include dynamic-flex(center, center, row, 0px);
+      }
 
-          div.q_footer{
-            p{
-              @include qoraal-p(17px, $bg-main);
-              a {
-                @extend %reset-link;
-                width: fit-content;
-                display: inline;
-                color: $color-Gaar;
-              }
-            }
-            
+      p {
+        @include qoraal-p(1rem, $main-color2);
+        font-weight: normal;
 
-          }
+        i {
+          color: $main-color2;
+        }
+      }
+    }
+
+    div.q_footer {
+      p {
+        @include qoraal-p(17px, $bg-main);
+        a {
+          @extend %reset-link;
+          width: fit-content;
+          display: inline;
+          color: $color-Gaar;
+        }
+      }
+    }
   }
 }
 
-
-
-
-// login 
-div.over{
+// login
+div.over {
   @extend %over_vallow_set;
-  @include dynamic-flex(center,center ,column ,0px);
-  div.inhaye{
+  @include dynamic-flex(center, center, column, 0px);
+  div.inhaye {
     @include dynamic-flex(center, center, column, 0px);
     overflow: hidden;
     border-radius: 10px;
   }
-  &.active{
+  &.active {
     visibility: visible;
   }
 
-  div.login{
+  div.login {
     width: 70%;
     height: 100%;
     background-color: $bg-main;
     border-radius: 10px;
-    @include dynamic-flex(center,center ,row , 10px);
+    @include dynamic-flex(center, center, row, 10px);
     padding: 15px 0px;
-    div.llc{
+    div.llc {
       height: 100%;
       width: calc(95% / 2);
       //background-color: $madaw;
       @include dynamic-flex(center, center, row, 0px);
-      &.bidix_login{
+      &.bidix_login {
         img {
           width: 100%;
           object-fit: cover;
@@ -1260,74 +1191,69 @@ div.over{
         @include dynamic-flex(center, center, column, 0px);
         position: relative;
         div.close {
-            @extend %colse_btn;
-            background-color: $main-color2;
-            i {
+          @extend %colse_btn;
+          background-color: $main-color2;
+          i {
             color: $bg-main;
-            }
-            
+          }
         }
-        .from{
-        width: 100%;
-        height: 100%;
-        //background-color: $main-color;
-        @include dynamic-flex(center, center, column, 0px);
-        div.dhinac_l{
+        .from {
           width: 100%;
-          padding: 5px 0px;
-          //background-color: $color-Gaar;
+          height: 100%;
+          //background-color: $main-color;
           @include dynamic-flex(center, center, column, 0px);
-
-          h2 {
-            @include Totile-H(2rem,$madaw);
-            font-weight: normal;
-          }
-          p {
-            @include qoraal-p(16px,$qoraalo-color );
-            font-weight: normal;
-            &.Error{
-              color: $colose_color;
-              font-size: 19px;
-            }
-          }
-
-          &.inputs_login{
+          div.dhinac_l {
+            width: 100%;
+            padding: 5px 0px;
             //background-color: $color-Gaar;
-            input{
-              @include reset_form(17px, $main-color , 10px);
+            @include dynamic-flex(center, center, column, 0px);
+
+            h2 {
+              @include Totile-H(2rem, $madaw);
               font-weight: normal;
-              height: 55px;
-              width: 85%;
-              border: solid 1px #335eea29;
-              border-radius: 7px;
-              &:focus{
-              border: solid 1px $main-color2;
+            }
+            p {
+              @include qoraal-p(16px, $qoraalo-color);
+              font-weight: normal;
+              &.Error {
+                color: $colose_color;
+                font-size: 19px;
               }
             }
 
-            button{
-              @include btn-web(65%)
-            }
+            &.inputs_login {
+              //background-color: $color-Gaar;
+              input {
+                @include reset_form(17px, $main-color, 10px);
+                font-weight: normal;
+                height: 55px;
+                width: 85%;
+                border: solid 1px #335eea29;
+                border-radius: 7px;
+                &:focus {
+                  border: solid 1px $main-color2;
+                }
+              }
 
-            p.Bilaa_akoon{
-              margin-top: 15px;
-              font-size: 17px;
+              button {
+                @include btn-web(65%);
+              }
+
+              p.Bilaa_akoon {
+                margin-top: 15px;
+                font-size: 17px;
+              }
             }
-           
           }
         }
       }
-      }
-
     }
   }
 }
 
-
-
 // alert_payments
 
-div.over_alert{
+div.over_alert {
   //@extend %over_vallow_set;
   @include flex-box(column);
   position: fixed;
@@ -1339,26 +1265,26 @@ div.over_alert{
   // backdrop-filter: blur(12px);
   @include Shadaw_buttom();
   visibility: hidden;
-  &.active{
+  &.active {
     visibility: visible;
   }
-  div.in_haye_alert{
+  div.in_haye_alert {
     width: 100%;
     height: 100%;
     z-index: 45;
     @include dynamic-flex(center, center, column, 0px);
-  div.alert {
+    div.alert {
       width: 100%;
       height: 100%;
       background-color: $bg-main;
       border-radius: 5px;
       padding: 15px 0px;
       //background-color: $main-color2;
-      div.close{
+      div.close {
         @extend %colse_btn;
         background-color: $main-color2;
         i {
-        color: $bg-main;
+          color: $bg-main;
         }
       }
 
@@ -1373,16 +1299,16 @@ div.over_alert{
       }
     }
 
-    div.load_qoraal{
+    div.load_qoraal {
       width: 100%;
       height: 100%;
       //background-color: $main-color2;
       @include dynamic-flex(center, center, row, 0px);
-      div.load{
+      div.load {
         width: 100%;
         @include dynamic-flex(center, center, row, 0px);
         &.Qalad {
-        i {
+          i {
             color: $colose_color;
             font-size: 28px;
             margin: 12px 0px;
@@ -1400,128 +1326,123 @@ div.over_alert{
           }
         }
         .sk-chase {
-            width: 25px;
-            height: 25px;
-            position: relative;
-            animation: sk-chase 2.5s infinite linear both;
-          }
+          width: 25px;
+          height: 25px;
+          position: relative;
+          animation: sk-chase 2.5s infinite linear both;
+        }
 
-          .sk-chase-dot {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            animation: sk-chase-dot 2.0s infinite ease-in-out both;
-          }
-
-          .sk-chase-dot:before {
-            content: '';
-            display: block;
-            width: 25%;
-            height: 25%;
-            background-color: $main-color2;
-            border-radius: 100%;
-            animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
-          }
-
-          .sk-chase-dot:nth-child(1) {
-            animation-delay: -1.1s;
-          }
-
-          .sk-chase-dot:nth-child(2) {
-            animation-delay: -1.0s;
-          }
-
-          .sk-chase-dot:nth-child(3) {
-            animation-delay: -0.9s;
-          }
-
-          .sk-chase-dot:nth-child(4) {
-            animation-delay: -0.8s;
-          }
-
-          .sk-chase-dot:nth-child(5) {
-            animation-delay: -0.7s;
-          }
-
-          .sk-chase-dot:nth-child(6) {
-            animation-delay: -0.6s;
-          }
-
-          .sk-chase-dot:nth-child(1):before {
-            animation-delay: -1.1s;
-          }
-
-          .sk-chase-dot:nth-child(2):before {
-            animation-delay: -1.0s;
-          }
-
-          .sk-chase-dot:nth-child(3):before {
-            animation-delay: -0.9s;
-          }
-
-          .sk-chase-dot:nth-child(4):before {
-            animation-delay: -0.8s;
-          }
-
-          .sk-chase-dot:nth-child(5):before {
-            animation-delay: -0.7s;
-          }
-
-          .sk-chase-dot:nth-child(6):before {
-            animation-delay: -0.6s;
-          }
-
-          @keyframes sk-chase {
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-
-          @keyframes sk-chase-dot {
-
-            80%,
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-
-          @keyframes sk-chase-dot-before {
-            50% {
-              transform: scale(0.4);
-            }
-
-            100%,
-            0% {
-              transform: scale(1.0);
-            }
-          }
-    }
-
-      div.qoraal{
+        .sk-chase-dot {
           width: 100%;
-          @include flex-box(column);
-          h2 {
-            @include Totile-H(1.2rem, $madaw);
-            font-weight: normal;
-            &.qalad{
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          animation: sk-chase-dot 2s infinite ease-in-out both;
+        }
+
+        .sk-chase-dot:before {
+          content: "";
+          display: block;
+          width: 25%;
+          height: 25%;
+          background-color: $main-color2;
+          border-radius: 100%;
+          animation: sk-chase-dot-before 2s infinite ease-in-out both;
+        }
+
+        .sk-chase-dot:nth-child(1) {
+          animation-delay: -1.1s;
+        }
+
+        .sk-chase-dot:nth-child(2) {
+          animation-delay: -1s;
+        }
+
+        .sk-chase-dot:nth-child(3) {
+          animation-delay: -0.9s;
+        }
+
+        .sk-chase-dot:nth-child(4) {
+          animation-delay: -0.8s;
+        }
+
+        .sk-chase-dot:nth-child(5) {
+          animation-delay: -0.7s;
+        }
+
+        .sk-chase-dot:nth-child(6) {
+          animation-delay: -0.6s;
+        }
+
+        .sk-chase-dot:nth-child(1):before {
+          animation-delay: -1.1s;
+        }
+
+        .sk-chase-dot:nth-child(2):before {
+          animation-delay: -1s;
+        }
+
+        .sk-chase-dot:nth-child(3):before {
+          animation-delay: -0.9s;
+        }
+
+        .sk-chase-dot:nth-child(4):before {
+          animation-delay: -0.8s;
+        }
+
+        .sk-chase-dot:nth-child(5):before {
+          animation-delay: -0.7s;
+        }
+
+        .sk-chase-dot:nth-child(6):before {
+          animation-delay: -0.6s;
+        }
+
+        @keyframes sk-chase {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes sk-chase-dot {
+          80%,
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes sk-chase-dot-before {
+          50% {
+            transform: scale(0.4);
+          }
+
+          100%,
+          0% {
+            transform: scale(1);
+          }
+        }
+      }
+
+      div.qoraal {
+        width: 100%;
+        @include flex-box(column);
+        h2 {
+          @include Totile-H(1.2rem, $madaw);
+          font-weight: normal;
+          &.qalad {
             @include Totile-H(1.2rem, $colose_color);
-            }
+          }
           &.Sax {
             @include Totile-H(1.2rem, $color-Gaar);
           }
-          }
+        }
       }
     }
   }
-
-
 }
 
-
-
-// page Projects style  all parts 
+// page Projects style  all parts
 
 div.well {
   width: 100%;
@@ -1569,22 +1490,22 @@ div.laba_qaybood {
     }
 
     &.Pyments {
-      flex: 3.50;
+      flex: 3.5;
 
-      div.trakoobyo{
+      div.trakoobyo {
         width: 100%;
         height: 100%;
         padding: 5px 0px;
         //background-color: $main-color;
-        div.tiro{
+        div.tiro {
           width: 100%;
           height: 100%;
-          @include dynamic-flex(flex-start,center ,row,15px);
-          div.lahayo{
+          @include dynamic-flex(flex-start, center, row, 15px);
+          div.lahayo {
             // width: calc(60% / 2);
             //background-color: $main-color2;
-            @include dynamic-flex(center,center ,row,5px );
-            div.icon{
+            @include dynamic-flex(center, center, row, 5px);
+            div.icon {
               flex: 2;
               height: 50px;
               //background-color: $main-color2;
@@ -1593,12 +1514,12 @@ div.laba_qaybood {
                 width: 75;
                 height: 75%;
               }
-               i {
+              i {
                 color: $main-color2;
                 font-size: 25px;
-               }
+              }
             }
-            div.qoraal{
+            div.qoraal {
               flex: 4;
               h2 {
                 @include Totile-H(1.1rem, $title-color);
@@ -1606,11 +1527,10 @@ div.laba_qaybood {
                 padding: 7px 0px;
               }
               p {
-                @include qoraal-p(22px,$qoraalo-color);
+                @include qoraal-p(22px, $qoraalo-color);
                 padding: 3px 3px;
               }
             }
-
           }
         }
       }
@@ -1734,9 +1654,6 @@ div.laba_qaybood {
                         }
                       }
                     }
-
-
-
                   }
                 }
 
@@ -1810,7 +1727,7 @@ div.laba_qaybood {
                   }
                 }
 
-                >span.Ll {
+                > span.Ll {
                   position: absolute;
                   width: 65px;
                   height: 80%;
@@ -1834,15 +1751,14 @@ div.laba_qaybood {
                 // &.loadbtn{
                 //   cursor: not-allowed;
                 //   background-color: $btn_gaar;
-               // }
+                // }
               }
-
             }
           }
         }
       }
     }
-    &.muuqaal{
+    &.muuqaal {
       flex: 5;
       //height: 400px;
       //background-color: $main-color2;
@@ -1852,7 +1768,7 @@ div.laba_qaybood {
         object-fit: cover;
       }
 
-      div.last_donote  {
+      div.last_donote {
         width: 100%;
         height: 100%;
         margin: 15px 0px;
@@ -1861,48 +1777,44 @@ div.laba_qaybood {
           padding: 5px 15px;
           font-weight: normal;
         }
-        div.tabaruc{
+        div.tabaruc {
           width: 100%;
           height: 100%;
           padding: 3px 0px;
-          border-radius: 2px;
+          border-radius: 5px;
           margin: 18px 0px;
           @include dyshadow(0px, 0px, 12px, 3px);
-          @include dynamic-flex(center,center ,row ,10px);
-          border-left: 3px solid $main-color2;
-          border-right: 3px solid $main-color2;
-          div.user_img{
+          @include dynamic-flex(center, center, row, 10px);
+          border-left: 0px solid $main-color2;
+          border-right: 0px solid $main-color2;
+          div.user_img {
             flex: 1;
             height: 80px;
             //background-color: $main-color2;
-              @include dynamic-flex(center, center, row, 0px);
-              i {
-                color: $qoraalo-color;
-                font-size: 2rem;
-              }
+            @include dynamic-flex(center, center, row, 0px);
+            i {
+              color: $qoraalo-color;
+              font-size: 2rem;
+            }
           }
-          div.name_amout{
+          div.name_amout {
             flex: 10;
             h2 {
-                @include Totile-H(17px, $madaw);
-                font-weight: normal;
-                padding: 2px 0px;
+              @include Totile-H(17px, $madaw);
+              font-weight: normal;
+              padding: 2px 0px;
             }
 
-            div.info_wind{
-            @include dynamic-flex(flex-start, center, row, 15px);
-            padding: 2px 0px;
-            p {
-              @include qoraal-p(15px, $qoraalo-color)
+            div.info_wind {
+              @include dynamic-flex(flex-start, center, row, 15px);
+              padding: 2px 0px;
+              p {
+                @include qoraal-p(15px, $qoraalo-color);
+              }
             }
-            }
-
           }
-
-
         }
       }
-
     }
   }
 }
@@ -1923,7 +1835,7 @@ div.laba_qaybood {
 }
 
 .sk-circle .sk-child:before {
-  content: '';
+  content: "";
   display: block;
   margin: 0 auto;
   width: 15%;
@@ -2056,7 +1968,6 @@ div.laba_qaybood {
 }
 
 @-webkit-keyframes sk-circleBounceDelay {
-
   0%,
   80%,
   100% {
@@ -2071,7 +1982,6 @@ div.laba_qaybood {
 }
 
 @keyframes sk-circleBounceDelay {
-
   0%,
   80%,
   100% {
@@ -2085,217 +1995,24 @@ div.laba_qaybood {
   }
 }
 
-
-
-
-
-
-
-
-
-
 // all media  responsive part
 
-@include Break-Points(xsm){
-  .haye{
-    max-width: 540px;
-  }
-
-  .xajiye{
-    max-width: 540px;
-  }
-
-    // div.over_alert div.in_haye_alert div.alert{
-    //   width: 100%;
-    // }
-
-    div.nav div.links div.action-btn button.nav-btn{
-      width: 85%;
-    }
-
-            div.nav {
-              div.links1 {
-                div.link-items {
-                  display: none;
-                }
-              }
-            }
-      
-            div.nav div.links div.link-items {
-              display: none;
-            }
-      
-            div.welcome div.labaqaybood div.qayb {
-              width: calc(95% / 1);
-            }
-      
-            section.tirokoobyo div.cards_tirokoob div.card {
-              width: calc(80% / 1);
-            }
-      
-      
-            div.Projects div.qaybha div.qayb {
-              width: calc(95% / 1);
-            }
-      
-            div.Projects div.prog_one div.card_mashruuc {
-              width: calc(100% / 1);
-            }
-      
-            div.about div.war_laba_qaybood div.qayb {
-              width: calc(97% / 1);
-            }
-
-            div.faq div.suaalo div.labaqayb {
-              width: calc(100% / 1);
-            }
-      
-      
-            div.Counts div.war_laba_qaybood div.qayb {
-              width: calc(97% / 1);
-            }
-      
-            div.over div.login div.llc {
-              width: calc(95% / 1);
-            }
-      
-            div.over div.login div.llc {
-              display: none;
-            }
-
-                        div.over div.login {
-                          width: 100%;
-                        }
-
-    div.welcome div.labaqaybood div.qayb.qorall h2 {
-      font-size: 2rem;
-    }
-
-    div.welcome div.labaqaybood div.qayb.qorall div.btn-welc{
-    flex-flow: wrap column;
-    }
-
-div.welcome div.labaqaybood div.qayb.qorall div.btn-welc button{
-  width: 90%;
-  margin: 15px 0px;
-}
-
-
-div.faq div.suaalo div.btn_start button{
-  width: 80%;
-
-}
-
-div.about div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2{
-  font-size: 2rem;
-}
-
-     div.slide {
-       &.computer {
-        display: none;
-       }
-     }
-
-
-         div.Counts div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2 {
-          font-size: 2rem;
-         }
-div.faq div.suaalo div.btn_start div.qoraalo_btn_start p {
-  padding: 5px 5px;
-  font-size: 20px;
-}
-
-
-div.video_overvallow.active div.video {
-  width: 100%;
-
-}
-
-div.video_overvallow.active div.video div.video_content {
-  width: 100%;
-  height: 90%;
-}
-
-
-
-
-}
-@include Break-Points(sm){
-    .haye {
-        max-width: 540px;
-      }
-  .xajiye{
-    max-width: 540px;
-  }
-    div.nav {
-      div.links1 {
-        div.link-items {
-          display: none;
-        }
-      }
-    }
-
-                div.over_alert div.in_haye_alert div.alert {
-                  width: 100%;
-                }
-
-                 div.slide {
-                   &.computer {
-                     display: none;
-                   }
-                 }
-  
-    div.nav div.links div.link-items {
-      display: none;
-    }
-  
-    div.welcome div.labaqaybood div.qayb {
-      width: calc(85% / 1);
-    }
-  
-    section.tirokoobyo div.cards_tirokoob div.card {
-      width: calc(80% / 1);
-    }
-  
-  
-    div.Projects div.qaybha div.qayb {
-      width: calc(75% / 2);
-    }
-  
-    div.Projects div.prog_one div.card_mashruuc {
-      width: calc(75% / 1);
-    }
-  
-    div.about div.war_laba_qaybood div.qayb {
-      width: calc(97% / 1);
-    }
-  
-  
-    div.Counts div.war_laba_qaybood div.qayb {
-      width: calc(97% / 1);
-    }
-  
-    div.over div.login div.llc {
-      width: calc(95% / 1);
-    }
-  
-    div.over div.login div.llc {
-      display: none;
-    }
-
-}
-@include Break-Points(md){
+@include Break-Points(xsm) {
   .haye {
-    max-width: 720px;
+    max-width: 540px;
   }
 
-  .xajiye{
-    max-width: 700px;
+  .xajiye {
+    max-width: 540px;
   }
 
-            // div.over_alert div.in_haye_alert div.alert {
-            //   width: 85%;
-            // }
+  // div.over_alert div.in_haye_alert div.alert{
+  //   width: 100%;
+  // }
+
+  div.nav div.links div.action-btn button.nav-btn {
+    width: 85%;
+  }
 
   div.nav {
     div.links1 {
@@ -2305,59 +2022,221 @@ div.video_overvallow.active div.video div.video_content {
     }
   }
 
-    div.nav div.links div.link-items {
+  div.nav div.links div.link-items {
+    display: none;
+  }
+
+  div.welcome div.labaqaybood div.qayb {
+    width: calc(95% / 1);
+  }
+
+  section.tirokoobyo div.cards_tirokoob div.card {
+    width: calc(80% / 1);
+  }
+
+  div.Projects div.qaybha div.qayb {
+    width: calc(95% / 1);
+  }
+
+  div.Projects div.prog_one div.card_mashruuc {
+    width: calc(100% / 1);
+  }
+
+  div.about div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.faq div.suaalo div.labaqayb {
+    width: calc(100% / 1);
+  }
+
+  div.Counts div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.over div.login div.llc {
+    width: calc(95% / 1);
+  }
+
+  div.over div.login div.llc {
+    display: none;
+  }
+
+  div.over div.login {
+    width: 100%;
+  }
+
+  div.welcome div.labaqaybood div.qayb.qorall h2 {
+    font-size: 2rem;
+  }
+
+  div.welcome div.labaqaybood div.qayb.qorall div.btn-welc {
+    flex-flow: wrap column;
+  }
+
+  div.welcome div.labaqaybood div.qayb.qorall div.btn-welc button {
+    width: 90%;
+    margin: 15px 0px;
+  }
+
+  div.faq div.suaalo div.btn_start button {
+    width: 80%;
+  }
+
+  div.about div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2 {
+    font-size: 2rem;
+  }
+
+  div.slide {
+    &.computer {
       display: none;
     }
+  }
 
-div.welcome div.labaqaybood div.qayb {
-  width: calc(85% / 1);
+  div.Counts div.war_laba_qaybood div.qayb.bidix div.bidix_decr h2 {
+    font-size: 2rem;
+  }
+  div.faq div.suaalo div.btn_start div.qoraalo_btn_start p {
+    padding: 5px 5px;
+    font-size: 20px;
+  }
+
+  div.video_overvallow.active div.video {
+    width: 100%;
+  }
+
+  div.video_overvallow.active div.video div.video_content {
+    width: 100%;
+    height: 90%;
+  }
 }
+@include Break-Points(sm) {
+  .haye {
+    max-width: 540px;
+  }
+  .xajiye {
+    max-width: 540px;
+  }
+  div.nav {
+    div.links1 {
+      div.link-items {
+        display: none;
+      }
+    }
+  }
 
-section.tirokoobyo div.cards_tirokoob div.card {
-  width: calc(90% / 2);
+  div.over_alert div.in_haye_alert div.alert {
+    width: 100%;
+  }
+
+  div.slide {
+    &.computer {
+      display: none;
+    }
+  }
+
+  div.nav div.links div.link-items {
+    display: none;
+  }
+
+  div.welcome div.labaqaybood div.qayb {
+    width: calc(85% / 1);
+  }
+
+  section.tirokoobyo div.cards_tirokoob div.card {
+    width: calc(80% / 1);
+  }
+
+  div.Projects div.qaybha div.qayb {
+    width: calc(75% / 2);
+  }
+
+  div.Projects div.prog_one div.card_mashruuc {
+    width: calc(75% / 1);
+  }
+
+  div.about div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.Counts div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.over div.login div.llc {
+    width: calc(95% / 1);
+  }
+
+  div.over div.login div.llc {
+    display: none;
+  }
 }
+@include Break-Points(md) {
+  .haye {
+    max-width: 720px;
+  }
 
+  .xajiye {
+    max-width: 700px;
+  }
 
-div.Projects div.qaybha div.qayb {
-  width: calc(90%  / 3);
-}
+  // div.over_alert div.in_haye_alert div.alert {
+  //   width: 85%;
+  // }
 
-div.Projects div.prog_one div.card_mashruuc{
+  div.nav {
+    div.links1 {
+      div.link-items {
+        display: none;
+      }
+    }
+  }
+
+  div.nav div.links div.link-items {
+    display: none;
+  }
+
+  div.welcome div.labaqaybood div.qayb {
+    width: calc(85% / 1);
+  }
+
+  section.tirokoobyo div.cards_tirokoob div.card {
+    width: calc(90% / 2);
+  }
+
+  div.Projects div.qaybha div.qayb {
+    width: calc(90% / 3);
+  }
+
+  div.Projects div.prog_one div.card_mashruuc {
     width: calc(95% / 2);
+  }
+
+  div.about div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.Counts div.war_laba_qaybood div.qayb {
+    width: calc(97% / 1);
+  }
+
+  div.over div.login div.llc {
+    width: calc(95% / 1);
+  }
+
+  div.over div.login div.llc {
+    display: none;
+  }
+
+  div.slide {
+    &.Mobile {
+      display: none;
+    }
+  }
 }
 
-div.about div.war_laba_qaybood div.qayb{
-      width: calc(97% / 1);
-}
-
-
-div.Counts div.war_laba_qaybood div.qayb {
-  width: calc(97% / 1);
-}
-
-div.over div.login div.llc{
-      width: calc(95% / 1);
-}
-
-div.over div.login div.llc{
-  display: none;
-}
-
-     div.slide {
-       &.Mobile {
-         display: none;
-       }
-     }
-
-
-
-
-
-}
-
-
-  //
-@include Break-Points(lg){
+//
+@include Break-Points(lg) {
   .haye {
     max-width: 960px;
   }
@@ -2366,18 +2245,17 @@ div.over div.login div.llc{
     max-width: 1100px;
   }
 
-            // div.over_alert div.in_haye_alert div.alert {
-            //   width: 60%;
-            // }
+  // div.over_alert div.in_haye_alert div.alert {
+  //   width: 60%;
+  // }
 
-         div.slide {
-           &.Mobile {
-             display: none;
-           }
-         }
-
+  div.slide {
+    &.Mobile {
+      display: none;
+    }
+  }
 }
-@include Break-Points(xlg){
+@include Break-Points(xlg) {
   .haye {
     max-width: 1140px;
   }
@@ -2386,21 +2264,19 @@ div.over div.login div.llc{
     max-width: 1300px;
   }
 
-    // div.over_alert div.in_haye_alert div.alert {
-    //   width: 50%;
-    // }
+  // div.over_alert div.in_haye_alert div.alert {
+  //   width: 50%;
+  // }
 
-   div.slide {
-    &.Mobile{
+  div.slide {
+    &.Mobile {
       display: none;
     }
-   } 
+  }
 }
-@include Break-Points(xxlg){
+@include Break-Points(xxlg) {
   .xajiye,
   .haye {
     max-width: 1320px;
   }
 }
-
-
