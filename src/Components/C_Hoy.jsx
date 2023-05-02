@@ -75,7 +75,7 @@ function CHoy({func}){
             </div>
             ))}
         </>
-        :(loading && !loading) || (loading && loading === null) ?
+        :!loading ?
         <p>loading ...</p>
         :
         <Empaty />

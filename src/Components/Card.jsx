@@ -11,8 +11,10 @@ function Card({func}){
 
     useEffect(() => {
         setCaafimaad(state.Caafimaad)
-        setloading(true)
-    },[state.Caafimaad])
+        if(Caafimaad && Caafimaad.length > 0){
+            setloading(true)
+        }
+    },[state.Caafimaad,Caafimaad])
     return (
         <>
         {(Caafimaad && Caafimaad.length > 0) ?
@@ -66,8 +68,8 @@ function Card({func}){
             </div>
             ))}
         </>
-        :(loading && !loading) || (loading && loading === null) ?
-        <p>loading ...</p>
+        :!loading ?
+        <p className='Loading'>Fadlan Yara Sug ...</p>
         :
         <Empaty />
         }
