@@ -264,7 +264,7 @@ div.nav {
     height: 80px;
     @include dynamic-flex(center, center, row, 0px);
     div.logo {
-      flex: 2;
+      flex: 1;
       @include flex-box(column);
       height: 100%;
       border: none;
@@ -330,6 +330,20 @@ div.nav {
       flex: 2;
       height: 100%;
       @include dynamic-flex(center, center, column, 0px);
+      &.Mobile{
+        display: none;
+        .tips_mobile{
+          width: 50px;
+          height: 50px;
+          //background-color: $main-color2;
+          border-radius: 7px;
+          border: solid 0.5px $main-color2;
+          @include flex-box(0px);
+          font-size: 25px;
+          color: $main-color2;
+          cursor: pointer;
+        }
+      }
 
       button.nav-btn {
         @include btn-web(50%);
@@ -695,14 +709,14 @@ div.Projects {
         width: 100%;
         padding: 5px 0px;
         h2 {
-          @include Totile-H(20px, $madaw);
+          @include Totile-H(20px, $title-color);
           font-weight: normal;
           padding: 5px 5px;
-          &:hover {
-            color: $main-color2;
-            text-decoration: underline;
-            cursor: pointer;
-          }
+          // &:hover {
+          //   color: $main-color2;
+          //   text-decoration: underline;
+          //   cursor: pointer;
+          // }
         }
 
         p {
@@ -2109,6 +2123,29 @@ div.laba_qaybood {
     width: 100%;
     height: 90%;
   }
+
+    div.well div.macluumaad{
+      padding: 25px 5px;
+    }
+
+    div.laba_qaybood {
+      flex-flow: wrap column;
+    }
+  
+    div.laba_qaybood div.qayb.muuqaal {
+      width: 100%;
+    }
+
+
+    div.nav div.links div.action-btn {
+      &.Computer {
+        display: none;
+      }
+
+      &.Mobile {
+        display: flex;
+      }
+    }
 }
 @include Break-Points(sm) {
   .haye {
@@ -2170,6 +2207,23 @@ div.laba_qaybood {
   div.over div.login div.llc {
     display: none;
   }
+
+  div.laba_qaybood {
+      flex-flow: wrap column;
+  }
+  div.laba_qaybood div.qayb.muuqaal {
+    width: 100%;
+  }
+
+  div.nav div.links div.action-btn {
+    &.Computer {
+      display: none;
+    }
+
+    &.Mobile {
+      display: flex;
+    }
+  }
 }
 @include Break-Points(md) {
   .haye {
@@ -2194,6 +2248,15 @@ div.laba_qaybood {
 
   div.nav div.links div.link-items {
     display: none;
+  }
+
+  div.nav div.links div.action-btn{
+    &.Computer{
+    display: none;
+    }
+    &.Mobile{
+      display: flex;
+    }
   }
 
   div.welcome div.labaqaybood div.qayb {
@@ -2233,6 +2296,14 @@ div.laba_qaybood {
       display: none;
     }
   }
+
+  div.laba_qaybood {
+    flex-flow: wrap column;
+  }
+
+    div.laba_qaybood div.qayb.muuqaal{
+      width: 100%;
+    }
 }
 
 //

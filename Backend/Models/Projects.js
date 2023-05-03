@@ -12,6 +12,10 @@ const ProjectsSchema = new Schema({
         type: String,
         required: true
     },
+    Macluumaad: {
+        type: String,
+        required: true
+    },
 
     Tabaruc: {
         type: String,
@@ -36,8 +40,8 @@ const ProjectsSchema = new Schema({
 
 
 // samaynta mashruuc
-ProjectsSchema.statics.Addpro = async function(Name, Hadaf, Tabaruc, Qayb,Sawir, Muuqaal) {
-    const Project = await this.create({Name, Hadaf, Tabaruc,Qayb,Sawir,Muuqaal})
+ProjectsSchema.statics.Addpro = async function(Name, Hadaf, Macluumaad, Tabaruc, Qayb,Sawir, Muuqaal) {
+    const Project = await this.create({Name, Hadaf, Macluumaad, Tabaruc,Qayb,Sawir,Muuqaal})
     return Project
 }
 

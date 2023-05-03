@@ -11,8 +11,9 @@ const Register = async(req,res) => {
         const user = await UserModel.Register(Magac,Lanbar,Password)
         // Token 
         const Token = CreateToken(user._id)
+        const Id = user._id
         // soo celinta
-        res.status(200).json({Magac, Lanbar, Token})
+        res.status(200).json({Magac, Lanbar, Token, Id})
 
     } catch(err){
         res.status(400).json({Error: err.message})
@@ -28,7 +29,8 @@ const Login = async(req,res) => {
 
         const Token = CreateToken(user._id)
         const Magac = user.Magac
-        res.status(200).json({Magac,Lanbar,Token})
+        const Id = user._id
+        res.status(200).json({Magac,Lanbar,Id,Token})
 
     } catch(Err){
         res.status(400).json({Error: Err.message})

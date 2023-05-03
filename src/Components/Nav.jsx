@@ -24,18 +24,26 @@ function Nav({Login}){
                                     Mashruucyo
                                 </Link>                           
                             </li>
-                            <li>
+                            {CrentUser && CrentUser.Id === "643d37ce7bf402dde24ec766" ?
+                                <li>
                                 <Link to="">
-                                Tabarayaal
+                                Gali Mashruuc
                                 </Link>
                             </li>
+                            : <></>
+                            }
                             <li>
                             <span><i className="fa-solid fa-earth-africa"></i> So <i className="fa-solid fa-chevron-down"></i></span>
                             </li>
                         </ul>
 
                     </div>
-                    <div className="action-btn">
+                    <div className="action-btn Mobile">
+                        <div className="tips_mobile">
+                           <i className="fa-solid fa-bars"></i>
+                        </div>
+                    </div>
+                    <div className="action-btn Computer">
                         {CrentUser ?
                         <button className="nav-btn" onClick={Login}>
                                 <span>{CrentUser.Magac}</span>

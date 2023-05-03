@@ -95,7 +95,7 @@ function InfoProject({info}) {
                                         <i className="fa-solid fa-sack-dollar"></i>
                                     </div>
                                     <div className="qoraal">
-                                        <p>${info && info.Tabaruc}</p>
+                                        <p>${info && Number(info.Tabaruc).toFixed(2)}</p>
                                     </div>
                                 </div>
                                 <div className="lahayo">

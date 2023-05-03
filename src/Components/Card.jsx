@@ -33,7 +33,7 @@ function Card({func}){
                 </div>
             </div>
             <div className="desc">
-                {/* <h2>Hooyo somaliyeed</h2> */}
+                <h2>{card.Name}</h2>
                 <p>
                     Waa qof waayeela oo Baahan
                     waxana haya xanuun aad u daran oo maalin ...
@@ -47,7 +47,7 @@ function Card({func}){
             <div className="lacagta">
             <div className="hadaf_and_asal">
                 <div className='Hadaf'>
-                    <p className="lcg asal"><i className="fa-solid fa-sack-dollar"></i> ${card.Tabaruc} </p>
+                    <p className="lcg asal"><i className="fa-solid fa-sack-dollar"></i> ${Number(card.Tabaruc).toFixed(2)} </p>
                 </div>
                 <div className='Asal'>
                 <p className="lcg asal"><i className="fa-solid fa-circle-check"></i> ${card.Hadaf}</p>

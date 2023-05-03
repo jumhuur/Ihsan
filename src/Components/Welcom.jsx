@@ -19,7 +19,7 @@ function Welcome(){
             <div className="qayb qorall">
             {CrentUser ?
             <>
-            <h2>Ku soo Dhawaaw <span>{CrentUser.Magac}</span> Shabakada Ixsaan.</h2>
+            <h2><span>{CrentUser.Magac}</span> Ku soo Dhawaaw Shabakada Ixsaan.</h2>
             <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.</p>
             </>
             :

@@ -4,7 +4,7 @@ function ProWelcome({info}) {
         <div className="well">
             <div className="haye">
                 <div className="macluumaad">
-                    <h2>Aabo Waayeela Oo Baahan  </h2>
+                    <h2>{info && info.Name}  </h2>
                     <div className="ashyaa">
                         <div className="qayb">
                             <p className="lcg asal"><i className="fa-solid fa-calendar-days"></i>  {info && format(info.createdAt)}</p>
