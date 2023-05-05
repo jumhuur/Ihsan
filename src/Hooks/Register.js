@@ -6,14 +6,14 @@ export const UseRegister = () => {
     const [Looding, setLooding] = useState(false);
     const {dispatch, ACTIONS, setDatA,GetAllProjects}  = Auth()
 
-    const register = async(Magac,Lanbar,Password) => {
+    const register = async(Magac,Lanbar,Admin, Password) => {
         setLooding(true)
         setError(false)
 
         const responsive = await fetch("http://localhost:8880/Api/Register", {
             method: "POST",
             headers : {"Content-Type": "application/json"},
-            body: JSON.stringify({Magac,Lanbar,Password})
+            body: JSON.stringify({Magac,Lanbar,Admin, Password})
         })
 
         const json = await responsive.json()

@@ -5,10 +5,10 @@ const CreateToken = (_id) => {
     return jwt.sign({_id},process.env.SECRET, {expiresIn: "3d"})
 }
 const Register = async(req,res) => {
-    const {Magac,Lanbar, Password} = req.body
-
+    const {Magac,Lanbar,Admin, Password} = req.body
+    
     try{
-        const user = await UserModel.Register(Magac,Lanbar,Password)
+        const user = await UserModel.Register(Magac,Lanbar,Admin,Password)
         // Token 
         const Token = CreateToken(user._id)
         const Id = user._id

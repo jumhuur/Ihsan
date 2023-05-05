@@ -61,7 +61,7 @@ function Login(){
                                 </div>
                                 </button>
                                 :
-                                <button onClick={LoginAction}>
+                                <button type={"submit"} onClick={LoginAction}>
                                     Gal Akoon <i className="fa-solid fa-arrow-right-to-bracket"></i>
                                 </button>
                                 }

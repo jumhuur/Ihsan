@@ -15,6 +15,10 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
+    Admin : {
+        type: Boolean,
+        required: true,
+    },
     Password: {
         type: String,
         required: true
@@ -25,7 +29,7 @@ const UserSchema = new Schema({
 
 // register
 
-UserSchema.statics.Register = async function(Magac, Lanbar, Password){
+UserSchema.statics.Register = async function(Magac, Lanbar,Admin, Password){
     const  pattern = /[^0-9]/g;
     if(!Magac || !Lanbar || !Password){
         throw Error("Buuxi Meelaha banaan Oo dhan!")
@@ -46,7 +50,7 @@ UserSchema.statics.Register = async function(Magac, Lanbar, Password){
 
     const salt = await bcrypt.genSalt(10)
     const Hash = await bcrypt.hash(Password, salt)
-    const user = await this.create({Magac, Lanbar, Password:Hash})
+    const user = await this.create({Magac, Lanbar, Admin, Password:Hash})
     return user
 
 

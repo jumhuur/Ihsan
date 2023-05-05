@@ -5,17 +5,19 @@ function Sinup() {
     const [inputes,setinputes]= useState({
         Magac: "",
         Lanbar:"",
+        Admin:false,
         Password: ""
     })
 
     const onchange_inputes = (e) => {
         setinputes((prev) => ({...prev, [e.target.name]:e.target.value }))
+        console.log(inputes)
     }
 
     const { register, Looding, Error } = UseRegister()
     const RegisterAction = (e) => {
         e.preventDefault()
-        register(inputes.Magac, inputes.Lanbar, inputes.Password)
+        register(inputes.Magac, inputes.Lanbar, inputes.Admin, inputes.Password)
         redirect("/")
     }
 
@@ -43,8 +45,9 @@ function Sinup() {
                                         <input onChange={onchange_inputes} type={"text"} placeholder="Magacaaga" autoComplete="off" name="Magac" />
                                         <input onChange={onchange_inputes} type={"tel"}placeholder="Lanbaraakaga" autoComplete="off" name="Lanbar" />
                                         <input onChange={onchange_inputes} type={"password"} placeholder="Passwor-kaaga" autoComplete="off" name="Password" />
+                                        <input onChange={onchange_inputes} type={"text"} placeholder="Passwor-kaaga" autoComplete="off" value={inputes.Admin} name="Admin" hidden />
                                         {!Looding ?
-                                        <button onClick={RegisterAction}>
+                                        <button type={"submit"} onClick={RegisterAction}>
                                             <i className="fa-solid fa-user-plus"></i> Samayso 
                                         </button>
                                         :

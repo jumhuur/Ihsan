@@ -1,7 +1,15 @@
 import {Link} from "react-router-dom"
 import { Auth } from "../context/Auth"
+import MobileNav from "./MobileNav"
+import { useState } from "react"
 function Nav({Login}){
     const {CrentUser} = Auth()
+    const [Activemobile,setActivemobile] = useState(false)
+    const activeMobile = () => {
+        setActivemobile(!Activemobile)
+    }
+
+    console.log(Activemobile)
     return (
         <div className="nav">
             <div className="haye">
@@ -12,7 +20,7 @@ function Nav({Login}){
                         <p>Ixsaan</p>
                         </Link>
                     </div>
-                    <div className="link-items">
+                    <div className="link-items computer">
                         <ul>
                             <li>
                                 <Link to="">
@@ -24,10 +32,10 @@ function Nav({Login}){
                                     Mashruucyo
                                 </Link>                           
                             </li>
-                            {CrentUser && CrentUser.Id === "643d37ce7bf402dde24ec766" ?
+                            {CrentUser && CrentUser.Id === "6454dba1429d70970c9c0eff" ?
                                 <li>
                                 <Link to="">
-                                Gali Mashruuc
+                                dashboard
                                 </Link>
                             </li>
                             : <></>
@@ -39,7 +47,7 @@ function Nav({Login}){
 
                     </div>
                     <div className="action-btn Mobile">
-                        <div className="tips_mobile">
+                        <div onClick={activeMobile} className="tips_mobile">
                            <i className="fa-solid fa-bars"></i>
                         </div>
                     </div>
@@ -51,13 +59,18 @@ function Nav({Login}){
                         :
                         <button className="nav-btn" onClick={Login}>
                             <Link to={"/Login"} >
-                                <span>Gal <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
+                                <span>Gal Akoon <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
                             </Link>
                         </button>
                         }
 
 
                     </div>
+                    {Activemobile ? 
+                        <MobileNav />
+                    :<></>
+                    }
+                    
                 </div>
             </div>
 

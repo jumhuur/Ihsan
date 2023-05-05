@@ -295,7 +295,7 @@ div.nav {
       ul {
         width: 100%;
         height: 100%;
-        @include dynamic-flex(center, center, row, 20px);
+        @include dynamic-flex(flex-end, center, row, 20px);
         @include qoraal-p(16px, $qoraalo-color);
 
         li {
@@ -325,14 +325,52 @@ div.nav {
           }
         }
       }
+
+      &.Mobile {
+      background-color: #73859f;
+      height: 100vh;
+      position: absolute;
+      top: 80px;
+      width: 95%;
+        li {
+            @include qoraal-p(16px, $qoraalo-color);
+            height: 100%;
+            @include dynamic-flex(center, center, row, 0px);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.4s ease-in-out;
+        
+            i.fa-chevron-down {
+              font-size: 12px;
+              font-weight: bold;
+            }
+        
+            &:hover {
+              color: $main-color2;
+            }
+        
+            a {
+              @include dynamic-flex(center, center, column, 0px);
+              @include qoraal-p(16px, $qoraalo-color);
+              height: 100%;
+              padding: 15px;
+              font-weight: 500;
+              transition: all 0.4s ease-in-out;
+        
+              &:hover {
+                color: $main-color2;
+              }
+            }
+          }
+      }
     }
     div.action-btn {
       flex: 2;
       height: 100%;
       @include dynamic-flex(center, center, column, 0px);
-      &.Mobile{
+      &.Mobile {
         display: none;
-        .tips_mobile{
+        .tips_mobile {
           width: 50px;
           height: 50px;
           //background-color: $main-color2;
@@ -2031,13 +2069,17 @@ div.laba_qaybood {
   div.nav {
     div.links1 {
       div.link-items {
-        display: none;
+        &.computer {
+          display: none;
+        }
       }
     }
   }
 
   div.nav div.links div.link-items {
-    display: none;
+    &.computer {
+      display: none;
+    }
   }
 
   div.welcome div.labaqaybood div.qayb {
@@ -2124,28 +2166,27 @@ div.laba_qaybood {
     height: 90%;
   }
 
-    div.well div.macluumaad{
-      padding: 25px 5px;
+  div.well div.macluumaad {
+    padding: 25px 5px;
+  }
+
+  div.laba_qaybood {
+    flex-flow: wrap column;
+  }
+
+  div.laba_qaybood div.qayb.muuqaal {
+    width: 100%;
+  }
+
+  div.nav div.links div.action-btn {
+    &.Computer {
+      display: none;
     }
 
-    div.laba_qaybood {
-      flex-flow: wrap column;
+    &.Mobile {
+      display: flex;
     }
-  
-    div.laba_qaybood div.qayb.muuqaal {
-      width: 100%;
-    }
-
-
-    div.nav div.links div.action-btn {
-      &.Computer {
-        display: none;
-      }
-
-      &.Mobile {
-        display: flex;
-      }
-    }
+  }
 }
 @include Break-Points(sm) {
   .haye {
@@ -2157,7 +2198,9 @@ div.laba_qaybood {
   div.nav {
     div.links1 {
       div.link-items {
-        display: none;
+        &.computer {
+          display: none;
+        }
       }
     }
   }
@@ -2173,7 +2216,9 @@ div.laba_qaybood {
   }
 
   div.nav div.links div.link-items {
-    display: none;
+    &.computer {
+      display: none;
+    }
   }
 
   div.welcome div.labaqaybood div.qayb {
@@ -2209,7 +2254,7 @@ div.laba_qaybood {
   }
 
   div.laba_qaybood {
-      flex-flow: wrap column;
+    flex-flow: wrap column;
   }
   div.laba_qaybood div.qayb.muuqaal {
     width: 100%;
@@ -2247,14 +2292,16 @@ div.laba_qaybood {
   }
 
   div.nav div.links div.link-items {
-    display: none;
+    &.computer {
+      display: none;
+    }
   }
 
-  div.nav div.links div.action-btn{
-    &.Computer{
-    display: none;
+  div.nav div.links div.action-btn {
+    &.Computer {
+      display: none;
     }
-    &.Mobile{
+    &.Mobile {
       display: flex;
     }
   }
@@ -2301,9 +2348,9 @@ div.laba_qaybood {
     flex-flow: wrap column;
   }
 
-    div.laba_qaybood div.qayb.muuqaal{
-      width: 100%;
-    }
+  div.laba_qaybood div.qayb.muuqaal {
+    width: 100%;
+  }
 }
 
 //
