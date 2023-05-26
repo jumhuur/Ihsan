@@ -76,7 +76,7 @@ UserSchema.statics.Login = async function(Lanbar,Password){
     const compare = await bcrypt.compare(Password, User.Password)
 
     if(!compare){
-        throw Error("Waa Qalab Passworkaagu")
+        throw Error("Waa Qalad Passworkaagu")
     }
 
     return User
