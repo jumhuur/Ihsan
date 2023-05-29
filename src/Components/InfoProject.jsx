@@ -6,6 +6,7 @@ import EVC from "evc-api";
 import Video from "./video";
 import { Auth } from "../context/Auth";
 import { format} from 'timeago.js'
+import { tab } from "@testing-library/user-event/dist/tab";
 function InfoProject({info,Tabaruc}) {
     const Form_data = useActionData()
     const {CrentUser} = Auth()
@@ -41,7 +42,7 @@ function InfoProject({info,Tabaruc}) {
                                 {/* <div className="user_img">
                                    <i className="fa-solid fa-circle-user"></i>
                                 </div> */}
-                                <div className="name_amout">
+                                <div className="name_amout" key={tab._id}>
                                     <h2>{tb.Name}</h2>
                                     <div className="info_wind">
                                     <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Lacagta {tb.Lacagta} $</p>

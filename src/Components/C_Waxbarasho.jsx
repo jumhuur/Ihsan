@@ -27,7 +27,7 @@ function CWaxbaraso({func}){
         {(Waxbarasho && Waxbarasho.length > 0) ?
         <>
             {Waxbarasho && Waxbarasho.map((card) => (
-            <div className="card_mashruuc" key={card}>
+            <div className="card_mashruuc" key={card._id}>
             <div className="img_or_vid">
                 <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">

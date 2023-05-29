@@ -27,7 +27,7 @@ function CHoy({func}){
         {(Hoy && Hoy.length > 0) ?
         <>
             {Hoy && Hoy.map((card) => (
-            <div className="card_mashruuc" key={card}>
+            <div className="card_mashruuc" key={card._id}>
             <div className="img_or_vid">
                 <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">

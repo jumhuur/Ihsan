@@ -20,7 +20,7 @@ function Card({func}){
         {(Caafimaad && Caafimaad.length > 0) ?
         <>
             {Caafimaad && Caafimaad.map((card) => (
-            <div className="card_mashruuc" key={card}>
+            <div className="card_mashruuc" key={card._id}>
             <div className="img_or_vid">
                 <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">

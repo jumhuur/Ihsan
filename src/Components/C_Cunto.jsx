@@ -27,7 +27,7 @@ function CCunto({func}){
         {(Cunto && Cunto.length > 0) ?
         <>
             {Cunto && Cunto.map((card) => (
-            <div className="card_mashruuc" key={card}>
+            <div className="card_mashruuc" key={card._id}>
             <div className="img_or_vid">
                 <img src={card.Sawir} alt="xaalad" />
                 <div className="over_verlow_video">
