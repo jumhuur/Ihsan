@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Form , useActionData, useLocation } from "react-router-dom";
+import { Form , useActionData } from "react-router-dom";
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
 import EVC from "evc-api";
 import Video from "./video";
-function InfoProject({info}) {
+import { Auth } from "../context/Auth";
+import { format} from 'timeago.js'
+function InfoProject({info,Tabaruc}) {
     const Form_data = useActionData()
+    const {CrentUser} = Auth()
     const [Pyment_type,setPyment_type] = useState('zaad');
     const Somtel = '65';
     const telesom = "63";
@@ -15,9 +18,6 @@ function InfoProject({info}) {
     const toggale_edahab = (e) => {
         setPyment_type("edahab")
     }
-
-    const loacation = useLocation()
-    console.log(loacation)
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
@@ -35,43 +35,23 @@ function InfoProject({info}) {
                         :<></>
                         }
                         <div className="last_donote">
-                            <h2> Qofka Ugu Tabaruc Badan</h2>
+                            <h2> Tabarucyadii Ugu Danbeeyay</h2>
+                            {Tabaruc && Tabaruc.map((tb) => (
                             <div className="tabaruc">
-                                <div className="user_img">
+                                {/* <div className="user_img">
                                    <i className="fa-solid fa-circle-user"></i>
-                                </div>
+                                </div> */}
                                 <div className="name_amout">
-                                    <h2>Maxamad Dayib</h2>
+                                    <h2>{tb.Name}</h2>
                                     <div className="info_wind">
-                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Waxa Uu Ku deeqay $15</p>
-                                    <p><i className="fa-solid fa-clock"></i> 3 minit ago</p>
+                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Lacagta {tb.Lacagta} $</p>
+                                    <p><i className="fa-solid fa-clock"></i> {format(tb.createdAt)}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="tabaruc">
-                                <div className="user_img">
-                                   <i className="fa-solid fa-circle-user"></i>
-                                </div>
-                                <div className="name_amout">
-                                    <h2>Maxamad Dayib</h2>
-                                    <div className="info_wind">
-                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Waxa Uu Ku deeqay $15</p>
-                                    <p><i className="fa-solid fa-clock"></i> 3 minit ago</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="tabaruc">
-                                <div className="user_img">
-                                   <i className="fa-solid fa-circle-user"></i>
-                                </div>
-                                <div className="name_amout">
-                                    <h2>Maxamad Dayib</h2>
-                                    <div className="info_wind">
-                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Waxa Uu Ku deeqay $15</p>
-                                    <p><i className="fa-solid fa-clock"></i> 3 minit ago</p>
-                                    </div>
-                                </div>
-                            </div>
+                            ))
+                            }
+
                         </div>
                     </div>
                     <div className="qayb Pyments">
@@ -149,6 +129,17 @@ function InfoProject({info}) {
                                     <input type='text' name='Id' hidden value={info &&  info._id} />
                                     <input type="number" name='Tabaruc' hidden value={Number(info && info.Tabaruc) + valu_tabaruc} />
                                     <input type='text' hidden value={Pyment_type} name='PymentType' />
+                                    {CrentUser ?
+                                    <>
+                                    <input type="text" hidden name="Name" value={CrentUser.Magac} />
+                                    <input type="text" hidden name="Tabaruce" value={CrentUser.Id} />
+                                     </>
+                                    :
+                                    <>
+                                    <input type="text" hidden name="Name" value={"Deeq Bixiye"} />
+                                    <input type="text" hidden name="Tabaruce" value={'Ixsan2023'} />
+                                    </>
+                                }
                                     </div>
                                     <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                                     <i className="fa-solid fa-paper-plane"></i> Bixi Hada
@@ -176,11 +167,22 @@ export const donote = async ({request}) => {
         Tabaruc: actions.get('Tabaruc'),
         PymentType: actions.get('PymentType')
     }
+
+    const fildesTabaruc = {
+        Name: actions.get("Name"),
+        Lanbar: actions.get("Lanbar"),
+        Lacagta: actions.get('Lacagta'),
+        Id: actions.get("Id"),
+        Tabaruce: actions.get('Tabaruce'),
+        PymentType: actions.get('PymentType')
+    }
     const  pattern = /[^0-9]/g;
     const  LacagReg = /[^0-9.]/g;
 
     //update Tabaruc 
     const Tabaruc = fildes.Tabaruc
+
+    // update Projeccts Lacagtiisa tabaruca kadib
     const UpdateProject = async() => {
     const updatenow = await fetch(`http://localhost:8880/Api/Update/${fildes.Id}`, {
         method: 'PATCH',
@@ -191,6 +193,21 @@ export const donote = async ({request}) => {
     })
     const res =  await updatenow.json()
     }
+
+    // aad Tabaruc
+
+    const AddTabaruc = async() => {
+        const AddTabaruc = await fetch("http://localhost:8880/Api/addTabaruc", {
+            method: "POST",
+            body: JSON.stringify(fildesTabaruc),
+            headers: {
+            'Content-Type':'application/json',
+            }
+        })
+
+        const res = await AddTabaruc.json()
+    }
+
     const point = fildes.Lacagta.split(".")[1]
 
     const PymentAction = () => {
@@ -211,8 +228,10 @@ export const donote = async ({request}) => {
                         if(data.responseCode !== "200"){
                             console.log(data.responseMsg)
                             // tani sax maaha
-                             UpdateProject()
+                            AddTabaruc()
+                            UpdateProject()
                         } else {
+                            AddTabaruc()
                             UpdateProject()
                         }
                     })
@@ -225,6 +244,7 @@ export const donote = async ({request}) => {
             if(fildes.PymentType === "edahab"){
                 const Somtel = () => {
                     console.log('Somtel pyment')
+                    AddTabaruc()
                     UpdateProject()
                 }
                 Somtel()

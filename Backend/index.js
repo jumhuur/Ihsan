@@ -10,6 +10,7 @@ const app = express()
 // routes
 const UserRoutes = require("./Routes/Users")
 const ProjectRouter = require("./Routes/Projects")
+const TabarucRouter = require("./Routes/Tabaruc")
 
 
 // middalwares
@@ -32,6 +33,7 @@ app.use(cors({
 
 app.use('/Api', UserRoutes)
 app.use('/Api', ProjectRouter)
+app.use("/Api", TabarucRouter)
 
 // conecting database 
 

@@ -1836,7 +1836,7 @@ div.laba_qaybood {
           border-radius: 5px;
           margin: 18px 0px;
           @include dyshadow(0px, 0px, 12px, 3px);
-          @include dynamic-flex(center, center, row, 10px);
+          @include dynamic-flex(flex-start, center, row, 10px);
           border-left: 0px solid $main-color2;
           border-right: 0px solid $main-color2;
           div.user_img {
@@ -1850,7 +1850,7 @@ div.laba_qaybood {
             }
           }
           div.name_amout {
-            flex: 10;
+            padding: 10px 25px;
             h2 {
               @include Totile-H(17px, $madaw);
               font-weight: normal;
@@ -1861,7 +1861,7 @@ div.laba_qaybood {
               @include dynamic-flex(flex-start, center, row, 15px);
               padding: 2px 0px;
               p {
-                @include qoraal-p(15px, $qoraalo-color);
+                @include qoraal-p(17px, $qoraalo-color);
               }
             }
           }

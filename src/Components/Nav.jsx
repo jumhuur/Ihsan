@@ -8,8 +8,6 @@ function Nav({Login}){
     const activeMobile = () => {
         setActivemobile(!Activemobile)
     }
-
-    console.log(Activemobile)
     return (
         <div className="nav">
             <div className="haye">
