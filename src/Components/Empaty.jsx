@@ -4,7 +4,7 @@ function Empaty(){
             <div className="sawir">
                 <img src='/Images/Em.svg' alt='empaty' />
             </div>
-            <p>Qaybtan Way Madhantahay </p>   
+            <p>Qaytan Way Madhantahay  </p>   
         </div>
     )
 }

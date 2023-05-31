@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Empaty from './Empaty';
 import { format} from 'timeago.js';
 import { Auth } from '../context/Auth';
+import ProjectSkl from './Skeletons/ProjectSkeleton';
 function Card({func}){
     const {state} = Auth();
         const [Caafimaad,setCaafimaad] = useState(null)
@@ -69,7 +70,13 @@ function Card({func}){
             ))}
         </>
         :!loading ?
-        <p className='Loading'>Fadlan Yara Sug ...</p>
+        <>
+        {ProjectSkl && [1,2,3].map((elm) => (
+            <ProjectSkl key={elm} />
+        ))
+        }
+        </>
+        // <p className='Loading'>Fadlan Yara Sug ...</p>
         :
         <Empaty />
         }

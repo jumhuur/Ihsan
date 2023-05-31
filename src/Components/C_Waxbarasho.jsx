@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Empaty from './Empaty';
 import { format} from 'timeago.js';
 import { Auth } from '../context/Auth';
+import ProjectSkl from './Skeletons/ProjectSkeleton';
 function CWaxbaraso({func}){
     const {state} = Auth();
         const [Waxbarasho,setWaxbarasho] = useState(null)
@@ -76,7 +77,12 @@ function CWaxbaraso({func}){
             ))}
         </>
         :!loading ?
-        <p>loading ...</p>
+              <>
+        {ProjectSkl && [1,2,3].map((elm) => (
+            <ProjectSkl key={elm} />
+        ))
+        }
+        </>
         :
         <Empaty />
         }

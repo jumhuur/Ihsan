@@ -7,6 +7,7 @@ export const INITIAL_SATATE = {
     Cunto: [],
     Hoy: [],
     Daryeel: [],
+    CountTabaruc: 0,
     OneProject: []
 }
 
@@ -52,6 +53,7 @@ export const AuthRadiuse = (state,action) => {
                 Cunto: action.Cunto,
                 Hoy: action.Hoy,
                 Daryeel: action.Daryeel,
+                CountTabaruc: action.CountTabaruc,
                 Error: true
             }
 
@@ -61,6 +63,7 @@ export const AuthRadiuse = (state,action) => {
                 OneProject: action.OneProject,
                 Error: true
             }
+        
         default:
             return state;
     }

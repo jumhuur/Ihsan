@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Empaty from './Empaty';
 import { format} from 'timeago.js';
 import { Auth } from '../context/Auth';
+import ProjectSkl from './Skeletons/ProjectSkeleton';
 function CCunto({func}){
     const {state} = Auth();
         const [Cunto,setCunto] = useState(null)
@@ -76,7 +77,12 @@ function CCunto({func}){
             ))}
         </>
         :!loading ?
-        <p>loading ...</p>
+        <>
+        {ProjectSkl && [1,2,3].map((elm) => (
+            <ProjectSkl key={elm} />
+        ))
+        }
+        </>
         :
         <Empaty />
         }

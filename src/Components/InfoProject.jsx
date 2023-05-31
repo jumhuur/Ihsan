@@ -22,6 +22,7 @@ function InfoProject({info,Tabaruc}) {
     // state
     const [value,setvalue] = useState(0) 
     const valu_tabaruc =   Number(value);
+    const [UserLanbar,setUserLanbar] = useState(CrentUser && CrentUser.Lanbar)
     return (
         <>
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
@@ -35,36 +36,12 @@ function InfoProject({info,Tabaruc}) {
                         <Video Muuqaal={info.Muuqaal} />
                         :<></>
                         }
-                        <div className="last_donote">
-                            <h2> Tabarucyadii Ugu Danbeeyay</h2>
-                            {Tabaruc && Tabaruc.map((tb) => (
-                            <div className="tabaruc">
-                                {/* <div className="user_img">
-                                   <i className="fa-solid fa-circle-user"></i>
-                                </div> */}
-                                <div className="name_amout" key={tab._id}>
-                                    <h2>{tb.Name}</h2>
-                                    <div className="info_wind">
-                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Lacagta {tb.Lacagta} $</p>
-                                    <p><i className="fa-solid fa-clock"></i> {format(tb.createdAt)}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            ))
-                            }
-
-                        </div>
-                    </div>
-                    <div className="qayb Pyments">
                         <div className="macluumaad_bidix">
                             <div className="qoraal">
                                 <h2>Macluumaadka Masharuuca</h2>
                                 <p>
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae pariatur reprehenderit neque 
-                                    qui laborum, similique eius. Saepe, nulla ullam! Ex, saepe! 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores odit beatae labore ex quia rerum, cumque ut doloremque autem facere obcaecati. Illo magni pariatur neque quidem ad maiores nemo sequi.
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    qui laborum, similique eius. Saepe, nulla ullam! 
 
                                 </p>
                             </div>
@@ -91,14 +68,13 @@ function InfoProject({info,Tabaruc}) {
                             </div>
                         </div>
                         {info ?
-                            <div className="progress">
-                            <span style={{width:`${info.Tabaruc / info.Hadaf * 100}%`}}><span>{
-                            Math.floor((info.Tabaruc / info.Hadaf * 100)).toFixed(0)
-                            }%</span></span>
-                            </div>
-                            :<></>
+                        <div className="progress">
+                        <span style={{width:`${info.Tabaruc / info.Hadaf * 100}%`}}><span>{
+                        Math.floor((info.Tabaruc / info.Hadaf * 100)).toFixed(0)
+                        }%</span></span>
+                        </div>
+                        :<></>
                         }
-
                         <div className="info_fursad">
                             <div className="from_bixin">
                                 <Form  method='post' action={`/mashruuc/${info && info._id}`}>
@@ -126,7 +102,7 @@ function InfoProject({info,Tabaruc}) {
                                     :
                                         <span className='Ll'>No</span>
                                     }   
-                                    <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar'/>
+                                    <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar' value={UserLanbar} onChange={(e) => setUserLanbar(e.target.value)} />
                                     <input type='text' name='Id' hidden value={info &&  info._id} />
                                     <input type="number" name='Tabaruc' hidden value={Number(info && info.Tabaruc) + valu_tabaruc} />
                                     <input type='text' hidden value={Pyment_type} name='PymentType' />
@@ -148,6 +124,30 @@ function InfoProject({info,Tabaruc}) {
                                     </div>
                                 </Form>
                             </div>
+                        </div>
+                    </div>
+                    <div className="qayb Pyments">
+                        <div className="last_donote">
+                            <h2> Tabarucyadii Ugu Danbeeyay</h2>
+                            <p>
+                            Macluumaadka dadkii ugu danbeeyay ee ku tabarucay mashruucan
+                            kamid noqo dadka u tartamaya khayrka
+                            </p>
+                            {Tabaruc && Tabaruc.map((tb) => (
+                            <div className="tabaruc">
+                                {/* <div className="user_img">
+                                   <i className="fa-solid fa-circle-user"></i>
+                                </div> */}
+                                <div className="name_amout" key={tab._id}>
+                                    <h2>{tb.Name}</h2>
+                                    <div className="info_wind">
+                                    <p><i className="fa-solid fa-circle-dollar-to-slot"></i> Lacagta {tb.Lacagta} $</p>
+                                    <p><i className="fa-solid fa-clock"></i> {format(tb.createdAt)}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -270,12 +270,7 @@ export const donote = async ({request}) => {
     }
     }
 
-
-    // if(fildes.Lanbar.length === 7 && fildes.Lacagta >= 0.25){
-
-    // }
-
-    console.log(fildes)
+    
     PymentAction()
     return{
         Sax: "Faldan eeg Telefankaaga ...",

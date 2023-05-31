@@ -13,6 +13,7 @@ import { Auth } from "./context/Auth";
 import Video from "./Components/video";
 import Mashruuc from "./Pages/Project";
 import InfoProject, { donote } from "./Components/InfoProject";
+import AddProjects from "./Components/addProject";
 
 function App() {
   const [v_active,setv_active] = useState(false)
@@ -42,11 +43,11 @@ function App() {
         <Route path="Daryeel" element={<CDaryeel func={active_v} />}/>
         <Route path="Login" element={!CrentUser ? <Login activate={login} loginfunc={Loginfunc} /> : <Navigate to={"/"} />} />
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
-        <Route path="/:Id" element={<Video />} />
       </Route>
       <Route path="/Mashruuc/:Id" element={<Mashruuc />}>
         <Route path="/Mashruuc/:Id" element={<InfoProject />} action={donote} />
       </Route>
+      <Route path="/addProject"  element={CrentUser ? <AddProjects /> : <Navigate to="/" />} />
       <Route path="*" element={<p>Not foud the page</p>} />
       </>
     )

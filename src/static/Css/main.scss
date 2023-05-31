@@ -513,6 +513,12 @@ section.tirokoobyo {
           @include Totile-H(22px, $madaw);
           padding: 10px 0px;
           font-weight: normal;
+          i {
+            color: $qoraalo-color;
+          }
+          span.Tirokoob_titels{
+            color: $main-color2;
+          }
         }
 
         p {
@@ -849,10 +855,9 @@ div.empaty {
 
   div.sawir {
     width: 100%;
-    height: 400px;
     img {
       width: 100%;
-      height: 100%;
+      height: 250px;
     }
   }
 
@@ -1543,41 +1548,136 @@ div.laba_qaybood {
 
     &.Pyments {
       flex: 3.5;
+      div.last_donote {
+        width: 100%;
+        height: 100%;
+        margin: 15px 0px;
+
+        h2 {
+          @include Totile-H(1.3rem, $title-color);
+          padding: 5px 15px;
+          font-weight: normal;
+        }
+
+        p {
+          @include qoraal-p(18px, $qoraalo-color);
+          font-weight: normal;
+        }
+
+        div.tabaruc {
+          width: 100%;
+          height: 100%;
+          padding: 3px 0px;
+          border-radius: 5px;
+          margin: 18px 0px;
+          @include dyshadow(0px, 0px, 5px, 1px);
+          @include dynamic-flex(flex-start, center, row, 10px);
+          border-left: 2px solid $main-color2;
+          border-right: 0px solid $main-color2;
+
+          div.user_img {
+            flex: 1;
+            height: 80px;
+            //background-color: $main-color2;
+            @include dynamic-flex(center, center, row, 0px);
+
+            i {
+              color: $qoraalo-color;
+              font-size: 2rem;
+            }
+          }
+
+          div.name_amout {
+            padding: 10px 25px;
+
+            h2 {
+              @include Totile-H(17px, $madaw);
+              font-weight: normal;
+              padding: 2px 0px;
+            }
+
+            div.info_wind {
+              @include dynamic-flex(flex-start, center, row, 15px);
+              padding: 2px 0px;
+
+              p {
+                @include qoraal-p(17px, $qoraalo-color);
+              }
+            }
+          }
+        }
+      }
+
+    }
+    &.muuqaal {
+      flex: 5;
+      //height: 400px;
+      //background-color: $main-color2;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+        div.macluumaad_bidix {
+          width: 100%;
+          height: 100%;
+          padding: 15px 5px;
+
+          //background-color: $main-color2;
+          h2 {
+            @include Totile-H(1.3rem, $title-color);
+            font-weight: normal;
+          }
+
+          p {
+            @include qoraal-p(18px, $qoraalo-color);
+            font-weight: normal;
+          }
+        }
 
       div.trakoobyo {
         width: 100%;
         height: 100%;
         padding: 5px 0px;
+
         //background-color: $main-color;
         div.tiro {
           width: 100%;
           height: 100%;
           @include dynamic-flex(flex-start, center, row, 15px);
+
           div.lahayo {
             // width: calc(60% / 2);
             //background-color: $main-color2;
             @include dynamic-flex(center, center, row, 5px);
+
             div.icon {
               flex: 2;
               height: 50px;
               //background-color: $main-color2;
               @include dynamic-flex(center, center, column, 0px);
+
               img {
                 width: 75;
                 height: 75%;
               }
+
               i {
                 color: $main-color2;
                 font-size: 25px;
               }
             }
+
             div.qoraal {
               flex: 4;
+
               h2 {
                 @include Totile-H(1.1rem, $title-color);
                 font-weight: normal;
                 padding: 7px 0px;
               }
+
               p {
                 @include qoraal-p(22px, $qoraalo-color);
                 padding: 3px 3px;
@@ -1586,24 +1686,10 @@ div.laba_qaybood {
           }
         }
       }
-      div.macluumaad_bidix {
-        width: 100%;
-        height: 100%;
-        padding: 15px 5px;
 
-        //background-color: $main-color2;
-        h2 {
-          @include Totile-H(1.3rem, $title-color);
-          font-weight: normal;
-        }
-
-        p {
-          @include qoraal-p(18px, $qoraalo-color);
-          font-weight: normal;
-        }
-      }
+      // last donet here is kaan
       div.progress {
-        width: 90%;
+        width: 80%;
         height: 15px;
         background-color: $prog_color;
         margin: 10px 0px;
@@ -1631,12 +1717,13 @@ div.laba_qaybood {
           }
         }
       }
+
       div.info_fursad {
-        width: 100%;
+        width: 80%;
         position: relative;
 
         div.from_bixin {
-          width: 100%;
+          width: 95%;
 
           form {
             div.pyment_types {
@@ -1678,6 +1765,7 @@ div.laba_qaybood {
                     span {
                       @include qoraal-p(15px, $qoraalo-color);
                       user-select: none;
+
                       i {
                         color: $qoraalo-color;
                       }
@@ -1701,6 +1789,7 @@ div.laba_qaybood {
                       span {
                         color: $bg-main;
                         user-select: none;
+
                         i {
                           color: $bg-main;
                         }
@@ -1779,7 +1868,7 @@ div.laba_qaybood {
                   }
                 }
 
-                > span.Ll {
+                >span.Ll {
                   position: absolute;
                   width: 65px;
                   height: 80%;
@@ -1796,6 +1885,7 @@ div.laba_qaybood {
                 @include btn-web(75%);
                 //background-color: $color-Gaar;
                 margin: 10px 0px;
+
                 i {
                   color: $bg-main;
                 }
@@ -1804,64 +1894,6 @@ div.laba_qaybood {
                 //   cursor: not-allowed;
                 //   background-color: $btn_gaar;
                 // }
-              }
-            }
-          }
-        }
-      }
-    }
-    &.muuqaal {
-      flex: 5;
-      //height: 400px;
-      //background-color: $main-color2;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      div.last_donote {
-        width: 100%;
-        height: 100%;
-        margin: 15px 0px;
-        h2 {
-          @include Totile-H(1.2rem, $madaw);
-          padding: 5px 15px;
-          font-weight: normal;
-        }
-        div.tabaruc {
-          width: 100%;
-          height: 100%;
-          padding: 3px 0px;
-          border-radius: 5px;
-          margin: 18px 0px;
-          @include dyshadow(0px, 0px, 12px, 3px);
-          @include dynamic-flex(flex-start, center, row, 10px);
-          border-left: 0px solid $main-color2;
-          border-right: 0px solid $main-color2;
-          div.user_img {
-            flex: 1;
-            height: 80px;
-            //background-color: $main-color2;
-            @include dynamic-flex(center, center, row, 0px);
-            i {
-              color: $qoraalo-color;
-              font-size: 2rem;
-            }
-          }
-          div.name_amout {
-            padding: 10px 25px;
-            h2 {
-              @include Totile-H(17px, $madaw);
-              font-weight: normal;
-              padding: 2px 0px;
-            }
-
-            div.info_wind {
-              @include dynamic-flex(flex-start, center, row, 15px);
-              padding: 2px 0px;
-              p {
-                @include qoraal-p(17px, $qoraalo-color);
               }
             }
           }
@@ -2061,6 +2093,15 @@ div.laba_qaybood {
   // div.over_alert div.in_haye_alert div.alert{
   //   width: 100%;
   // }
+  div.laba_qaybood div.qayb.Pyments div.last_donote div.tabaruc div.name_amout {
+    padding: 10px 15px;
+  }
+  div.laba_qaybood div.qayb.muuqaal div.info_fursad div.from_bixin form div.pyment_types div.raber_switcher {
+    width: 100%;
+  }
+  div.laba_qaybood div.qayb.muuqaal div.info_fursad{
+    width: 100%;
+  }
 
   div.nav div.links div.action-btn button.nav-btn {
     width: 85%;
@@ -2194,6 +2235,19 @@ div.laba_qaybood {
   }
   .xajiye {
     max-width: 540px;
+  }
+  div.laba_qaybood div.qayb.muuqaal div.info_fursad div.from_bixin form div.pyment_types div.raber_switcher{
+    width: 90%;
+  }
+  div.laba_qaybood div.qayb.Pyments div.last_donote div.tabaruc div.name_amout{
+    padding: 10px 15px;
+  }
+
+  div.laba_qaybood div.qayb.muuqaal div.info_fursad {
+    width: 100%;
+  }
+  div.laba_qaybood div.qayb.muuqaal div.progress{
+    width: 100%;
   }
   div.nav {
     div.links1 {

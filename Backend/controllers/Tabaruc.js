@@ -26,7 +26,7 @@ const addTabruc = async(req,res) => {
 const GetTabarucMashruuc = async(req,res) => {
    const Id = req.params.Id
    try{
-    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({createdAt: -1}).limit(3)
+    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({createdAt: -1}).limit(7)
     res.status(200).json(Tabarucyo)
    } catch(Err){
     console.log(Err)
@@ -35,10 +35,25 @@ const GetTabarucMashruuc = async(req,res) => {
 }
 
 
+// get count tabarucyo 
+
+const CountTabaruc = async(req,res) => {
+    try{
+        const CountTabaruc = await TabarucModel.find().count()
+        res.status(200).json(CountTabaruc)
+
+    } catch(Err){
+        console.log(Err)
+
+    }
+}
+
+
 
 // get Project Tabaruc
 
 module.exports = {
     addTabruc,
-    GetTabarucMashruuc
+    GetTabarucMashruuc,
+    CountTabaruc
 }

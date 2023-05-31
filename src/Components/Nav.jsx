@@ -21,7 +21,7 @@ function Nav({Login}){
                     <div className="link-items computer">
                         <ul>
                             <li>
-                                <Link to="">
+                                <Link to="/">
                                     Home
                                 </Link>                      
                             </li>
@@ -32,7 +32,7 @@ function Nav({Login}){
                             </li>
                             {CrentUser && CrentUser.Id === "6454dba1429d70970c9c0eff" ?
                                 <li>
-                                <Link to="">
+                                <Link to="/addProject">
                                 dashboard
                                 </Link>
                             </li>
