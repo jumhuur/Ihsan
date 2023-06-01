@@ -8,6 +8,7 @@ import { Auth } from "../context/Auth";
 import { format} from 'timeago.js'
 import { tab } from "@testing-library/user-event/dist/tab";
 import ProInfoSkl from "./Skeletons/ProSkeleton";
+import EmpatyTabaruc from "./EmptyTabruc";
 function InfoProject({info,Tabaruc}) {
     const Form_data = useActionData()
     const {CrentUser} = Auth()
@@ -131,11 +132,13 @@ function InfoProject({info,Tabaruc}) {
                     </div>
                     <div className="qayb Pyments">
                         <div className="last_donote">
-                            <h2> Tabarucyadii Ugu Danbeeyay</h2>
+                            <h2>Dadka Ugu Tabaruca Badan</h2>
                             <p>
                             Macluumaadka dadkii ugu danbeeyay ee ku tabarucay mashruucan
                             kamid noqo dadka u tartamaya khayrka
                             </p>
+                            {Tabaruc.length > 0 ?
+                            <>
                             {Tabaruc && Tabaruc.map((tb) => (
                             <div className="tabaruc">
                                 {/* <div className="user_img">
@@ -150,6 +153,12 @@ function InfoProject({info,Tabaruc}) {
                                 </div>
                             </div>
                             ))
+                            }
+                            </>
+                            :
+                            <>
+                            <EmpatyTabaruc />
+                            </>
                             }
                         </div>
                     </div>

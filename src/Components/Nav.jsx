@@ -44,7 +44,7 @@ function Nav({Login}){
                         </ul>
 
                     </div>
-                    <div className="action-btn Mobile">
+                    <div className="Mobilee">
                         <div onClick={activeMobile} className="tips_mobile">
                            <i className="fa-solid fa-bars"></i>
                         </div>

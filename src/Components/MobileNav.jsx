@@ -5,28 +5,43 @@ function MobileNav({Login}) {
         const {CrentUser} = Auth()
     return (
         <>
-        <div className="link-items Mobile">
+        <div className="Mobile">
             <ul>
                 <li>
                     <Link to="">
-                        Home
+                        <span><i className="fa-solid fa-house"></i> Home</span>
                     </Link>                      
                 </li>
                 <li>
                     <Link to="" >
-                        Mashruucyo
+                        <span><i className="fa-solid fa-layer-group"></i> Mashruucyo</span>
                     </Link>                           
                 </li>
-                {CrentUser && CrentUser.Id === "643d37ce7bf402dde24ec766" ?
-                    <li>
-                    <Link to="">
-                    mobile
-                    </Link>
+                {CrentUser && CrentUser.Id === "6454dba1429d70970c9c0eff" ?
+                <li>
+                <Link to="/addProject">
+                <span><i className="fa-solid fa-gauge-high"></i> dashboard</span>
+                </Link>
                 </li>
                 : <></>
                 }
                 <li>
                 <span><i className="fa-solid fa-earth-africa"></i> So <i className="fa-solid fa-chevron-down"></i></span>
+                </li>
+                <li>
+                <div className="action-btn">
+                {CrentUser ?
+                <button className="nav-btn" onClick={Login}>
+                        <span>{CrentUser.Magac}</span>
+                </button>
+                :
+                <button className="nav-btn" onClick={Login}>
+                    <Link to={"/Login"} >
+                        <span>Gal Akoon <i className="fa-solid fa-arrow-right-to-bracket"></i></span>
+                    </Link>
+                </button>
+                }
+                </div>
                 </li>
             </ul>
 

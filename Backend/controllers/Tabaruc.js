@@ -31,7 +31,6 @@ const GetTabarucMashruuc = async(req,res) => {
    } catch(Err){
     console.log(Err)
    }
-
 }
 
 
@@ -58,7 +57,6 @@ const TotalTabaruc = async(req,res) => {
             [
             {$group: {_id:null , Lacagta:{$sum:"$Lacagta"}}}
             ]
-            // ([{$group: {_id:null, sum_val:{$sum:"$points"}}}])
         )
 
         res.status(200).json(TotalTabaruc)
@@ -72,7 +70,6 @@ const TotalTabaruc = async(req,res) => {
 
 
 // get Project Tabaruc
-
 module.exports = {
     addTabruc,
     GetTabarucMashruuc,

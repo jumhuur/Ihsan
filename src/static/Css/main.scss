@@ -325,62 +325,76 @@ div.nav {
           }
         }
       }
+    }
 
-      &.Mobile {
-      background-color: #73859f;
+    div.Mobilee{
+      display: none;
+      flex: 1;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-flow: wrap column;
+      gap: 0px;
+      text-transform: capitalize;
+      .tips_mobile {
+        width: 50px;
+        height: 50px;
+        //background-color: $main-color2;
+        border-radius: 7px;
+        border: solid 0.5px $main-color2;
+        @include flex-box(0px);
+        font-size: 25px;
+        color: $main-color2;
+        cursor: pointer;
+      }
+    }
+
+    div.Mobile {
+      background-color: $main-color;
       height: 100vh;
       position: absolute;
       top: 80px;
-      width: 95%;
-        li {
-            @include qoraal-p(16px, $qoraalo-color);
-            height: 100%;
-            @include dynamic-flex(center, center, row, 0px);
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.4s ease-in-out;
-        
-            i.fa-chevron-down {
-              font-size: 12px;
-              font-weight: bold;
-            }
-        
-            &:hover {
-              color: $main-color2;
-            }
-        
-            a {
-              @include dynamic-flex(center, center, column, 0px);
-              @include qoraal-p(16px, $qoraalo-color);
-              height: 100%;
-              padding: 15px;
-              font-weight: 500;
-              transition: all 0.4s ease-in-out;
-        
-              &:hover {
-                color: $main-color2;
-              }
-            }
+      width: 100%;
+      li {
+        @include qoraal-p(16px, $qoraalo-color);
+        height: 100%;
+        @include dynamic-flex(flex-start, center, row, 0px);
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.4s ease-in-out;
+        margin: 13px 30px;
+        font-size: 20px;
+        i.fa-chevron-down {
+          font-size: 12px;
+          font-weight: bold;
+        }
+
+        &:hover {
+          color: $main-color2;
+        }
+
+        a {
+          @include dynamic-flex(center, center, column, 0px);
+          @include qoraal-p(16px, $qoraalo-color);
+          height: 100%;
+          padding: 15px;
+          font-weight: 500;
+          transition: all 0.4s ease-in-out;
+          text-decoration: none;
+          i {
+            font-size: 20px;
+            color: $main-color2;
           }
+          &:hover {
+            color: $main-color2;
+          }
+        }
       }
     }
     div.action-btn {
       flex: 2;
       height: 100%;
       @include dynamic-flex(center, center, column, 0px);
-      &.Mobile {
-        display: none;
-        .tips_mobile {
-          width: 50px;
-          height: 50px;
-          //background-color: $main-color2;
-          border-radius: 7px;
-          border: solid 0.5px $main-color2;
-          @include flex-box(0px);
-          font-size: 25px;
-          color: $main-color2;
-          cursor: pointer;
-        }
       }
 
       button.nav-btn {
@@ -395,7 +409,6 @@ div.nav {
       }
     }
   }
-}
 
 // homepage welcome
 div.welcome {
@@ -2238,11 +2251,13 @@ div.laba_qaybood {
     &.Computer {
       display: none;
     }
-
-    &.Mobile {
+  }
+  div.nav div.links{
+  div.Mobilee {
       display: flex;
     }
   }
+
 }
 @include Break-Points(sm) {
   .haye {
@@ -2333,11 +2348,13 @@ div.laba_qaybood {
     &.Computer {
       display: none;
     }
-
-    &.Mobile {
-      display: flex;
-    }
   }
+
+    div.nav div.links {
+      div.Mobilee {
+        display: flex;
+      }
+    }
 }
 @include Break-Points(md) {
   .haye {
@@ -2370,10 +2387,12 @@ div.laba_qaybood {
     &.Computer {
       display: none;
     }
-    &.Mobile {
-      display: flex;
-    }
   }
+    div.nav div.links {
+      div.Mobilee {
+        display: flex;
+      }
+    }
 
   div.welcome div.labaqaybood div.qayb {
     width: calc(85% / 1);
@@ -2437,7 +2456,7 @@ div.laba_qaybood {
   // }
 
   div.slide {
-    &.Mobile {
+    &.Mobilee {
       display: none;
     }
   }
