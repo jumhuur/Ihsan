@@ -26,7 +26,7 @@ const addTabruc = async(req,res) => {
 const GetTabarucMashruuc = async(req,res) => {
    const Id = req.params.Id
    try{
-    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({createdAt: -1}).limit(7)
+    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({Lacagta: -1}).limit(7)
     res.status(200).json(Tabarucyo)
    } catch(Err){
     console.log(Err)
@@ -50,10 +50,32 @@ const CountTabaruc = async(req,res) => {
 
 
 
+// get isku gaynta lacagaha oo dhan 
+
+const TotalTabaruc = async(req,res) => {
+    try{
+        const TotalTabaruc = await TabarucModel.aggregate(
+            [
+            {$group: {_id:null , Lacagta:{$sum:"$Lacagta"}}}
+            ]
+            // ([{$group: {_id:null, sum_val:{$sum:"$points"}}}])
+        )
+
+        res.status(200).json(TotalTabaruc)
+    } catch(Err){
+        console.log({Err:Err.message})
+
+    }
+
+}
+
+
+
 // get Project Tabaruc
 
 module.exports = {
     addTabruc,
     GetTabarucMashruuc,
-    CountTabaruc
+    CountTabaruc,
+    TotalTabaruc
 }

@@ -15,7 +15,7 @@ const TabrucSchema = new Schema({
         required: true,
     },
     Lacagta: {
-        type: String,
+        type: Number,
         required: true,
     },
     PymentType: {

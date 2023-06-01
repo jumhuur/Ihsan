@@ -17,6 +17,19 @@
     background-color: #dee2e6;
     border-radius: 5px;
     animation: Animate_el ease-in-out 2.5s infinite;
+    margin: 15px 0px;
+}
+
+
+// gaar u ah info last donote 
+
+.skl_ton.div{
+    width: 100%;
+    height: 80px;
+    background-color: #dee2e6;
+    border-radius: 5px;
+    animation: Animate_el ease-in-out 2.5s infinite;
+    margin: 15px 0px;   
 }
 
 
@@ -70,6 +83,11 @@ div.card_mashruuc {
         flex-flow: wrap column;
     }
 }
+
+div.sklt{
+    position: relative;
+    overflow: hidden;
+} 
 
 
 /* dhex mar style --------  */

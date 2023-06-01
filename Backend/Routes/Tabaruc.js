@@ -1,6 +1,6 @@
 const express = require("express")
 const TabarucRoutes = express.Router()
-const {addTabruc,GetTabarucMashruuc, CountTabaruc} = require("../controllers/Tabaruc")
+const {addTabruc,GetTabarucMashruuc, CountTabaruc, TotalTabaruc} = require("../controllers/Tabaruc")
 
 // add Tabaruc Router
 
@@ -14,6 +14,11 @@ TabarucRoutes.get("/GetTabarucyo/:Id", GetTabarucMashruuc)
 // get count tabaruc 
 
 TabarucRoutes.get("/countTabaruc", CountTabaruc)
+
+
+// get total 
+
+TabarucRoutes.get("/Total", TotalTabaruc)
 
 
 module.exports = TabarucRoutes

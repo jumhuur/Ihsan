@@ -40,6 +40,22 @@ const Login = async(req,res) => {
 
 
 
+// get userscount 
+
+const UsersCount = async(req,res) => {
+    try{
+        const CountUsers = await UserModel.find().count()
+        res.status(200).json(CountUsers)
+
+
+    } catch(Err){
+        console.log({Err:Err.message})
+
+    }
+}
+
+
+
 
 // const Getone = async(req,res) => {
 //     res.status(200).json({Msg:"Good"})
@@ -48,5 +64,6 @@ const Login = async(req,res) => {
 
 module.exports = {
     Login,
-    Register
+    Register,
+    UsersCount
 }

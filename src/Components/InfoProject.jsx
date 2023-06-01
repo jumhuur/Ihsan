@@ -7,6 +7,7 @@ import Video from "./video";
 import { Auth } from "../context/Auth";
 import { format} from 'timeago.js'
 import { tab } from "@testing-library/user-event/dist/tab";
+import ProInfoSkl from "./Skeletons/ProSkeleton";
 function InfoProject({info,Tabaruc}) {
     const Form_data = useActionData()
     const {CrentUser} = Auth()
@@ -27,6 +28,8 @@ function InfoProject({info,Tabaruc}) {
         <>
         <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
         <AlertLoad Sax={Form_data && Form_data.Sax} />
+        <>
+        {info ?
         <div className="Info">
             <div className="haye">
                 <div className="laba_qaybood">
@@ -92,7 +95,7 @@ function InfoProject({info,Tabaruc}) {
                                     <div className="donter_info">
                                     <div className="input_feilds">
                                     <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                                    <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
+                                    <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="number" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
                                     </div>
                                     <div className="input_feilds">
                                     {Pyment_type === "zaad" ?
@@ -153,6 +156,12 @@ function InfoProject({info,Tabaruc}) {
                 </div>
             </div>
         </div>
+        :
+        <>
+        <ProInfoSkl />
+        </>
+        }
+         </>
         </>
     )
 }
