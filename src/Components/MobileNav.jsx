@@ -8,7 +8,7 @@ function MobileNav({Login}) {
         <div className="Mobile">
             <ul>
                 <li>
-                    <Link to="">
+                    <Link to="/">
                         <span><i className="fa-solid fa-house"></i> Home</span>
                     </Link>                      
                 </li>
@@ -26,7 +26,9 @@ function MobileNav({Login}) {
                 : <></>
                 }
                 <li>
+                <Link to="">
                 <span><i className="fa-solid fa-earth-africa"></i> So <i className="fa-solid fa-chevron-down"></i></span>
+                </Link>
                 </li>
                 <li>
                 <div className="action-btn">

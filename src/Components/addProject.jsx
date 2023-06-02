@@ -6,9 +6,12 @@ function AddProjects(){
         <>
         <Nav/>
         <div className="haye">
+        <div className="addPro">
+            <h2>Add Projects Form</h2>
         <p>
             add pro
         </p>
+        </div>
         </div>
         <Footer />
         </>

@@ -117,7 +117,6 @@ const GetOneProject = async(req,res) => {
     }
 
     //res.status(200).json({Msg:`Good Id is ${Id}`})
-
 }
 
 

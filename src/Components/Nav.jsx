@@ -33,7 +33,7 @@ function Nav({Login}){
                             {CrentUser && CrentUser.Id === "6454dba1429d70970c9c0eff" ?
                                 <li>
                                 <Link to="/addProject">
-                                dashboard
+                                Mashruuc cusub
                                 </Link>
                             </li>
                             : <></>
