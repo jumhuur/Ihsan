@@ -18,7 +18,7 @@ const ProjectsSchema = new Schema({
     },
 
     Tabaruc: {
-        type: String,
+        type: Number,
         required: true
     },
 

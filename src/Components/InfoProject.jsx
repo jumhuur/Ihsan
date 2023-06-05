@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Form , useActionData } from "react-router-dom";
+import {useEffect, useState } from "react";
+import { Form, useActionData, useParams } from "react-router-dom";
 import Alert from './Alert';
 import AlertLoad from './LoadAlert';
 import EVC from "evc-api";
@@ -9,26 +9,185 @@ import { format} from 'timeago.js'
 import { tab } from "@testing-library/user-event/dist/tab";
 import ProInfoSkl from "./Skeletons/ProSkeleton";
 import EmpatyTabaruc from "./EmptyTabruc";
-function InfoProject({info,Tabaruc}) {
+function InfoProject() {
     const Form_data = useActionData()
     const {CrentUser} = Auth()
+    const UserLanbar = CrentUser && CrentUser.Lanbar
     const [Pyment_type,setPyment_type] = useState('zaad');
+    const [Error, setError] = useState(null);
+    const [Looding, setLooding] = useState(false);
+    const [wait,setwait] = useState(false)
+    const [info,setinfo] = useState()
+    const [total,settotal]= useState(0)
+    const [tabaruc,settabaruc] = useState(null)
+    const [msg,setmsg] = useState("")
+    const [img,setimg] = useState("")
+    const [cln,setcln] = useState("")
+    //const [lacag,setlacag] = useState(0)
+    // radiuse 
+    const [fildes,setfildes] = useState({
+        Lanbar: UserLanbar,
+        Lacagta:"",
+    })
+    const Tabaruc = Number(fildes.Lacagta) + Number(total)
+
     const Somtel = '65';
     const telesom = "63";
+    const {Id} = useParams()
+    const  pattern = /[^0-9]/g;
+    const  LacagReg = /[^0-9.]/g;
+
+
+    // on change inputes
+    const OnChangeInputes = (e) => {
+        setfildes((perv) => ({...perv, [e.target.name]: e.target.value}))
+        console.log(Tabaruc)
+    }        
+
+
+
+    // get  total
+
+    const GetTotal = async()=> {
+        const Total = await fetch(`http://localhost:8880/Api/GetTotal/${Id}`)
+        const res = await Total.json()
+        if(Total.ok){
+            settotal(res[0].Lacagta)
+        }
+    }
+
+    const GetOne = async() => {
+        const OneProject = await fetch(`http://localhost:8880/Api/Mashruuc/${Id}`)
+        const Tabaruc = await fetch(`http://localhost:8880/Api/GetTabarucyo/${Id}`)
+        const res = await  OneProject.json()
+        const res1 = await Tabaruc.json()
+        if(!OneProject.ok){
+            setError(res.Err)
+            console.log("Not Found")
+            setLooding(false)
+        }
+
+        if(OneProject.ok){
+            setError(false)
+            setinfo(res)
+            setLooding(true)
+        }
+
+        if(!Tabaruc.ok){
+            console.log("Not Found")
+        }
+        if(Tabaruc.ok){
+            settabaruc(res1)
+        }
+    }
+
+    const UpdateAction = async() => {
+        const updatenow = await fetch(`http://localhost:8880/Api/Update/${Id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({Tabaruc}),
+            headers: {
+            'Content-Type':'application/json',
+            }
+        })
+        const res =  await updatenow.json()
+        if(updatenow.ok){
+            setwait(true)
+            GetOne()
+            setwait(false)
+            GetOne()
+        }
+    }
+
+    const PymentAction = () => {
+        setmsg("Fadlan Telefankaaga Eeg")
+        setwait(true)
+        const point = fildes.Lacagta.split(".")[1]
+    
+        if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
+            console.log("Waa Qalad Lanbarku")
+            setmsg("Waa Qalad Lanbarku")
+        } 
+
+        if(fildes.Lacagta < 0.25){
+             console.log("Lacagtu kama yaraan karto 0.25$")
+        }
+
+        if(fildes.Lacagta.match(LacagReg)){
+             console.log("Fadlan si sax lacagta U Qor")
+        }
+
+        if(point){
+        if(point.length > 2){
+            console.log("Qaabka qoraalka lacagtu waa qalad!")
+        }
+        }
+        if(Pyment_type === "zaad"){
+            // telesom action
+            const telesom = () => {
+                EVC({
+                merchantUId: 'M0912269',
+                apiUserId: '1000297',
+                apiKey: 'API-1901083745AHX',
+                customerMobileNumber:  '25263'+fildes.Lanbar,
+                description: 'description.......',
+                amount: String(fildes.Lacagta),
+                autoWithdraw: true, // `true` if auto withdraw else `false`
+                merchantNo: '252402785', // withdraw to ...
+                })
+                .then((data) => {
+                    if(data.responseCode !== "200"){
+                        // tani sax maaha
+                        console.log(data.responseCode)
+                        UpdateAction()
+                        setmsg(`Mahadsanid ${fildes.Lacagta} $ Ayaad Bixisay`)
+                        setimg("fa-solid fa-circle-check")
+                        setcln('Sax')
+                        setwait(0)
+                    } else {
+                        setmsg("Laguma Guulaysan Lacag Bixinta")
+                        setimg("fa-solid fa-triangle-exclamation fa-shake")
+                        setcln('Qalad')
+                        setwait(0)
+                    }
+                })
+                .catch((err) => console.log(err.responseCode))
+            }
+            telesom()
+        }
+        // somtel action
+        if(Pyment_type === "edahab"){
+            const Somtel = () => {
+                console.log('Somtel pyment')
+                UpdateAction()
+            }
+            Somtel()
+        }
+    }
+
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
     }
     const toggale_edahab = (e) => {
         setPyment_type("edahab")
     }
-    // state
-    const [value,setvalue] = useState(0) 
-    const valu_tabaruc =   Number(value);
-    const [UserLanbar,setUserLanbar] = useState(CrentUser && CrentUser.Lanbar)
+
+    useEffect(() => {
+        GetOne()
+        GetTotal()
+    },[])
+    
     return (
         <>
-        <Alert Noc_err={Form_data && Form_data.err_no} Noc_err1={Form_data && Form_data.err_lacag} Noc_err2={Form_data && Form_data.err_lacag1}/> 
-        <AlertLoad Sax={Form_data && Form_data.Sax} />
+        {wait  ?
+        <AlertLoad Sax={msg} />
+        :<>
+        </>}
+
+        {wait === 0 ?
+        <Alert msg={msg} img={img} cln={cln} />
+        :<></>
+    }
+        
         <>
         {info ?
         <div className="Info">
@@ -81,7 +240,7 @@ function InfoProject({info,Tabaruc}) {
                         }
                         <div className="info_fursad">
                             <div className="from_bixin">
-                                <Form  method='post' action={`/mashruuc/${info && info._id}`}>
+                                <Form  method='post' action={`/mashruuc/${info && info._id}`} onSubmit={PymentAction}>
                                     <div className="pyment_types">
                                         <div className="raber_switcher">
                                             {/* <span>Zaad</span> */}
@@ -96,7 +255,7 @@ function InfoProject({info,Tabaruc}) {
                                     <div className="donter_info">
                                     <div className="input_feilds">
                                     <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
-                                    <input className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="number" placeholder="Lacagta" name='Lacagta' onChange={(e) => setvalue(e.target.value)}/>
+                                    <input onChange={OnChangeInputes} className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="number" placeholder="Lacagta" name='Lacagta'/>
                                     </div>
                                     <div className="input_feilds">
                                     {Pyment_type === "zaad" ?
@@ -106,9 +265,9 @@ function InfoProject({info,Tabaruc}) {
                                     :
                                         <span className='Ll'>No</span>
                                     }   
-                                    <input type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar' value={UserLanbar} onChange={(e) => setUserLanbar(e.target.value)} />
+                                    <input onChange={OnChangeInputes} type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar' value={fildes.Lanbar} />
                                     <input type='text' name='Id' hidden value={info &&  info._id} />
-                                    <input type="number" name='Tabaruc' hidden value={Number(info && info.Tabaruc) + valu_tabaruc} />
+                                    <input onChange={OnChangeInputes} type="number" name='Tabaruc' hidden value={Number(total) + Number(fildes.Lacagta)} />
                                     <input type='text' hidden value={Pyment_type} name='PymentType' />
                                     {CrentUser ?
                                     <>
@@ -137,9 +296,9 @@ function InfoProject({info,Tabaruc}) {
                             Macluumaadka dadkii ugu danbeeyay ee ku tabarucay mashruucan
                             kamid noqo dadka u tartamaya khayrka
                             </p>
-                            {Tabaruc.length > 0 ?
+                            {tabaruc.length > 0 ?
                             <>
-                            {Tabaruc && Tabaruc.map((tb) => (
+                            {tabaruc && tabaruc.map((tb) => (
                             <div className="tabaruc">
                                 {/* <div className="user_img">
                                    <i className="fa-solid fa-circle-user"></i>
@@ -179,14 +338,6 @@ function InfoProject({info,Tabaruc}) {
 export const donote = async ({request}) => {
     //const {GetAllProjects} = Auth()
     const actions = await request.formData();
-    const fildes = {
-        Lanbar: actions.get("Lanbar"),
-        Lacagta: actions.get('Lacagta'),
-        Id: actions.get("Id"),
-        Tabaruc: actions.get('Tabaruc'),
-        PymentType: actions.get('PymentType')
-    }
-
     const fildesTabaruc = {
         Name: actions.get("Name"),
         Lanbar: actions.get("Lanbar"),
@@ -194,23 +345,6 @@ export const donote = async ({request}) => {
         Id: actions.get("Id"),
         Tabaruce: actions.get('Tabaruce'),
         PymentType: actions.get('PymentType')
-    }
-    const  pattern = /[^0-9]/g;
-    const  LacagReg = /[^0-9.]/g;
-
-    //update Tabaruc 
-    const Tabaruc = fildes.Tabaruc
-
-    // update Projeccts Lacagtiisa tabaruca kadib
-    const UpdateProject = async() => {
-    const updatenow = await fetch(`http://localhost:8880/Api/Update/${fildes.Id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({Tabaruc}),
-        headers: {
-        'Content-Type':'application/json',
-        }
-    })
-    const res =  await updatenow.json()
     }
 
     // aad Tabaruc
@@ -226,73 +360,8 @@ export const donote = async ({request}) => {
 
         const res = await AddTabaruc.json()
     }
-
-    const point = fildes.Lacagta.split(".")[1]
-
-    const PymentAction = () => {
-            if(fildes.PymentType === "zaad"){
-                  // telesom action
-                const telesom = () => {
-                    EVC({
-                    merchantUId: 'M0912269',
-                    apiUserId: '1000297',
-                    apiKey: 'API-1901083745AHX',
-                    customerMobileNumber:  '25263'+fildes.Lanbar,
-                    description: 'description.......',
-                    amount: String(fildes.Lacagta),
-                    autoWithdraw: true, // `true` if auto withdraw else `false`
-                    merchantNo: '252402785', // withdraw to ...
-                    })
-                    .then((data) => {
-                        if(data.responseCode !== "200"){
-                            console.log(data.responseMsg)
-                            // tani sax maaha
-                            AddTabaruc()
-                            UpdateProject()
-                        } else {
-                            AddTabaruc()
-                            UpdateProject()
-                        }
-                    })
-                    .catch((err) => console.log(err.responseCode))
-                        
-                }
-                telesom()
-            }
-            // somtel action
-            if(fildes.PymentType === "edahab"){
-                const Somtel = () => {
-                    console.log('Somtel pyment')
-                    AddTabaruc()
-                    UpdateProject()
-                }
-                Somtel()
-            }
-    }
-   
-    if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
-        return {err_no: "Waa Qalad Lanbarku"}
-    } 
-
-    if(fildes.Lacagta < 0.25){
-        return {err_lacag: "Lacagtu kama yaraan karto 0.25$"}
-    }
-
-    if(fildes.Lacagta.match(LacagReg)){
-        return {err_lacag1: "Fadlan si sax lacagta U Qor"}
-    }
-
-    if(point){
-    if(point.length > 2){
-        return {err_lacag1: "Qaabka qoraalka lacagtu waa qalad!"}
-    }
-    }
-
-    
-    PymentAction()
-    return{
-        Sax: "Faldan eeg Telefankaaga ...",
-    }
+    AddTabaruc()
+    return null
     //return redirect("/")
 }
 

@@ -94,16 +94,15 @@ const GetDaryeel = async(req,res) => {
 const UpdateOneProject = async(req,res) => {
     const Id = req.params.Id
     const {Tabaruc} = req.body
-
     try{
         if(mongoose.isValidObjectId(Id)){
             const Update  = await ProjectsModule.findOneAndUpdate({_id:Id}, {Tabaruc})
-            res.status(200).json({Msg: "Waxaaad Ku Tabarucday"})
+            res.status(200).json(Update)
         } else {
             res.status(400).json({Msg: "Update is Not Complited"})
         }
     } catch(Err) {
-        res.status(400).json({Err})
+        res.status(400).json({Err:Err.message})
     }
 }
 

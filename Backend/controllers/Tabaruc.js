@@ -1,8 +1,5 @@
 const TabarucModel = require("../Models/Tabaruc")
 
-
-
-
 // add Tabruc
 const addTabruc = async(req,res) => {
     const {Name,Tabaruce,Id,Lacagta,PymentType,Lanbar} = req.body
@@ -32,6 +29,23 @@ const GetTabarucMashruuc = async(req,res) => {
     console.log(Err)
    }
 }
+
+
+const Total = async(req,res) => {
+   const Id = req.params.Id
+   try{
+    const Tabarucyo = await TabarucModel.aggregate(
+        [
+        {$match : {Id:Id} },
+        {$group: {_id:null , Lacagta:{$sum:"$Lacagta"}}}
+        ]
+    )
+    res.status(200).json(Tabarucyo)
+   } catch(Err){
+    console.log(Err)
+   }
+}
+
 
 
 // get count tabarucyo 
@@ -74,5 +88,6 @@ module.exports = {
     addTabruc,
     GetTabarucMashruuc,
     CountTabaruc,
-    TotalTabaruc
+    TotalTabaruc,
+    Total
 }

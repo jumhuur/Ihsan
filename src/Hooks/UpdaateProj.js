@@ -1,5 +1,4 @@
 import { Auth } from "../context/Auth"
-
 export const UpdateProj = () => {
     const {GetAllProjects} = Auth()
     const UpdateProject = async(Id,Tabaruc) => {
@@ -10,12 +9,10 @@ export const UpdateProj = () => {
             'Content-Type':'application/json',
             }
         })
-
         const res = await updatenow.json()
+        if(updatenow.ok){
         GetAllProjects()
-        // if(updatenow.ok){
-
-        // }
+        }
     }
 
 

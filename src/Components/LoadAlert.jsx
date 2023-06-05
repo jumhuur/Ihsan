@@ -1,7 +1,7 @@
 function AlertLoad({Sax}){
     return (
         <>
-        <div className={Sax ? "over_alert active" : "over_alert"}>
+        <div className={"over_alert active"}>
             <div className="haye">
                 <div className="in_haye_alert">
                 <div className="alert">
