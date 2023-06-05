@@ -10,9 +10,12 @@ import { tab } from "@testing-library/user-event/dist/tab";
 import ProInfoSkl from "./Skeletons/ProSkeleton";
 import EmpatyTabaruc from "./EmptyTabruc";
 function InfoProject() {
+    const {Id} = useParams()
     const Form_data = useActionData()
     const {CrentUser} = Auth()
     const UserLanbar = CrentUser && CrentUser.Lanbar
+    const Tabaruce = CrentUser ? CrentUser.Id : "Ixsan2023"
+    const Name = CrentUser ? CrentUser.Magac : "Deeq Bixiye"
     const [Pyment_type,setPyment_type] = useState('zaad');
     const [Error, setError] = useState(null);
     const [Looding, setLooding] = useState(false);
@@ -29,11 +32,19 @@ function InfoProject() {
         Lanbar: UserLanbar,
         Lacagta:"",
     })
-    const Tabaruc = Number(fildes.Lacagta) + Number(total)
+
+    const [fildesTabaruc,setfildesTabaruc] = useState({
+        Name: Name,
+        Lanbar: (fildes.Lanbar),
+        Lacagta: Number(fildes.Lacagta),
+        Id: Id,
+        Tabaruce: Tabaruce,
+        PymentType:Pyment_type
+    })
+    const Tabaruc = Number(fildes.Lacagta) + Number(info && info.Tabaruc)
 
     const Somtel = '65';
     const telesom = "63";
-    const {Id} = useParams()
     const  pattern = /[^0-9]/g;
     const  LacagReg = /[^0-9.]/g;
 
@@ -41,7 +52,9 @@ function InfoProject() {
     // on change inputes
     const OnChangeInputes = (e) => {
         setfildes((perv) => ({...perv, [e.target.name]: e.target.value}))
-        console.log(Tabaruc)
+        setfildesTabaruc((perv) => ({...perv, [e.target.name]: e.target.value}))
+        console.log(fildes)
+        console.log(fildesTabaruc)
     }        
 
 
@@ -81,6 +94,19 @@ function InfoProject() {
         }
     }
 
+    const AddTabaruc = async() => {
+        const AddTabaruc = await fetch("http://localhost:8880/Api/addTabaruc", {
+            method: "POST",
+            body: JSON.stringify(fildesTabaruc),
+            headers: {
+            'Content-Type':'application/json',
+            }
+        })
+
+        const res = await AddTabaruc.json()
+        console.log('sax')
+    }
+
     const UpdateAction = async() => {
         const updatenow = await fetch(`http://localhost:8880/Api/Update/${Id}`, {
             method: 'PATCH',
@@ -92,6 +118,7 @@ function InfoProject() {
         const res =  await updatenow.json()
         if(updatenow.ok){
             setwait(true)
+            AddTabaruc()
             GetOne()
             setwait(false)
             GetOne()
@@ -348,19 +375,6 @@ export const donote = async ({request}) => {
     }
 
     // aad Tabaruc
-
-    const AddTabaruc = async() => {
-        const AddTabaruc = await fetch("http://localhost:8880/Api/addTabaruc", {
-            method: "POST",
-            body: JSON.stringify(fildesTabaruc),
-            headers: {
-            'Content-Type':'application/json',
-            }
-        })
-
-        const res = await AddTabaruc.json()
-    }
-    AddTabaruc()
     return null
     //return redirect("/")
 }
