@@ -34,7 +34,13 @@ const TabrucSchema = new Schema({
 // tabaruc data adding 
 
 TabrucSchema.statics.AddTabruc =  async function(Name,Tabaruce,Id,Lacagta,PymentType,Lanbar){
+    const  pattern = /[^0-9]/g;
+    const  LacagReg = /[^0-9.]/g;
+    if(Lanbar.length !== 7 || Lanbar.match(pattern)){
+        throw Error("Waa Qalad Lanbarku!")
+    }
     const Tabarucdata =  await this.create({Name,Tabaruce,Id,Lacagta,PymentType,Lanbar})
+
     return Tabarucdata
 }
 

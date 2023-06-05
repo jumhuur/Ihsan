@@ -104,6 +104,9 @@ function InfoProject() {
         })
 
         const res = await AddTabaruc.json()
+        if(!AddTabaruc.ok){
+            setmsg(res.Error)
+        }
         console.log('sax')
     }
 
