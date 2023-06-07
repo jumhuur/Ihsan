@@ -324,7 +324,7 @@ function InfoProject() {
                                     </button>
                                     {CrentUser && CrentUser.Id  === "6454dba1429d70970c9c0eff" ?
                                     <button className="bixi manually" >
-                                    <i class="fa-solid fa-circle-plus"></i> Ku Dar Tabaru (manually)
+                                    <i class="fa-solid fa-circle-plus"></i> Ku Dar Tabaruc (manually)
                                     </button>
                                     :<></>
                                     }
