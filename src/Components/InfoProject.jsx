@@ -202,11 +202,6 @@ function InfoProject() {
         }
     }
 
-
-    const lastAction = () => {
-
-    }
-
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
     }
@@ -324,11 +319,13 @@ function InfoProject() {
                                     </>
                                 }
                                     </div>
-                                    <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
+                                    <button className={"bixi"} >
                                     <i className="fa-solid fa-paper-plane"></i> Bixi Hada
                                     </button>
-                                    {Error ?
-                                        <p>{Error}</p>
+                                    {CrentUser && CrentUser.Id  === "6454dba1429d70970c9c0eff" ?
+                                    <button className="bixi manually" >
+                                    <i class="fa-solid fa-circle-plus"></i> Ku Dar Tabaru (manually)
+                                    </button>
                                     :<></>
                                     }
                                     

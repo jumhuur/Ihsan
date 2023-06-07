@@ -1912,7 +1912,9 @@ div.laba_qaybood {
                   @include btn-web(75%);
                   //background-color: $color-Gaar;
                   margin: 10px 0px;
-
+                  &.manually{
+                    background-color: $main-color;
+                  }
                   i {
                     color: $bg-main;
                   }
