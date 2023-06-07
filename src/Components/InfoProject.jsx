@@ -53,8 +53,8 @@ function InfoProject() {
     const OnChangeInputes = (e) => {
         setfildes((perv) => ({...perv, [e.target.name]: e.target.value}))
         setfildesTabaruc((perv) => ({...perv, [e.target.name]: e.target.value}))
-        console.log(fildes)
-        console.log(fildesTabaruc)
+        // console.log(fildes)
+        // console.log(fildesTabaruc)
     }        
 
 
@@ -75,15 +75,11 @@ function InfoProject() {
         const res = await  OneProject.json()
         const res1 = await Tabaruc.json()
         if(!OneProject.ok){
-            setError(res.Err)
             console.log("Not Found")
-            setLooding(false)
         }
 
         if(OneProject.ok){
-            setError(false)
             setinfo(res)
-            setLooding(true)
         }
 
         if(!Tabaruc.ok){
@@ -91,6 +87,22 @@ function InfoProject() {
         }
         if(Tabaruc.ok){
             settabaruc(res1)
+        }
+    }
+
+    const UpdateAction = async() => {
+        const updatenow = await fetch(`http://localhost:8880/Api/Update/${Id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({Tabaruc}),
+            headers: {
+            'Content-Type':'application/json',
+            }
+        })
+        const res =  await updatenow.json()
+        if(updatenow.ok){
+            //setwait(true)
+            //setwait(false)
+            GetOne()
         }
     }
 
@@ -105,52 +117,40 @@ function InfoProject() {
 
         const res = await AddTabaruc.json()
         if(!AddTabaruc.ok){
-            setmsg(res.Error)
+            setLooding(true)
+            setError(res.Err)
+            setmsg(res.Err)
+            console.log(res.Err)
         }
-        console.log('sax')
-    }
 
-    const UpdateAction = async() => {
-        const updatenow = await fetch(`http://localhost:8880/Api/Update/${Id}`, {
-            method: 'PATCH',
-            body: JSON.stringify({Tabaruc}),
-            headers: {
-            'Content-Type':'application/json',
-            }
-        })
-        const res =  await updatenow.json()
-        if(updatenow.ok){
-            setwait(true)
-            AddTabaruc()
-            GetOne()
-            setwait(false)
-            GetOne()
+        if(AddTabaruc.ok){
+            UpdateAction()
         }
     }
 
     const PymentAction = () => {
         setmsg("Fadlan Telefankaaga Eeg")
         setwait(true)
-        const point = fildes.Lacagta.split(".")[1]
+        // const point = fildes.Lacagta.split(".")[1]
     
-        if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
-            console.log("Waa Qalad Lanbarku")
-            setmsg("Waa Qalad Lanbarku")
-        } 
+        // if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
+        //     console.log("Waa Qalad Lanbarku")
+        //     setmsg("Waa Qalad Lanbarku")
+        // } 
 
-        if(fildes.Lacagta < 0.25){
-             console.log("Lacagtu kama yaraan karto 0.25$")
-        }
+        // if(fildes.Lacagta < 0.25){
+        //      console.log("Lacagtu kama yaraan karto 0.25$")
+        // }
 
-        if(fildes.Lacagta.match(LacagReg)){
-             console.log("Fadlan si sax lacagta U Qor")
-        }
+        // if(fildes.Lacagta.match(LacagReg)){
+        //      console.log("Fadlan si sax lacagta U Qor")
+        // }
 
-        if(point){
-        if(point.length > 2){
-            console.log("Qaabka qoraalka lacagtu waa qalad!")
-        }
-        }
+        // if(point){
+        // if(point.length > 2){
+        //     console.log("Qaabka qoraalka lacagtu waa qalad!")
+        // }
+        // }
         if(Pyment_type === "zaad"){
             // telesom action
             const telesom = () => {
@@ -168,15 +168,23 @@ function InfoProject() {
                     if(data.responseCode !== "200"){
                         // tani sax maaha
                         console.log(data.responseCode)
-                        UpdateAction()
+                        //Qaybta saxda ayaa leh  Lakiin tijaabo ahaan ayaan halkan ugu qoray
+                        //AddTabaruc()
+                        // setmsg(`Mahadsanid ${fildes.Lacagta} $ Ayaad Bixisay`)
+                        // setimg("fa-solid fa-circle-check")
+                        // setcln('Sax')
+                        // setwait(0)
+
+                        //Qaybta qaladka ah 
+                        setmsg("Lanbarka , Lacagta Ama Pinka Mid Ayaad Qaladan Fadlan sax")
+                        setimg("fa-solid fa-triangle-exclamation fa-shake")
+                        setcln('Qalad')
+                        setwait(0)
+                    } else {
+                        AddTabaruc()
                         setmsg(`Mahadsanid ${fildes.Lacagta} $ Ayaad Bixisay`)
                         setimg("fa-solid fa-circle-check")
                         setcln('Sax')
-                        setwait(0)
-                    } else {
-                        setmsg("Laguma Guulaysan Lacag Bixinta")
-                        setimg("fa-solid fa-triangle-exclamation fa-shake")
-                        setcln('Qalad')
                         setwait(0)
                     }
                 })
@@ -188,10 +196,15 @@ function InfoProject() {
         if(Pyment_type === "edahab"){
             const Somtel = () => {
                 console.log('Somtel pyment')
-                UpdateAction()
+                  //AddTabaruc()
             }
             Somtel()
         }
+    }
+
+
+    const lastAction = () => {
+
     }
 
     const toggale_zaad = (e) => {
@@ -314,6 +327,11 @@ function InfoProject() {
                                     <button className={Form_data && Form_data.Sax ? "bixi loadbtn" : "bixi"} >
                                     <i className="fa-solid fa-paper-plane"></i> Bixi Hada
                                     </button>
+                                    {Error ?
+                                        <p>{Error}</p>
+                                    :<></>
+                                    }
+                                    
                                     </div>
                                 </Form>
                             </div>

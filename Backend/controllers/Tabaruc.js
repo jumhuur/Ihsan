@@ -13,7 +13,7 @@ const addTabruc = async(req,res) => {
         
 
     } catch (Err){
-        console.log(Err)
+        res.status(400).json({Err:Err.message})
     }
 
 }
@@ -23,7 +23,7 @@ const addTabruc = async(req,res) => {
 const GetTabarucMashruuc = async(req,res) => {
    const Id = req.params.Id
    try{
-    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({Lacagta: -1})
+    const Tabarucyo = await TabarucModel.find({Id:Id}).sort({createdAt: -1}).limit(7)
     res.status(200).json(Tabarucyo)
    } catch(Err){
     console.log(Err)

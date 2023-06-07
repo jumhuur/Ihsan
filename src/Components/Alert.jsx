@@ -8,6 +8,7 @@ function Alert({msg,img,cln}){
         setactive(!active)
     }
 
+
     return (
         <>
         <div className={active ? "over_alert active" : "over_alert"}>
@@ -24,7 +25,7 @@ function Alert({msg,img,cln}){
                              <h2 className={cln}>{msg}</h2>
                         </div>
 
-                    <button onClick={close}><Link to={location.pathname}>Ok</Link></button>
+                    <button onClick={close}>Ok</button>
                     </div>
                 </div>
                 </div>
