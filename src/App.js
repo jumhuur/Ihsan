@@ -14,6 +14,8 @@ import Video from "./Components/video";
 import Mashruuc from "./Pages/Project";
 import InfoProject, { donote } from "./Components/InfoProject";
 import AddProjects from "./Components/addProject";
+import Manuelly from "./Pages/Manuelly";
+
 
 function App() {
   const [v_active,setv_active] = useState(false)
@@ -45,7 +47,14 @@ function App() {
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>
       </Route>
       <Route path="/Mashruuc/:Id" element={<Mashruuc />}>
-        <Route path="/Mashruuc/:Id" element={<InfoProject />} action={donote} />
+        <Route path="/Mashruuc/:Id" element={CrentUser ? <InfoProject /> : <Navigate to="/" />} action={donote} />
+      </Route>
+      <Route path="/manually/:Id"
+       element={
+
+        CrentUser && CrentUser.Id === "6454dba1429d70970c9c0eff" ?
+        <Manuelly /> :<Navigate to="/" /> 
+      } action={donote}>
       </Route>
       <Route path="/addProject"  element={CrentUser ? <AddProjects /> : <Navigate to="/" />} />
       <Route path="*" element={<p>Not foud the page</p>} />

@@ -9,13 +9,13 @@ import { format} from 'timeago.js'
 import { tab } from "@testing-library/user-event/dist/tab";
 import ProInfoSkl from "./Skeletons/ProSkeleton";
 import EmpatyTabaruc from "./EmptyTabruc";
-function InfoProject() {
+function ManuallyInfo() {
     const {Id} = useParams()
     const Form_data = useActionData()
     const {CrentUser} = Auth()
     const UserLanbar = CrentUser && CrentUser.Lanbar
     const Tabaruce = CrentUser ? CrentUser.Id : "Ixsan2023"
-    const Name = CrentUser ? CrentUser.Magac : "Deeq Bixiye"
+    //const Name = CrentUser && CrentUser.Magac
     const [Pyment_type,setPyment_type] = useState('zaad');
     const [Error, setError] = useState(null);
     const [Looding, setLooding] = useState(false);
@@ -34,7 +34,7 @@ function InfoProject() {
     })
 
     const [fildesTabaruc,setfildesTabaruc] = useState({
-        Name: Name,
+        Name: "",
         Lanbar: (fildes.Lanbar),
         Lacagta: Number(fildes.Lacagta),
         Id: Id,
@@ -56,7 +56,6 @@ function InfoProject() {
         // console.log(fildes)
         // console.log(fildesTabaruc)
     }        
-
 
 
     // get  total
@@ -106,7 +105,9 @@ function InfoProject() {
         }
     }
 
-    const AddTabaruc = async() => {
+    const AddTabaruc = async(e) => {
+        setmsg("Fadlan Yara Sug")
+        setwait(true)
         const AddTabaruc = await fetch("http://localhost:8880/Api/addTabaruc", {
             method: "POST",
             body: JSON.stringify(fildesTabaruc),
@@ -117,90 +118,23 @@ function InfoProject() {
 
         const res = await AddTabaruc.json()
         if(!AddTabaruc.ok){
-            setLooding(true)
-            setError(res.Err)
+            //Qaybta qaladka ah 
             setmsg(res.Err)
-            console.log(res.Err)
+            setimg("fa-solid fa-triangle-exclamation fa-shake")
+            setcln('Qalad')
+            setwait(0)
+            
         }
 
         if(AddTabaruc.ok){
             UpdateAction()
+            setmsg(`Waxaad Ku Dartay ${fildes.Lacagta} $`)
+            setimg("fa-solid fa-circle-check")
+            setcln('Sax')
+            setwait(0)
         }
     }
 
-    const PymentAction = () => {
-        setmsg("Fadlan Telefankaaga Eeg")
-        setwait(true)
-        // const point = fildes.Lacagta.split(".")[1]
-    
-        // if(fildes.Lanbar.length !== 7 || fildes.Lanbar.match(pattern)){
-        //     console.log("Waa Qalad Lanbarku")
-        //     setmsg("Waa Qalad Lanbarku")
-        // } 
-
-        // if(fildes.Lacagta < 0.25){
-        //      console.log("Lacagtu kama yaraan karto 0.25$")
-        // }
-
-        // if(fildes.Lacagta.match(LacagReg)){
-        //      console.log("Fadlan si sax lacagta U Qor")
-        // }
-
-        // if(point){
-        // if(point.length > 2){
-        //     console.log("Qaabka qoraalka lacagtu waa qalad!")
-        // }
-        // }
-        if(Pyment_type === "zaad"){
-            // telesom action
-            const telesom = () => {
-                EVC({
-                merchantUId: 'M0912269',
-                apiUserId: '1000297',
-                apiKey: 'API-1901083745AHX',
-                customerMobileNumber:  '25263'+fildes.Lanbar,
-                description: 'description.......',
-                amount: String(fildes.Lacagta),
-                autoWithdraw: true, // `true` if auto withdraw else `false`
-                merchantNo: '252402785', // withdraw to ...
-                })
-                .then((data) => {
-                    if(data.responseCode !== "200"){
-                        // tani sax maaha
-                        console.log(data.responseCode)
-                        //Qaybta saxda ayaa leh  Lakiin tijaabo ahaan ayaan halkan ugu qoray
-                        //AddTabaruc()
-                        // setmsg(`Mahadsanid ${fildes.Lacagta} $ Ayaad Bixisay`)
-                        // setimg("fa-solid fa-circle-check")
-                        // setcln('Sax')
-                        // setwait(0)
-
-                        //Qaybta qaladka ah 
-                        setmsg("Lanbarka , Lacagta Ama Pinka Mid Ayaad Qaladan Fadlan sax")
-                        setimg("fa-solid fa-triangle-exclamation fa-shake")
-                        setcln('Qalad')
-                        setwait(0)
-                    } else {
-                        AddTabaruc()
-                        setmsg(`Mahadsanid ${fildes.Lacagta} $ Ayaad Bixisay`)
-                        setimg("fa-solid fa-circle-check")
-                        setcln('Sax')
-                        setwait(0)
-                    }
-                })
-                .catch((err) => console.log(err.responseCode))
-            }
-            telesom()
-        }
-        // somtel action
-        if(Pyment_type === "edahab"){
-            const Somtel = () => {
-                console.log('Somtel pyment')
-                  //AddTabaruc()
-            }
-            Somtel()
-        }
-    }
 
     const toggale_zaad = (e) => {
         setPyment_type("zaad")
@@ -232,11 +166,6 @@ function InfoProject() {
             <div className="haye">
                 <div className="laba_qaybood">
                     <div className="qayb muuqaal">
-                        {/* <img src={info && info.Sawir} alt="mashruuc_sawir" /> */}
-                        {info ?
-                        <Video Muuqaal={info.Muuqaal} />
-                        :<></>
-                        }
                         <div className="macluumaad_bidix">
                             <div className="qoraal">
                                 <h2>Macluumaadka Masharuuca</h2>
@@ -278,7 +207,7 @@ function InfoProject() {
                         }
                         <div className="info_fursad">
                             <div className="from_bixin">
-                                <Form  method='post' action={`/mashruuc/${info && info._id}`} onSubmit={PymentAction}>
+                                <Form id="create-course-form" method='post' action={`/manually/${info && info._id}`} onSubmit={AddTabaruc}>
                                     <div className="pyment_types">
                                         <div className="raber_switcher">
                                             {/* <span>Zaad</span> */}
@@ -292,6 +221,10 @@ function InfoProject() {
                                     </div>
                                     <div className="donter_info">
                                     <div className="input_feilds">
+                                    <span className='Ll'><i className="fa-solid fa-address-card"></i></span>
+                                    <input onChange={OnChangeInputes} className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="text"  placeholder="Magaca" name="Name" value={fildesTabaruc.Name}/>
+                                    </div>
+                                    <div className="input_feilds">
                                     <span className='Ll'><i className="fa-solid fa-sack-dollar"></i></span>
                                     <input onChange={OnChangeInputes} className={(Form_data && Form_data.err_lacag) || (Form_data && Form_data.err_lacag1)  ? "err" : ""} type="number" placeholder="Lacagta" name='Lacagta'/>
                                     </div>
@@ -303,18 +236,16 @@ function InfoProject() {
                                     :
                                         <span className='Ll'>No</span>
                                     }   
-                                    <input onChange={OnChangeInputes} type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar' value={fildes.Lanbar} />
+                                    <input onChange={OnChangeInputes} type="tel" className={Form_data && Form_data.err_no ? "err" : ""}  placeholder="Lanbar" name='Lanbar' value={fildes.Lanbar} readOnly />
                                     <input type='text' name='Id' hidden value={info &&  info._id} />
                                     <input onChange={OnChangeInputes} type="number" name='Tabaruc' hidden value={Number(total) + Number(fildes.Lacagta)} />
                                     <input type='text' hidden value={Pyment_type} name='PymentType' />
                                     {CrentUser ?
                                     <>
-                                    <input type="text" hidden name="Name" value={CrentUser.Magac} />
                                     <input type="text" hidden name="Tabaruce" value={CrentUser.Id} />
                                      </>
                                     :
                                     <>
-                                    <input type="text" hidden name="Name" value={"Deeq Bixiye"} />
                                     <input type="text" hidden name="Tabaruce" value={'Ixsan2023'} />
                                     </>
                                 }
@@ -322,17 +253,6 @@ function InfoProject() {
                                     <button className={"bixi"} >
                                     <i className="fa-solid fa-paper-plane"></i> Bixi Hada
                                     </button>
-                                    {CrentUser && CrentUser.Id  === "6454dba1429d70970c9c0eff" ?
-                                    <button className="bixi manually" >
-                                    <Link to={`/manually/${info && info._id}`}>
-                                    <span>
-                                    <i class="fa-solid fa-circle-plus"></i> Ku Dar Tabaruc (manually)
-                                    </span>
-                                    </Link>
-                                    </button>
-                                    :<></>
-                                    }
-                                    
                                     </div>
                                 </Form>
                             </div>
@@ -403,4 +323,4 @@ export const donote = async ({request}) => {
 
 
 
-export default InfoProject
+export default ManuallyInfo
