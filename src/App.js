@@ -40,8 +40,8 @@ function App() {
       <Route path="/" element={<Home video_active={v_active} func={active_v} LoginFunc={Loginfunc} />} >
         <Route path="/" element={<Card func={active_v} />} />
         <Route path="Waxbarasho" element={<CWaxbarsho func={active_v} />} />
-        <Route path="Cunto" element={<CCunto func={active_v}  /> } />
-        <Route path="Hoy" element={<Choy func={active_v} />}/>
+        <Route path="Diini" element={<CCunto func={active_v}  /> } />
+        <Route path="Taageerid" element={<Choy func={active_v} />}/>
         <Route path="Daryeel" element={<CDaryeel func={active_v} />}/>
         <Route path="Login" element={!CrentUser ? <Login activate={login} loginfunc={Loginfunc} /> : <Navigate to={"/"} />} />
         <Route path="Signin" element={!CrentUser ? <Sinup /> : <Navigate to="/" />}/>

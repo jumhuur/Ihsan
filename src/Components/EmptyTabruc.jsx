@@ -1,12 +1,24 @@
+import Lottie from "lottie-react"
+import animationData from "../static/Images/97437-no-data-found.json";
+
 function EmpatyTabaruc(){
     return (
-        <div className='empaty'>
+        <div className='empaty'> 
             <div className="sawir">
-                <img src='/Images/nodata.svg' alt='empaty' />
+                {/* <img src='/Images/nodata.svg' alt='empaty' /> */}
+                <Lottie animationData={animationData}  />
             </div>
-            <p>
+            <p className="not_foundmessage">
                 Wali Laguma Tabarucin mashruucan 
-            </p>   
+            </p>
+            <br></br>
+            <div className="ayad in_info">
+                <div className="haye">
+                    <div className="nas_ayad">
+                        <img src="/Images/lntnalo-ayah2.svg" alt="ayad" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -241,8 +241,7 @@ function InfoProject() {
                             <div className="qoraal">
                                 <h2>Macluumaadka Masharuuca</h2>
                                 <p>
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae pariatur reprehenderit neque 
-                                    qui laborum, similique eius. Saepe, nulla ullam! 
+                                    {info.Macluumaad}
 
                                 </p>
                             </div>
@@ -340,7 +339,7 @@ function InfoProject() {
                     </div>
                     <div className="qayb Pyments">
                         <div className="last_donote">
-                            <h2>Dadka Ugu Tabaruca Badan</h2>
+                            <h2>Tabarucyadii Ugu Danbeeyay</h2>
                             <p>
                             Macluumaadka dadkii ugu danbeeyay ee ku tabarucay mashruucan
                             kamid noqo dadka u tartamaya khayrka

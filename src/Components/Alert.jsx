@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 function Alert({msg,img,cln}){
     const [active,setactive] = useState(true);
     const location = useLocation()

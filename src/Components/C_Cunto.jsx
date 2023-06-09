@@ -43,8 +43,7 @@ function CCunto({func}){
             <div className="desc">
                 {/* <h2>Hooyo somaliyeed</h2> */}
                 <p>
-                    Waa qof waayeela oo Baahan
-                    waxana haya xanuun aad u daran oo maalin ...
+                  {card.Macluumaad.substr(0,65)} ...
                 </p>
             </div>
             <div className="progress">

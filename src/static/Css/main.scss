@@ -1,7 +1,8 @@
 //variables
-$theme: "dark";
+$theme: "light";
 $main-color: #1b2a4e;
-$main-color2: #335eea;
+$main-color2: #007be6;
+//$main-color2: #335eea;
 $color-Gaar: #42ba96;
 $bg-main: #fff;
 $title-color: #506690;
@@ -601,6 +602,11 @@ div.ayad {
   background-color: $main-color;
   @include dynamic-flex(center, center, column, 0px);
   user-select: none;
+  &.in_info{
+    background-color: $bg-main;
+    border-radius: 7px;
+    height: 60px;
+  }
   div.nas_ayad {
     width: 100%;
     height: 100%;
@@ -870,8 +876,11 @@ div.empaty {
     width: 100%;
     img {
       width: 100%;
-      height: 250px;
+      height: 150px;
     }
+    svg{
+      width: 80%;
+      }
   }
 
   p {

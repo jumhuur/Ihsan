@@ -3,10 +3,10 @@ const ProjectsModule = require("../Models/Projects")
 
 
 const addProjects = async(req,res) => {
-    const {Name, Hadaf , Tabaruc,  Qayb , Sawir, Muuqaal} = req.body
+    const {Name, Hadaf ,Macluumaad,Tabaruc,  Qayb , Sawir,Muuqaal} = req.body
     try {
 
-        const Projects = await ProjectsModule.Addpro(Name, Hadaf,Tabaruc,Qayb,Sawir,Muuqaal)
+        const Projects = await ProjectsModule.Addpro(Name, Hadaf,Macluumaad,Tabaruc,Qayb,Sawir,Muuqaal)
 
         // soo celinta 
         res.status(200).json(Projects)
@@ -50,7 +50,7 @@ const GetWaxbarasho = async(req,res) => {
 const GetCunto = async(req,res) => {
 
     try {
-        const Caafimaad = await ProjectsModule.find({Qayb:"Cunto"}).sort({createdAt: -1})
+        const Caafimaad = await ProjectsModule.find({Qayb:"Diini"}).sort({createdAt: -1})
         res.status(200).json(Caafimaad)
 
     } catch (error) {
@@ -64,7 +64,7 @@ const GetCunto = async(req,res) => {
 const GetHoy = async(req,res) => {
 
     try {
-        const Caafimaad = await ProjectsModule.find({Qayb:"Hoy"}).sort({createdAt: -1})
+        const Caafimaad = await ProjectsModule.find({Qayb:"Taageerid"}).sort({createdAt: -1})
         res.status(200).json(Caafimaad)
 
     } catch (error) {

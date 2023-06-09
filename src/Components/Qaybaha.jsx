@@ -19,14 +19,14 @@ function Qayabaha(){
             </div>
             <div className="qayb">
             <div className="icon_Q">
-                <NavLink to="Cunto">
+                <NavLink to="Diini">
                 <p><i className="fa-solid fa-kaaba"></i> Diini</p>
                 </NavLink>
             </div>
             </div>
             <div className="qayb">
             <div className="icon_Q">
-            <NavLink to="Hoy">
+            <NavLink to="Taageerid">
             <p><i className="fa-solid fa-handshake-angle"></i> Taageero</p>
             </NavLink>
             </div>

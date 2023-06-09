@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import { Auth } from "../context/Auth"
+import Lottie from "lottie-react"
+import animationData from "../static/Images/70897-online-payments.json";
 
 function Welcome(){
     const {CrentUser,dispatch,ACTIONS,setDatA,GetAllProjects} = Auth()
@@ -48,7 +50,8 @@ function Welcome(){
             </div>
             </div>
             <div className="qayb sawir">
-                <img src="/Images/Home_01.svg" alt="homepage_ills" />
+                <Lottie animationData={animationData} />
+                {/* <img src="/Images/Home_01.svg" alt="homepage_ills" /> */}
             </div>
             </div>
             </div>
