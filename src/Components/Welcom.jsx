@@ -26,8 +26,8 @@ function Welcome(){
             </>
             :
             <>
-            <h2>Ku soo Dhawaaw <span>Ixsaan</span> Shabakada Iskaashiga.</h2>
-            <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida dadka baahan.</p>
+            <h2>Ku soo Dhawaaw Shabakada <span>Ixsaan</span></h2>
+            <p>Ixsaan waa shabakada Loogu tallo gallay Ururinta Muwaacanida iyo Tabarucaadka dadka baahan.</p>
             </>
             }
             <div className="btn-welc">

@@ -8,10 +8,12 @@ import SlideCompany from "../Components/slidecomp"
 import Counts from "../Components/Counts"
 import Fqa from "../Components/fqa"
 import Footer from "../Components/Footer"
+import MyTabaruc from "../Components/MyTabaruc"
 function Home({LoginFunc}){
     return (
         <>
             {/* <Video  video_active={video_active} func={func}/> */}
+            {/* <MyTabaruc /> */}
             <Nav Login={LoginFunc}/>   
             <Welcome />
             <TiroKoobyo />

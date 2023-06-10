@@ -1,12 +1,12 @@
 import Lottie from "lottie-react"
-import animationData from "../static/Images/97437-no-data-found.json";
+import animationData from "../static/Images/123723-search-empty.json";
 
 function EmpatyTabaruc(){
     return (
         <div className='empaty'> 
             <div className="sawir">
-                {/* <img src='/Images/nodata.svg' alt='empaty' /> */}
-                <Lottie animationData={animationData}  />
+                <img src='/Images/search.svg' alt='empaty' />
+                {/* <Lottie animationData={animationData}  /> */}
             </div>
             <p className="not_foundmessage">
                 Wali Laguma Tabarucin mashruucan 
