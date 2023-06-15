@@ -1,61 +1,56 @@
-
 /* skl basic styl */
 
 .skl_ton.title {
-    width: 90%;
-    height: 20px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    margin: 25px 0px;
-    animation: Animate_el ease-in-out 2.5s infinite;
+  width: 90%;
+  height: 20px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  margin: 25px 0px;
+  animation: Animate_el ease-in-out 2.5s infinite;
 }
-
 
 .skl_ton.text {
-    width: 100%;
-    height: 15px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    animation: Animate_el ease-in-out 2.5s infinite;
-    margin: 15px 0px;
+  width: 100%;
+  height: 15px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  animation: Animate_el ease-in-out 2.5s infinite;
+  margin: 15px 0px;
 }
 
+// gaar u ah info last donote
 
-// gaar u ah info last donote 
-
-.skl_ton.div{
-    width: 100%;
-    height: 80px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    animation: Animate_el ease-in-out 2.5s infinite;
-    margin: 15px 0px;   
+.skl_ton.div {
+  width: 100%;
+  height: 80px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  animation: Animate_el ease-in-out 2.5s infinite;
+  margin: 15px 0px;
 }
-
 
 .skl_ton.image {
-    width: 301px;
-    height: 250px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    animation: Animate_el ease-in-out 2.5s infinite;
+  width: 301px;
+  height: 250px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  animation: Animate_el ease-in-out 2.5s infinite;
 }
 
-
 .skl_ton.image_job {
-    width: 100%;
-    height: 100%;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    animation: Animate_el ease-in-out 2.5s infinite;
+  width: 100%;
+  height: 100%;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  animation: Animate_el ease-in-out 2.5s infinite;
 }
 
 .skl_ton.price {
-    width: 50%;
-    height: 15px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    animation: Animate_el ease-in-out 2.5s infinite;
+  width: 50%;
+  height: 15px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  animation: Animate_el ease-in-out 2.5s infinite;
 }
 
 /* .skl_ton.price_job{
@@ -67,60 +62,52 @@
 } */
 
 .skl_ton.btn {
-    width: 60%;
-    height: 45px;
-    background-color: #dee2e6;
-    border-radius: 5px;
-    margin: 10px 0px;
-    animation: Animate_el ease-in-out 2.5s infinite alternate;
+  width: 60%;
+  height: 45px;
+  background-color: #dee2e6;
+  border-radius: 5px;
+  margin: 10px 0px;
+  animation: Animate_el ease-in-out 2.5s infinite alternate;
 }
 
 div.card_mashruuc {
-    &.sklt {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: wrap column;
-    }
+  &.sklt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap column;
+  }
 }
 
-div.sklt{
-    position: relative;
-    overflow: hidden;
-} 
-
+div.sklt {
+  position: relative;
+  overflow: hidden;
+}
 
 /* dhex mar style --------  */
 div.Haye_dhexmare {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: Loading 2s infinite;
+  div.dhexmare {
+    width: 50%;
     height: 100%;
-    position: absolute;
-    animation: Loading 2s infinite;
-    div.dhexmare {
-        width: 50%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.274);
-        transform: skewX(-20deg);
+    background: rgba(255, 255, 255, 0.274);
+    transform: skewX(-20deg);
+  }
+
+  @keyframes Loading {
+    0% {
+      transform: translateX(-150%);
     }
 
-    @keyframes Loading {
-        0% {
-            transform: translateX(-150%);
-        }
-
-        50% {
-            transform: translateX(-60%);
-        }
-
-        100% {
-            transform: translateX(150%);
-        }
+    50% {
+      transform: translateX(-60%);
     }
+
+    100% {
+      transform: translateX(150%);
+    }
+  }
 }
-
-
-
-
-
-
-

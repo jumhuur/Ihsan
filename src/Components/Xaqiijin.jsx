@@ -1,8 +1,4 @@
-function Xaqiijin(){
-    return (
-        <>
-        
-        </>
-    )
+function Xaqiijin() {
+  return <></>;
 }
-export default Xaqiijin
+export default Xaqiijin;

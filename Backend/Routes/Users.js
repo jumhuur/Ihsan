@@ -1,20 +1,16 @@
-const express = require("express")
-const UserRoutes = express.Router()
-const {Login, Register, UsersCount}  = require("../controllers/Users")
+const express = require("express");
+const UserRoutes = express.Router();
+const { Login, Register, UsersCount } = require("../controllers/Users");
 
+// Login
+UserRoutes.post("/Login", Login);
 
-// Login 
-UserRoutes.post("/Login", Login)
+// sing up
 
-// sing up 
-
-UserRoutes.post('/Register',Register)
-
+UserRoutes.post("/Register", Register);
 
 // get count users
 
-UserRoutes.get("/UserCounts", UsersCount)
+UserRoutes.get("/UserCounts", UsersCount);
 
-
-
-module.exports = UserRoutes
+module.exports = UserRoutes;

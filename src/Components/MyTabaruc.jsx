@@ -1,16 +1,12 @@
-function MyTabaruc(){
-    return (
-        <>
-
-            <div className="totalTabaruc Over">
-                <div className="haye">
-                    <dv className="body totalTabaruc">
-                    </dv>
-                </div>
-            </div>
-   
-        
-        </>
-    )
+function MyTabaruc() {
+  return (
+    <>
+      <div className="totalTabaruc Over">
+        <div className="haye">
+          <dv className="body totalTabaruc"></dv>
+        </div>
+      </div>
+    </>
+  );
 }
-export default MyTabaruc
+export default MyTabaruc;

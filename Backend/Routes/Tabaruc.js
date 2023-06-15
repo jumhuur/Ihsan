@@ -1,26 +1,29 @@
-const express = require("express")
-const TabarucRoutes = express.Router()
-const {addTabruc,GetTabarucMashruuc, CountTabaruc, TotalTabaruc, Total} = require("../controllers/Tabaruc")
+const express = require("express");
+const TabarucRoutes = express.Router();
+const {
+  addTabruc,
+  GetTabarucMashruuc,
+  CountTabaruc,
+  TotalTabaruc,
+  Total,
+} = require("../controllers/Tabaruc");
 
 // add Tabaruc Router
 
-TabarucRoutes.post("/addTabaruc", addTabruc)
-
+TabarucRoutes.post("/addTabaruc", addTabruc);
 
 // get tabaruc Mashruuc
 
-TabarucRoutes.get("/GetTabarucyo/:Id", GetTabarucMashruuc)
+TabarucRoutes.get("/GetTabarucyo/:Id", GetTabarucMashruuc);
 
-TabarucRoutes.get("/GetTotal/:Id", Total)
+TabarucRoutes.get("/GetTotal/:Id", Total);
 
-// get count tabaruc 
+// get count tabaruc
 
-TabarucRoutes.get("/countTabaruc", CountTabaruc)
+TabarucRoutes.get("/countTabaruc", CountTabaruc);
 
+// get total
 
-// get total 
+TabarucRoutes.get("/Total", TotalTabaruc);
 
-TabarucRoutes.get("/Total", TotalTabaruc)
-
-
-module.exports = TabarucRoutes
+module.exports = TabarucRoutes;
